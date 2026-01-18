@@ -1,67 +1,96 @@
-import { Phone, Award, Users } from "lucide-react";
+import { useState } from "react";
+import { Zap, Shield, Headphones } from "lucide-react";
 
 const reasons = [
   {
-    icon: Phone,
-    title: "זמינות מקסימלית",
-    description: "תמיד כאן בשבילכם - בין אם זו התקנה דחופה או שאלה קטנה בשישי בצהריים.",
-    highlight: "24/7 לרשותכם",
+    icon: Zap,
+    title: "טכנולוגיה מוכחת",
+    description: "מערכות גידור חשמלי מתקדמות שעברו אלפי התקנות מוצלחות בשטח. אמינות של 99.9% בתנאי מזג אוויר קיצוניים.",
   },
   {
-    icon: Award,
-    title: "איכות בלי פשרות",
-    description: "חומרים מהשורה הראשונה ועבודה מקצועית שעומדת במבחן השטח והזמן.",
-    highlight: "תקן ואחריות",
+    icon: Shield,
+    title: "עמידות בתנאי שטח",
+    description: "חומרים עמידים בפני שמש, גשם וקורוזיה. תוכננו במיוחד לאקלים הישראלי ולאתגרים של השטח החקלאי.",
   },
   {
-    icon: Users,
-    title: "עסק של מילואימניקים",
-    description: "כמו בצבא - אחריות, מסירות ועמידה במילה. אנחנו יודעים מה זה להגן על מה שחשוב.",
-    highlight: "ערכים בשטח",
+    icon: Headphones,
+    title: "ליווי מקצועי",
+    description: "צוות מומחים זמין לכל שאלה ותמיכה. מהתכנון הראשוני ועד האחריות המלאה – אנחנו איתך בכל שלב.",
   },
 ];
 
 const TrustReasons = () => {
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
+
+  const handleCardClick = (index: number) => {
+    setExpandedCard(expandedCard === index ? null : index);
+  };
+
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className="py-20 md:py-28 bg-background">
       <div className="container">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-black text-foreground mb-3">
+        <div className="text-center mb-14">
+          <h2 
+            className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-4"
+            style={{ textWrap: 'balance' }}
+          >
             למה לבחור{" "}
             <span className="text-primary text-glow">בגייטקיפ?</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            החבר'ה שעוצרים את החזירים - לא רק מרחיקים אותם
+          <p 
+            className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto"
+            style={{ textWrap: 'pretty' }}
+          >
+            פתרונות מיגון מקצועיים שמגינים על הפרנסה שלך
           </p>
         </div>
 
-        {/* Trust Cards */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {/* Trust Cards Grid */}
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="card-forest rounded-2xl p-6 md:p-8 text-center group hover:border-primary/50 transition-all duration-300"
+              onClick={() => handleCardClick(index)}
+              className="group relative card-forest rounded-2xl p-8 md:p-10 text-center cursor-pointer overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_40px_hsl(142_76%_45%/0.15)] min-h-[280px] md:min-h-[320px]"
             >
               {/* Icon */}
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-colors">
-                <reason.icon className="w-8 h-8 text-primary" />
+              <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
+                <reason.icon className="w-10 h-10 text-primary" />
               </div>
 
-              {/* Highlight Badge */}
-              <span className="inline-block bg-primary/10 text-primary text-sm font-bold px-3 py-1 rounded-full mb-4">
-                {reason.highlight}
-              </span>
-
-              {/* Title */}
-              <h3 className="text-xl md:text-2xl font-black text-foreground mb-3">
+              {/* Title - Always Visible */}
+              <h3 
+                className="text-xl md:text-2xl font-black text-foreground mb-4 transition-all duration-500"
+                style={{ textWrap: 'balance' }}
+              >
                 {reason.title}
               </h3>
 
-              {/* Description */}
-              <p className="text-muted-foreground leading-relaxed">
-                {reason.description}
-              </p>
+              {/* Description - Desktop: Hover reveal, Mobile: Click expand */}
+              <div 
+                className={`
+                  transition-all duration-500 ease-out
+                  md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0
+                  ${expandedCard === index ? 'opacity-100 translate-y-0 max-h-40' : 'opacity-0 translate-y-4 max-h-0 md:max-h-40'}
+                  overflow-hidden
+                `}
+              >
+                <p 
+                  className="text-muted-foreground leading-relaxed"
+                  style={{ textWrap: 'pretty' }}
+                >
+                  {reason.description}
+                </p>
+              </div>
+
+              {/* Mobile indicator */}
+              <div className="md:hidden mt-4 text-primary/60 text-sm font-medium">
+                {expandedCard === index ? 'לחץ לסגירה' : 'לחץ לפרטים'}
+              </div>
+
+              {/* Subtle glow effect on hover */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </div>
           ))}
         </div>

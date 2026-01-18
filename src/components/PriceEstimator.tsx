@@ -46,11 +46,17 @@ const PriceEstimator = () => {
               <Calculator className="w-5 h-5" />
               <span className="font-bold">מחשבון הצעת מחיר</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-black text-foreground mb-3">
+            <h2 
+              className="text-3xl md:text-4xl font-black text-foreground mb-3"
+              style={{ textWrap: 'balance' }}
+            >
               גלה את טווח המחיר{" "}
               <span className="text-primary text-glow">תוך 30 שניות</span>
             </h2>
-            <p className="text-muted-foreground">
+            <p 
+              className="text-muted-foreground"
+              style={{ textWrap: 'pretty' }}
+            >
               הזן את פרטי השטח וקבל הערכת מחיר מיידית
             </p>
           </div>
