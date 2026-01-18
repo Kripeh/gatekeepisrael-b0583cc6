@@ -10,7 +10,7 @@ const PersistentHeader = () => {
       <div className="container flex items-center justify-between py-3">
         {/* Logo */}
         <div className="flex items-center">
-          <img src={logo} alt="גייטקיפ" className="h-12 md:h-14 w-auto" />
+          <img src={logo} alt="גייטקיפ" className="h-14 md:h-16 w-auto" />
         </div>
 
         {/* CTA Button */}
