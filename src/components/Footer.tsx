@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="text-center">
           {/* Logo */}
           <div className="flex items-center justify-center mb-4">
-            <img src={logo} alt="גייטקיפ" className="h-12 w-auto" />
+            <img src={logo} alt="גייטקיפ" className="h-14 w-auto" />
           </div>
           
           <p className="text-muted-foreground text-sm mb-2">
