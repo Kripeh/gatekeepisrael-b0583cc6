@@ -155,7 +155,7 @@ const PriceEstimator = () => {
                     className="btn-cta-glow w-full flex items-center justify-center gap-3 py-5 rounded-xl text-xl font-black pulse-urgent"
                   >
                     <Phone className="w-6 h-6 animate-bounce-subtle" />
-                    <span>קבל הצעה סופית עכשיו</span>
+                    <span>קבל הצעה עכשיו</span>
                   </a>
                 </div>
               </div>
