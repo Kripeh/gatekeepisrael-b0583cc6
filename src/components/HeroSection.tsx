@@ -38,9 +38,10 @@ const HeroSection = () => {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             {/* Primary CTA - Call */}
-            <a href={PHONE_LINK} className="btn-cta-glow inline-flex items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-xl text-xl md:text-2xl pulse-urgent">
-              <Phone className="w-7 h-7 animate-bounce-subtle" />
-              <span>התקשר עכשיו לתיאום בשטח</span>
+            <a href={PHONE_LINK} className="btn-cta-glow inline-flex items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-xl text-xl md:text-2xl pulse-urgent">התקשר עכשיו
+            <Phone className="w-7 h-7 animate-bounce-subtle" />
+              <span>התקשר עכשיו
+            </span>
             </a>
 
             {/* Secondary CTA - Calculator */}
