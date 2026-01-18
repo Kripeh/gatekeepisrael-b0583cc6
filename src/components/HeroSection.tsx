@@ -1,4 +1,4 @@
-import { Phone, Calculator } from "lucide-react";
+import { Phone, AlertTriangle, Calculator } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 const PHONE_LINK = "tel:+972508585310";
 const HeroSection = () => {
@@ -12,18 +12,14 @@ const HeroSection = () => {
 
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Professional Badge */}
-          <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/30 text-primary px-5 py-2.5 rounded-full mb-6">
-            <span className="font-bold text-sm" style={{ textWrap: 'balance' }}>
-              פתרונות מיגון מתקדמים לחקלאות המודרנית. מומחים בבלימת חזירי בר והגנה על יבולים.
-            </span>
+          {/* Urgency Badge */}
+          <div className="inline-flex items-center gap-2 bg-destructive/20 border border-destructive/40 text-destructive px-4 py-2 rounded-full mb-6 animate-pulse">
+            <AlertTriangle className="w-5 h-5" />
+            <span className="font-bold text-sm">הנזק מתרחש עכשיו - כל לילה נוסף הוא הפסד כספי</span>
           </div>
 
           {/* Main Headline */}
-          <h1 
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight mb-6"
-            style={{ textWrap: 'balance' }}
-          >
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight mb-6">
             חזירים{" "}
             <span className="text-primary text-glow">מחסלים</span>
             {" "}לך את הפרנסה?
@@ -32,13 +28,9 @@ const HeroSection = () => {
           </h1>
 
           {/* Sub-headline */}
-          <p 
-            className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed"
-            style={{ textWrap: 'pretty' }}
-          >
-            אל תחכה לפשיטה של הלילה.{" "}
-            <strong className="text-foreground">גדר חשמלית מקצועית</strong> היא הפתרון היחיד שעובד.{" "}
-            <span className="text-primary font-semibold">גדר חשמלית איכותית ומקצועית</span> – הכל על פי תקן.
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">אנחנו עוצרים אותם היום!<strong className="text-foreground"> גדר חשמלית מקצועית</strong> היא הפתרון היחיד שעובד.
+            <br />
+            <span className="text-primary font-semibold">גדר חשמלית איכותית ומקצועית</span> - הכל על פי תקן.
           </p>
 
           {/* CTAs */}
