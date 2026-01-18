@@ -32,7 +32,7 @@ const TrustReasons = () => {
             <span className="text-primary text-glow">בגייטקיפ?</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            הוותיקים שעוצרים את החזירים - לא רק מרחיקים אותם
+            החבר'ה שעוצרים את החזירים - לא רק מרחיקים אותם
           </p>
         </div>
 
