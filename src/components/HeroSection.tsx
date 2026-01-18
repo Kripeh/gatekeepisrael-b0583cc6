@@ -14,7 +14,7 @@ const HeroSection = () => {
           className="w-full h-full object-cover"
         />
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-background/85" />
+        <div className="absolute inset-0 bg-background/65" />
       </div>
 
       <div className="container relative z-10">
