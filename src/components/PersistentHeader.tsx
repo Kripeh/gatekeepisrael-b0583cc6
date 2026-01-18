@@ -9,7 +9,7 @@ const PersistentHeader = () => {
     <header className="fixed top-0 right-0 left-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container flex items-center justify-between py-3">
         {/* Logo */}
-        <div className="flex items-center bg-white rounded-lg px-3 py-1">
+        <div className="flex items-center">
           <img src={logo} alt="גייטקיפ" className="h-12 md:h-14 w-auto" />
         </div>
 
