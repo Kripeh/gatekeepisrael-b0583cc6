@@ -1,18 +1,11 @@
 import { Phone, AlertTriangle, Calculator } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-
 const PHONE_LINK = "tel:+972501234567";
-
 const HeroSection = () => {
-  return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-16">
+  return <section className="relative min-h-screen flex items-center pt-24 pb-16">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <img 
-          src={heroBg} 
-          alt="שטח חקלאי" 
-          className="w-full h-full object-cover"
-        />
+        <img src={heroBg} alt="שטח חקלאי" className="w-full h-full object-cover" />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-background/65" />
       </div>
@@ -45,35 +38,25 @@ const HeroSection = () => {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             {/* Primary CTA - Call */}
-            <a
-              href={PHONE_LINK}
-              className="btn-cta-glow inline-flex items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-xl text-xl md:text-2xl pulse-urgent"
-            >
+            <a href={PHONE_LINK} className="btn-cta-glow inline-flex items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-xl text-xl md:text-2xl pulse-urgent">
               <Phone className="w-7 h-7 animate-bounce-subtle" />
               <span>התקשר עכשיו לתיאום בשטח</span>
             </a>
 
             {/* Secondary CTA - Calculator */}
-            <a
-              href="#calculator"
-              className="inline-flex items-center gap-3 px-6 py-4 md:px-8 md:py-5 rounded-xl text-lg md:text-xl font-bold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-            >
+            <a href="#calculator" className="inline-flex items-center gap-3 px-6 py-4 md:px-8 md:py-5 rounded-xl text-lg md:text-xl font-bold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300">
               <Calculator className="w-6 h-6" />
               <span>חשב הצעת מחיר</span>
             </a>
           </div>
 
           {/* Trust Line */}
-          <p className="mt-6 text-muted-foreground text-sm">
-            🔒 ללא התחייבות • ✓ מענה מיידי • ⚡ התקנה תוך 48 שעות
-          </p>
+          
         </div>
       </div>
 
       {/* Bottom Fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
