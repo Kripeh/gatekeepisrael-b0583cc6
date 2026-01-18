@@ -1,8 +1,8 @@
 import { Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
 
-const PHONE_NUMBER = "1-800-GATEKEEP";
-const PHONE_LINK = "tel:+972501234567";
+const PHONE_NUMBER = "050-858-5310";
+const PHONE_LINK = "tel:+972508585310";
 
 const PersistentHeader = () => {
   return (

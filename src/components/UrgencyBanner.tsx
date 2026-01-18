@@ -1,6 +1,6 @@
 import { AlertTriangle, Phone } from "lucide-react";
 
-const PHONE_LINK = "tel:+972501234567";
+const PHONE_LINK = "tel:+972508585310";
 
 const UrgencyBanner = () => {
   return (

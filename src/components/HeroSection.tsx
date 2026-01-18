@@ -1,6 +1,6 @@
 import { Phone, AlertTriangle, Calculator } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-const PHONE_LINK = "tel:+972501234567";
+const PHONE_LINK = "tel:+972508585310";
 const HeroSection = () => {
   return <section className="relative min-h-screen flex items-center pt-24 pb-16">
       {/* Background Image */}
