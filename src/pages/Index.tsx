@@ -1,7 +1,10 @@
 import PersistentHeader from "@/components/PersistentHeader";
 import HeroSection from "@/components/HeroSection";
-import PriceEstimator from "@/components/PriceEstimator";
 import TrustReasons from "@/components/TrustReasons";
+import ProjectGallery from "@/components/ProjectGallery";
+import Testimonials from "@/components/Testimonials";
+import PriceEstimator from "@/components/PriceEstimator";
+import FAQSection from "@/components/FAQSection";
 import UrgencyBanner from "@/components/UrgencyBanner";
 import Footer from "@/components/Footer";
 import StickyMobileFooter from "@/components/StickyMobileFooter";
@@ -12,7 +15,10 @@ const Index = () => {
       <PersistentHeader />
       <HeroSection />
       <TrustReasons />
+      <ProjectGallery />
+      <Testimonials />
       <PriceEstimator />
+      <FAQSection />
       <UrgencyBanner />
       <Footer />
       <StickyMobileFooter />
