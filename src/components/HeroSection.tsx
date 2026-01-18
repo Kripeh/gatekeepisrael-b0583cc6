@@ -5,7 +5,7 @@ const HeroSection = () => {
   return <section className="relative min-h-screen flex items-center pt-24 pb-16">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="שטח חקלאי" className="w-full h-full object-cover" />
+        <img src={heroBg} alt="שטח חקלאי" className="w-full h-full object-cover rotate-180" />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-background/60" />
       </div>
