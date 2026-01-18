@@ -24,14 +24,10 @@ const PriceEstimator = () => {
   const [showResult, setShowResult] = useState(false);
 
   const calculatePrice = () => {
-    const basePrice = perimeter * 35; // Base ₪35 per meter
-    const gatePrice = gates * 800; // ₪800 per gate
-    const soilMultiplier = soilMultipliers[soilType];
+    const floorPrice = (perimeter * 12) + (gates * 1000);
+    const ceilingPrice = Math.round(floorPrice * 1.15);
     
-    const minPrice = Math.round((basePrice + gatePrice) * soilMultiplier);
-    const maxPrice = Math.round(minPrice * 1.4);
-    
-    return { minPrice, maxPrice };
+    return { minPrice: floorPrice, maxPrice: ceilingPrice };
   };
 
   const handleCalculate = () => {
