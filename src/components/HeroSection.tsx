@@ -7,7 +7,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img src={heroBg} alt="שטח חקלאי" className="w-full h-full object-cover" />
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-background/40" />
+        <div className="absolute inset-0 bg-background/60" />
       </div>
 
       <div className="container relative z-10">
