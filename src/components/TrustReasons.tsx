@@ -1,23 +1,23 @@
-import { Clock, Shield, Zap } from "lucide-react";
+import { Phone, Award, Users } from "lucide-react";
 
 const reasons = [
   {
-    icon: Clock,
-    title: "זמינות מיידית",
-    description: "אנחנו יודעים שהנזק קורה עכשיו. צוות שטח מגיע תוך 24-48 שעות.",
-    highlight: "מענה בכל שעה",
+    icon: Phone,
+    title: "זמינות מקסימלית",
+    description: "תמיד כאן בשבילכם - בין אם זו התקנה דחופה או שאלה קטנה בשישי בצהריים.",
+    highlight: "24/7 לרשותכם",
   },
   {
-    icon: Shield,
-    title: "מומחיות במיגון חקלאי",
-    description: "מערכות מותאמות ספציפית לחזירי בר וחיות גדולות. פולסים בעוצמה גבוהה.",
-    highlight: "15+ שנות ניסיון",
+    icon: Award,
+    title: "איכות בלי פשרות",
+    description: "חומרים מהשורה הראשונה ועבודה מקצועית שעומדת במבחן השטח והזמן.",
+    highlight: "תקן ואחריות",
   },
   {
-    icon: Zap,
-    title: "עמידות מקסימלית",
-    description: "ציוד תקני שעומד בעומסים קיצוניים. בזנטים מגולוונים, מוליכות איכותיות והארקה מקצועית.",
-    highlight: "אחריות מלאה",
+    icon: Users,
+    title: "עסק של מילואימניקים",
+    description: "כמו בצבא - אחריות, מסירות ועמידה במילה. אנחנו יודעים מה זה להגן על מה שחשוב.",
+    highlight: "ערכים בשטח",
   },
 ];
 
