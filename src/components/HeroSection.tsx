@@ -32,7 +32,7 @@ const HeroSection = () => {
             אל תחכה לפשיטה של הלילה. 
             <strong className="text-foreground"> גדר חשמלית מקצועית</strong> היא הפתרון היחיד שעובד.
             <br />
-            <span className="text-primary font-semibold">בזנטים, מוליכות והארקה</span> - הכל על פי תקן.
+            <span className="text-primary font-semibold">גדר חשמלית איכותית ומקצועית</span> - הכל על פי תקן.
           </p>
 
           {/* CTAs */}
