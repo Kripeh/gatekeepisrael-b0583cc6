@@ -7,9 +7,7 @@ const Footer = () => {
         <div className="text-center">
           {/* Logo */}
           <div className="flex items-center justify-center mb-4">
-            <div className="bg-white rounded-lg px-3 py-1">
-              <img src={logo} alt="גייטקיפ" className="h-12 w-auto" />
-            </div>
+            <img src={logo} alt="גייטקיפ" className="h-12 w-auto" />
           </div>
           
           <p className="text-muted-foreground text-sm mb-2">
