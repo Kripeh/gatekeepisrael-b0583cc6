@@ -1,15 +1,20 @@
-import { Phone, AlertTriangle } from "lucide-react";
+import { Phone, AlertTriangle, Calculator } from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const PHONE_LINK = "tel:+972501234567";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen gradient-hero flex items-center pt-24 pb-16">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
+    <section className="relative min-h-screen flex items-center pt-24 pb-16">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src={heroBg} 
+          alt="שטח חקלאי" 
+          className="w-full h-full object-cover"
+        />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-background/85" />
       </div>
 
       <div className="container relative z-10">
@@ -37,14 +42,26 @@ const HeroSection = () => {
             <span className="text-primary font-semibold">בזנטים, מוליכות והארקה</span> - הכל על פי תקן.
           </p>
 
-          {/* Primary CTA */}
-          <a
-            href={PHONE_LINK}
-            className="btn-cta-glow inline-flex items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-xl text-xl md:text-2xl pulse-urgent"
-          >
-            <Phone className="w-7 h-7 animate-bounce-subtle" />
-            <span>התקשר עכשיו לתיאום בשטח</span>
-          </a>
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Primary CTA - Call */}
+            <a
+              href={PHONE_LINK}
+              className="btn-cta-glow inline-flex items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-xl text-xl md:text-2xl pulse-urgent"
+            >
+              <Phone className="w-7 h-7 animate-bounce-subtle" />
+              <span>התקשר עכשיו לתיאום בשטח</span>
+            </a>
+
+            {/* Secondary CTA - Calculator */}
+            <a
+              href="#calculator"
+              className="inline-flex items-center gap-3 px-6 py-4 md:px-8 md:py-5 rounded-xl text-lg md:text-xl font-bold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+            >
+              <Calculator className="w-6 h-6" />
+              <span>חשב הצעת מחיר</span>
+            </a>
+          </div>
 
           {/* Trust Line */}
           <p className="mt-6 text-muted-foreground text-sm">
