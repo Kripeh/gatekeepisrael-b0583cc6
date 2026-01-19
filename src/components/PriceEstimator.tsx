@@ -4,11 +4,18 @@ import { Phone, Calculator, AlertCircle } from "lucide-react";
 const PHONE_LINK = "tel:+972508585310";
 
 type SoilType = "light" | "heavy" | "rocky";
+type PestType = "boars" | "deer" | "porcupines";
 
 const soilLabels: Record<SoilType, string> = {
   light: "אדמה קלה",
   heavy: "אדמה כבדה",
   rocky: "אדמה סלעית",
+};
+
+const pestLabels: Record<PestType, string> = {
+  boars: "חזירים",
+  deer: "איילות",
+  porcupines: "דורבנים",
 };
 
 const soilMultipliers: Record<SoilType, number> = {
@@ -21,7 +28,16 @@ const PriceEstimator = () => {
   const [perimeter, setPerimeter] = useState<number>(100);
   const [gates, setGates] = useState<number>(1);
   const [soilType, setSoilType] = useState<SoilType>("light");
+  const [selectedPests, setSelectedPests] = useState<PestType[]>(["boars"]);
   const [showResult, setShowResult] = useState(false);
+
+  const togglePest = (pest: PestType) => {
+    setSelectedPests((prev) =>
+      prev.includes(pest)
+        ? prev.filter((p) => p !== pest)
+        : [...prev, pest]
+    );
+  };
 
   const calculatePrice = () => {
     const floorPrice = (perimeter * 12) + (gates * 1000);
@@ -96,6 +112,28 @@ const PriceEstimator = () => {
                   min={0}
                   max={20}
                 />
+              </div>
+
+              {/* Pest Type - Multi-select */}
+              <div>
+                <label className="block text-foreground font-bold mb-2">
+                  סוג מזיקים (ניתן לבחור כמה)
+                </label>
+                <div className="grid grid-cols-3 gap-3">
+                  {(Object.keys(pestLabels) as PestType[]).map((pest) => (
+                    <button
+                      key={pest}
+                      onClick={() => togglePest(pest)}
+                      className={`px-4 py-3 rounded-lg font-bold transition-all ${
+                        selectedPests.includes(pest)
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted text-muted-foreground hover:bg-muted/80"
+                      }`}
+                    >
+                      {pestLabels[pest]}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Soil Type */}
