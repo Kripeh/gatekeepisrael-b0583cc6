@@ -8,7 +8,7 @@ import FAQSection from "@/components/FAQSection";
 import UrgencyBanner from "@/components/UrgencyBanner";
 import Footer from "@/components/Footer";
 import StickyMobileFooter from "@/components/StickyMobileFooter";
-
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -22,6 +22,7 @@ const Index = () => {
       <UrgencyBanner />
       <Footer />
       <StickyMobileFooter />
+      <FloatingWhatsApp />
     </div>
   );
 };
