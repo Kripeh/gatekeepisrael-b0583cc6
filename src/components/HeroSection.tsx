@@ -26,7 +26,7 @@ const HeroSection = () => {
           >
             חזירים{" "}
             <span className="text-primary text-glow">מחסלים</span>
-            {" "}לך את הפרנסה?
+            {" "}לך את החלקה?
             <br />
             <span className="text-primary text-glow">אנחנו עוצרים אותם היום.</span>
           </h1>
