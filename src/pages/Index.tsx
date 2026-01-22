@@ -2,7 +2,6 @@ import PersistentHeader from "@/components/PersistentHeader";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import TrustReasons from "@/components/TrustReasons";
-import ProjectGallery from "@/components/ProjectGallery";
 import Testimonials from "@/components/Testimonials";
 import PriceEstimator from "@/components/PriceEstimator";
 import FAQSection from "@/components/FAQSection";
@@ -17,7 +16,6 @@ const Index = () => {
       <HeroSection />
       <AboutSection />
       <TrustReasons />
-      <ProjectGallery />
       <Testimonials />
       <PriceEstimator />
       <FAQSection />
