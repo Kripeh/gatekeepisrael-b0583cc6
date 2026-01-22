@@ -187,10 +187,10 @@ const PriceEstimator = () => {
                   <div className="flex items-start gap-3 mb-4">
                     <AlertCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <p className="text-foreground font-semibold">
-                      המחיר הסופי תלוי בתנאי השטח: שיפוע, מכשולים, גישה לחשמל ועוד.
+                      המחיר הסופי תלוי בתנאי השטח, כמות חוטי חשמל, עוצמת מחולל ועוד.
                       <br />
                       <span className="text-primary">
-                        התקשר עכשיו לקבלת הצעת מחיר מדויקת וסופית בטלפון!
+                        התקשר עכשיו לקבלת הצעת מחיר מדויקת!
                       </span>
                     </p>
                   </div>
