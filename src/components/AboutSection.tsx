@@ -55,28 +55,46 @@ const galleryImages = [
     span: "row-span-2"
   },
   { 
-    src: `${STORAGE_BASE}/projects/C511335E-34DC-4C16-B7C6-CB970340C179.JPG`,
+    src: `${STORAGE_BASE}/projects/197543FE-1C3D-4552-81CB-D561C3EB79CA.JPG`,
     alt: "פרויקט התקנה 2",
     label: "התקנת גדר",
     span: "" 
   },
   { 
-    src: `${STORAGE_BASE}/projects/197543FE-1C3D-4552-81CB-D561C3EB79CA.JPG`,
+    src: `${STORAGE_BASE}/projects/PHOTO-2026-01-22-12-43-50.jpg`,
     alt: "פרויקט התקנה 3",
     label: "הצוות בפעולה",
     span: "" 
   },
   { 
-    src: `${STORAGE_BASE}/projects/PHOTO-2026-01-22-12-43-50.jpg`,
+    src: `${STORAGE_BASE}/projects/IMG_7536.jpg`,
     alt: "פרויקט התקנה 4",
     label: "מערכת מותקנת",
     span: "" 
   },
   { 
-    src: `${STORAGE_BASE}/projects/B24DE8CE-3AE1-47EE-8B40-A9A97613B6C0.JPG`,
+    src: `${STORAGE_BASE}/projects/IMG_7540.jpg`,
     alt: "פרויקט התקנה 5",
     label: "גדר חשמלית",
     span: "col-span-2"
+  },
+  { 
+    src: `${STORAGE_BASE}/projects/IMG_8123.jpg`,
+    alt: "פרויקט התקנה 6",
+    label: "התקנה בשטח",
+    span: "row-span-2"
+  },
+  { 
+    src: `${STORAGE_BASE}/projects/IMG_7454.jpg`,
+    alt: "פרויקט התקנה 7",
+    label: "עבודת צוות",
+    span: "" 
+  },
+  { 
+    src: `${STORAGE_BASE}/projects/IMG_7152.jpg`,
+    alt: "פרויקט התקנה 8",
+    label: "פרויקט גמור",
+    span: "" 
   },
 ];
 
