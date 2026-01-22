@@ -131,7 +131,7 @@ const PriceEstimator = () => {
               <div>
                 <label className="block text-foreground font-bold mb-2">
                   <User className="w-4 h-4 inline-block ml-2" />
-                  שם מלא
+                  שם מלא <span className="text-destructive">*</span>
                 </label>
                 <input
                   type="text"
@@ -141,6 +141,7 @@ const PriceEstimator = () => {
                   className="w-full input-forest rounded-lg px-4 py-3 text-lg font-semibold"
                   maxLength={100}
                   disabled={showResult}
+                  required
                 />
               </div>
 
@@ -148,7 +149,7 @@ const PriceEstimator = () => {
               <div>
                 <label className="block text-foreground font-bold mb-2">
                   <Phone className="w-4 h-4 inline-block ml-2" />
-                  מספר טלפון
+                  מספר טלפון <span className="text-destructive">*</span>
                 </label>
                 <input
                   type="tel"
@@ -158,6 +159,7 @@ const PriceEstimator = () => {
                   className="w-full input-forest rounded-lg px-4 py-3 text-lg font-semibold"
                   dir="ltr"
                   disabled={showResult}
+                  required
                 />
               </div>
 
