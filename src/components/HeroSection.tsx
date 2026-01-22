@@ -2,7 +2,7 @@ import { Phone, Calculator } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const PHONE_LINK = "tel:+972508585310";
-const HERO_BG_URL = "https://sqxmgqqtcgkjztpvhzzr.supabase.co/storage/v1/object/public/images/heroImage";
+const HERO_BG_URL = "https://sqxmgqqtcgkjztpvhzzr.supabase.co/storage/v1/object/public/images/heroImageNew";
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
