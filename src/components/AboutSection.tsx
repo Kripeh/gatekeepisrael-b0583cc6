@@ -1,9 +1,6 @@
 import { Zap, ShieldCheck, Sprout, GraduationCap, Wrench, Users } from "lucide-react";
 import aboutVineyard from "@/assets/about-vineyard.jpg";
-import galleryHeritage from "@/assets/gallery-heritage.jpg";
-import galleryController from "@/assets/gallery-controller.jpg";
-import galleryTeam from "@/assets/gallery-team.jpg";
-import galleryInstallation from "@/assets/gallery-installation.jpg";
+const STORAGE_BASE = "https://sqxmgqqtcgkjztpvhzzr.supabase.co/storage/v1/object/public/images";
 
 const teamMembers = [
   {
@@ -51,10 +48,36 @@ const values = [
 ];
 
 const galleryImages = [
-  { src: galleryHeritage, alt: "תמונה היסטורית של המשק", span: "row-span-2" },
-  { src: galleryController, alt: "בקר גדר חשמלית", span: "" },
-  { src: galleryTeam, alt: "הצוות בכרם", span: "" },
-  { src: galleryInstallation, alt: "התקנה בשטח", span: "col-span-2" },
+  { 
+    src: `${STORAGE_BASE}/projects/PHOTO-2026-01-22-13-54-27.jpg`,
+    alt: "פרויקט התקנה 1",
+    label: "עבודה בשטח",
+    span: "row-span-2"
+  },
+  { 
+    src: `${STORAGE_BASE}/projects/C511335E-34DC-4C16-B7C6-CB970340C179.JPG`,
+    alt: "פרויקט התקנה 2",
+    label: "התקנת גדר",
+    span: "" 
+  },
+  { 
+    src: `${STORAGE_BASE}/projects/197543FE-1C3D-4552-81CB-D561C3EB79CA.JPG`,
+    alt: "פרויקט התקנה 3",
+    label: "הצוות בפעולה",
+    span: "" 
+  },
+  { 
+    src: `${STORAGE_BASE}/projects/PHOTO-2026-01-22-12-43-50.jpg`,
+    alt: "פרויקט התקנה 4",
+    label: "מערכת מותקנת",
+    span: "" 
+  },
+  { 
+    src: `${STORAGE_BASE}/projects/B24DE8CE-3AE1-47EE-8B40-A9A97613B6C0.JPG`,
+    alt: "פרויקט התקנה 5",
+    label: "גדר חשמלית",
+    span: "col-span-2"
+  },
 ];
 
 const AboutSection = () => {
@@ -176,59 +199,24 @@ const AboutSection = () => {
           <h3 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-10">
             מהשטח <span className="text-primary">שלנו</span>
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
-            {/* Heritage - tall */}
-            <div className="relative rounded-xl overflow-hidden row-span-2 group">
-              <img 
-                src={galleryHeritage} 
-                alt="תמונה היסטורית של המשק" 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-              <div className="absolute bottom-4 right-4 left-4">
-                <p className="text-sm font-medium text-foreground">מורשת משפחתית</p>
-                <p className="text-xs text-muted-foreground">משק רוזנאי, שנות ה-50</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[200px]">
+            {galleryImages.map((image, index) => (
+              <div 
+                key={index}
+                className={`relative rounded-xl overflow-hidden group ${image.span}`}
+              >
+                <img 
+                  src={image.src} 
+                  alt={image.alt} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute bottom-3 right-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <p className="text-xs font-medium text-foreground">{image.label}</p>
+                </div>
               </div>
-            </div>
-
-            {/* Controller */}
-            <div className="relative rounded-xl overflow-hidden group">
-              <img 
-                src={galleryController} 
-                alt="בקר גדר חשמלית" 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-3 right-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <p className="text-xs font-medium text-foreground">טכנולוגיה מתקדמת</p>
-              </div>
-            </div>
-
-            {/* Team */}
-            <div className="relative rounded-xl overflow-hidden group">
-              <img 
-                src={galleryTeam} 
-                alt="הצוות בכרם" 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-3 right-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <p className="text-xs font-medium text-foreground">הצוות שלנו</p>
-              </div>
-            </div>
-
-            {/* Installation - wide */}
-            <div className="relative rounded-xl overflow-hidden col-span-2 group">
-              <img 
-                src={galleryInstallation} 
-                alt="התקנה בשטח" 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-3 right-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <p className="text-xs font-medium text-foreground">עבודה בשטח</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
