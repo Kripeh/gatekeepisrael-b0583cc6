@@ -96,26 +96,13 @@
 
 @layer components {
   .btn-cta-glow {
-    @apply relative overflow-hidden font-extrabold text-primary-foreground transition-all duration-300;
+    @apply font-extrabold text-primary-foreground transition-all duration-300;
     background: var(--gradient-cta);
-    box-shadow: var(--glow-primary);
   }
 
   .btn-cta-glow:hover {
     background: var(--gradient-cta-hover);
-    box-shadow: var(--glow-intense);
     transform: scale(1.02);
-  }
-
-  .btn-cta-glow::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation: shimmer 2s infinite;
   }
 
   .text-glow {
@@ -134,10 +121,6 @@
 @layer utilities {
   .gradient-hero {
     background: var(--gradient-hero);
-  }
-
-  .pulse-urgent {
-    animation: pulse-urgent 2s ease-in-out infinite;
   }
 }
 
