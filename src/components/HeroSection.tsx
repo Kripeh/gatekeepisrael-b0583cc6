@@ -1,11 +1,30 @@
 import { Phone, Calculator } from "lucide-react";
+import { useEffect, useState } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
+
 const PHONE_LINK = "tel:+972508585310";
+
 const HeroSection = () => {
-  return <section className="relative min-h-screen flex items-center pt-24 pb-16">
-      {/* Background Image */}
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+      {/* Background Image with Parallax */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="גדר חשמלית לחקלאות" className="w-full h-full object-cover" />
+        <img 
+          src={heroBg} 
+          alt="גדר חשמלית לחקלאות" 
+          className="w-full h-[120%] object-cover will-change-transform"
+          style={{ transform: `translateY(${scrollY * 0.4}px)` }}
+        />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-background/60" />
       </div>
