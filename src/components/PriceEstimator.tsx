@@ -40,7 +40,9 @@ const PriceEstimator = () => {
   };
 
   const calculatePrice = () => {
-    const floorPrice = (perimeter * 12) + (gates * 1000);
+    const basePrice = (perimeter * 12) + (gates * 1000);
+    const deerMultiplier = selectedPests.includes("deer") ? 1.4 : 1;
+    const floorPrice = Math.round(basePrice * deerMultiplier);
     const ceilingPrice = Math.round(floorPrice * 1.15);
     
     return { minPrice: floorPrice, maxPrice: ceilingPrice };
