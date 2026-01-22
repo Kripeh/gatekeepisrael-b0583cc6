@@ -217,11 +217,11 @@ const AboutSection = () => {
           <h3 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-10">
             הצוות <span className="text-primary">בפעולה</span>
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {galleryImages.map((image, index) => (
               <div 
                 key={index}
-                className="relative rounded-xl overflow-hidden group bg-secondary/50 aspect-[4/3]"
+                className="relative rounded-xl overflow-hidden group bg-secondary/50 aspect-square"
               >
                 <img 
                   src={image.src} 
