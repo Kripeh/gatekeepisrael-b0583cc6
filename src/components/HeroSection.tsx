@@ -1,8 +1,8 @@
 import { Phone, Calculator } from "lucide-react";
 import { useEffect, useState } from "react";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const PHONE_LINK = "tel:+972508585310";
+const HERO_BG_URL = "https://sqxmgqqtcgkjztpvhzzr.supabase.co/storage/v1/object/public/images/hero-bg.jpg";
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -20,7 +20,7 @@ const HeroSection = () => {
       {/* Background Image with Parallax */}
       <div className="absolute inset-0">
         <img 
-          src={heroBg} 
+          src={HERO_BG_URL} 
           alt="גדר חשמלית לחקלאות" 
           className="w-full h-[120%] object-cover will-change-transform"
           style={{ transform: `translateY(${scrollY * 0.4}px)` }}
