@@ -3,14 +3,7 @@ import { Phone, Calculator, AlertCircle } from "lucide-react";
 
 const PHONE_LINK = "tel:+972508585310";
 
-type SoilType = "light" | "heavy" | "rocky";
 type PestType = "boars" | "deer" | "porcupines";
-
-const soilLabels: Record<SoilType, string> = {
-  light: "אדמה קלה",
-  heavy: "אדמה כבדה",
-  rocky: "אדמה סלעית",
-};
 
 const pestLabels: Record<PestType, string> = {
   boars: "חזירים",
@@ -18,16 +11,9 @@ const pestLabels: Record<PestType, string> = {
   porcupines: "דורבנים",
 };
 
-const soilMultipliers: Record<SoilType, number> = {
-  light: 1,
-  heavy: 1.2,
-  rocky: 1.5,
-};
-
 const PriceEstimator = () => {
   const [perimeter, setPerimeter] = useState<number>(100);
   const [gates, setGates] = useState<number>(1);
-  const [soilType, setSoilType] = useState<SoilType>("light");
   const [selectedPests, setSelectedPests] = useState<PestType[]>(["boars"]);
   const [showResult, setShowResult] = useState(false);
 
@@ -133,28 +119,6 @@ const PriceEstimator = () => {
                       }`}
                     >
                       {pestLabels[pest]}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Soil Type */}
-              <div>
-                <label className="block text-foreground font-bold mb-2">
-                  סוג אדמה
-                </label>
-                <div className="grid grid-cols-3 gap-3">
-                  {(Object.keys(soilLabels) as SoilType[]).map((type) => (
-                    <button
-                      key={type}
-                      onClick={() => setSoilType(type)}
-                      className={`px-4 py-3 rounded-lg font-bold transition-all ${
-                        soilType === type
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-muted text-muted-foreground hover:bg-muted/80"
-                      }`}
-                    >
-                      {soilLabels[type]}
                     </button>
                   ))}
                 </div>
