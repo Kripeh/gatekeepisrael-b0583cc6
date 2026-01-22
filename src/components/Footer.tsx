@@ -65,7 +65,7 @@ const Footer = () => {
               מיגון חקלאי מקצועי | גדרות חשמליות לחזירי בר
             </p>
             <p className="text-muted-foreground text-xs">
-              © {new Date().getFullYear()} גייטקיפ. כל הזכויות שמורות.
+              © 2025 גייטקיפ. כל הזכויות שמורות.
             </p>
           </div>
         </div>
