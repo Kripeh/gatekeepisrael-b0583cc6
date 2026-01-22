@@ -32,7 +32,7 @@ const teamMembers = [
 const values = [
   {
     icon: ShieldCheck,
-    title: "ותיקי צבא",
+    title: "בוגרי צבא",
     description: "כולנו בוגרי שירות קרבי",
   },
   {
