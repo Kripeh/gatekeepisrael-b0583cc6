@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      leads: {
+        Row: {
+          created_at: string
+          estimated_max_price: number
+          estimated_min_price: number
+          gates: number
+          id: string
+          name: string
+          perimeter: number
+          pest_types: string[]
+          phone: string
+        }
+        Insert: {
+          created_at?: string
+          estimated_max_price: number
+          estimated_min_price: number
+          gates: number
+          id?: string
+          name: string
+          perimeter: number
+          pest_types?: string[]
+          phone: string
+        }
+        Update: {
+          created_at?: string
+          estimated_max_price?: number
+          estimated_min_price?: number
+          gates?: number
+          id?: string
+          name?: string
+          perimeter?: number
+          pest_types?: string[]
+          phone?: string
+        }
+        Relationships: []
+      }
       testimonials: {
         Row: {
           content: string
