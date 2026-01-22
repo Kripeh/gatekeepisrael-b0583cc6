@@ -10,7 +10,7 @@ const UrgencyBanner = () => {
           <div className="flex items-center justify-center gap-3 mb-4">
             <AlertTriangle className="w-8 h-8 text-destructive animate-pulse" />
             <h2 className="text-2xl md:text-3xl font-black text-foreground">
-              כל לילה שאתה מחכה = עוד נזק ליבול
+              כל לילה שעובר - עוד חזיר חופר
             </h2>
           </div>
           
