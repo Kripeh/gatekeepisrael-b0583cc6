@@ -54,14 +54,6 @@ const Footer = () => {
           {/* Certifications */}
           <div className="flex flex-wrap items-center justify-center gap-6 mb-8 py-6 border-y border-border">
             <div className="flex items-center gap-2 text-muted-foreground">
-              <Shield className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium">עומד בתקן ישראלי ת"י 1003</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Award className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium">אישור משרד החקלאות</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
               <Phone className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium">שירות ותמיכה 24/7</span>
             </div>
