@@ -5,7 +5,7 @@ const PHONE_LINK = "tel:+972508585310";
 
 const PersistentHeader = () => {
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 bg-header backdrop-blur-md border-b border-header-border">
+    <header className="fixed top-0 right-0 left-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="w-[85%] max-w-none mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo - Fixed to right */}

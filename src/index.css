@@ -39,11 +39,6 @@
 
     --radius: 0.75rem;
 
-    /* Header - Agricultural warm white */
-    --header: 45 30% 96%;
-    --header-foreground: 150 30% 15%;
-    --header-border: 45 20% 88%;
-
     /* Custom tokens */
     --glow-primary: 0 0 30px hsl(142 76% 45% / 0.5);
     --glow-intense: 0 0 50px hsl(142 76% 45% / 0.7), 0 0 100px hsl(142 76% 45% / 0.3);
