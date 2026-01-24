@@ -168,13 +168,15 @@ const PriceEstimator = () => {
                 <label className="block text-foreground font-bold mb-2">
                   היקף חלקה (מטרים)
                 </label>
-                <input
-                  type="number"
-                  value={perimeter}
-                  onChange={(e) => setPerimeter(parseInt(e.target.value, 10) || 0)}
+              <input
+                  type="text"
+                  inputMode="numeric"
+                  value={perimeter === 0 ? "" : perimeter.toString()}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/^0+/, '').replace(/\D/g, '');
+                    setPerimeter(value === "" ? 0 : parseInt(value, 10));
+                  }}
                   className="w-full input-forest rounded-lg px-4 py-3 text-lg font-semibold"
-                  min={10}
-                  max={10000}
                   disabled={showResult}
                 />
                 <p className="text-muted-foreground text-sm mt-1">
@@ -187,13 +189,15 @@ const PriceEstimator = () => {
                 <label className="block text-foreground font-bold mb-2">
                   כמות שערים
                 </label>
-                <input
-                  type="number"
-                  value={gates}
-                  onChange={(e) => setGates(parseInt(e.target.value, 10) || 0)}
+              <input
+                  type="text"
+                  inputMode="numeric"
+                  value={gates === 0 ? "" : gates.toString()}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/^0+/, '').replace(/\D/g, '');
+                    setGates(value === "" ? 0 : parseInt(value, 10));
+                  }}
                   className="w-full input-forest rounded-lg px-4 py-3 text-lg font-semibold"
-                  min={0}
-                  max={20}
                   disabled={showResult}
                 />
               </div>
