@@ -171,7 +171,7 @@ const PriceEstimator = () => {
                 <input
                   type="number"
                   value={perimeter}
-                  onChange={(e) => setPerimeter(Number(e.target.value))}
+                  onChange={(e) => setPerimeter(parseInt(e.target.value, 10) || 0)}
                   className="w-full input-forest rounded-lg px-4 py-3 text-lg font-semibold"
                   min={10}
                   max={10000}
@@ -190,7 +190,7 @@ const PriceEstimator = () => {
                 <input
                   type="number"
                   value={gates}
-                  onChange={(e) => setGates(Number(e.target.value))}
+                  onChange={(e) => setGates(parseInt(e.target.value, 10) || 0)}
                   className="w-full input-forest rounded-lg px-4 py-3 text-lg font-semibold"
                   min={0}
                   max={20}
