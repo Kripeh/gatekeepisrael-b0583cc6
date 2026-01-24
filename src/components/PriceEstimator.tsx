@@ -172,8 +172,9 @@ const PriceEstimator = () => {
                   type="text"
                   inputMode="numeric"
                   value={perimeter === 0 ? "" : perimeter.toString()}
+                  onFocus={(e) => e.target.select()}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/^0+/, '').replace(/\D/g, '');
+                    const value = e.target.value.replace(/\D/g, '').replace(/^0+/, '');
                     setPerimeter(value === "" ? 0 : parseInt(value, 10));
                   }}
                   className="w-full input-forest rounded-lg px-4 py-3 text-lg font-semibold"
@@ -193,8 +194,9 @@ const PriceEstimator = () => {
                   type="text"
                   inputMode="numeric"
                   value={gates === 0 ? "" : gates.toString()}
+                  onFocus={(e) => e.target.select()}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/^0+/, '').replace(/\D/g, '');
+                    const value = e.target.value.replace(/\D/g, '').replace(/^0+/, '');
                     setGates(value === "" ? 0 : parseInt(value, 10));
                   }}
                   className="w-full input-forest rounded-lg px-4 py-3 text-lg font-semibold"
