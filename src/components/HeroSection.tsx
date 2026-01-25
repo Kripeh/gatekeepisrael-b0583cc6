@@ -21,7 +21,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img 
           src={HERO_BG_URL} 
-          alt="גדר חשמלית לחקלאות" 
+          alt="גדר חשמלית נגד חזירי בר - התקנה מקצועית בשטח חקלאי | גייטקיפ" 
           className="w-full h-[120%] object-cover will-change-transform"
           style={{ transform: `translateY(${scrollY * 0.4}px)` }}
         />
@@ -43,9 +43,8 @@ const HeroSection = () => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight mb-6"
             style={{ textWrap: 'balance' }}
           >
-            חזירים{" "}
-            <span className="text-primary text-glow">מחסלים</span>
-            {" "}לך את החלקה?
+            <span className="text-primary text-glow">גדר חשמלית נגד חזירי בר</span>
+            {" "}– מחסלים לך את החלקה?
             <br />
             <span className="text-primary text-glow">אנחנו עוצרים אותם היום.</span>
           </h1>

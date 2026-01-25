@@ -50,49 +50,49 @@ const values = [
 const galleryImages = [
   { 
     src: `${STORAGE_BASE}/projects/PHOTO-2026-01-22-13-54-27.jpg`,
-    alt: "פרויקט התקנה 1",
+    alt: "התקנת גדר חשמלית נגד חזירי בר בשטח חקלאי",
     label: "עבודה בשטח",
     span: "row-span-2"
   },
   { 
     src: `${STORAGE_BASE}/projects/197543FE-1C3D-4552-81CB-D561C3EB79CA.JPG`,
-    alt: "פרויקט התקנה 2",
+    alt: "צוות גייטקיפ מתקין גדר חשמלית לחקלאות",
     label: "התקנת גדר",
     span: "" 
   },
   { 
     src: `${STORAGE_BASE}/projects/PHOTO-2026-01-22-12-43-50.jpg`,
-    alt: "פרויקט התקנה 3",
+    alt: "צוות מקצועי להתקנת גדרות חשמליות נגד חזירי בר",
     label: "הצוות בפעולה",
     span: "" 
   },
   { 
     src: `${STORAGE_BASE}/projects/IMG_7536.jpg`,
-    alt: "פרויקט התקנה 4",
+    alt: "מערכת גדר חשמלית מותקנת להגנה מחזירי בר",
     label: "מערכת מותקנת",
     span: "" 
   },
   { 
     src: `${STORAGE_BASE}/projects/IMG_7540.jpg`,
-    alt: "פרויקט התקנה 5",
+    alt: "גדר חשמלית מקצועית למיגון שטחים חקלאיים",
     label: "גדר חשמלית",
     span: "col-span-2"
   },
   { 
     src: `${STORAGE_BASE}/projects/IMG_8123.jpg`,
-    alt: "פרויקט התקנה 6",
+    alt: "התקנת גדר חשמלית בכרם - הגנה מפני חזירי בר",
     label: "התקנה בשטח",
     span: "row-span-2"
   },
   { 
     src: `${STORAGE_BASE}/projects/IMG_7454.jpg`,
-    alt: "פרויקט התקנה 7",
+    alt: "עבודת צוות גייטקיפ - גדרות חשמליות איכותיות",
     label: "עבודת צוות",
     span: "" 
   },
   { 
     src: `${STORAGE_BASE}/projects/IMG_7152.jpg`,
-    alt: "פרויקט התקנה 8",
+    alt: "פרויקט גדר חשמלית נגד חזירי בר - עבודה מוגמרת",
     label: "פרויקט גמור",
     span: "" 
   },
@@ -148,7 +148,7 @@ const AboutSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
                 src={aboutVineyard} 
-                alt="כרם במושב לכיש" 
+                alt="כרם במושב לכיש - משק רוזנאי, דור שלישי לחקלאות" 
                 className="w-full h-[400px] lg:h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
