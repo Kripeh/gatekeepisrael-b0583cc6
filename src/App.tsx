@@ -5,6 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Installation from "./pages/Installation";
+import SolarFence from "./pages/SolarFence";
+import Pricing from "./pages/Pricing";
+import WhyElectricFence from "./pages/WhyElectricFence";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +20,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/installation" element={<Installation />} />
+          <Route path="/solar-fence" element={<SolarFence />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/why-electric-fence" element={<WhyElectricFence />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
