@@ -15,11 +15,11 @@ const Index = () => {
       <PersistentHeader />
       <main>
         <HeroSection />
-        <AboutSection />
-        <TrustReasons />
-        <Testimonials />
         <PriceEstimator />
+        <Testimonials />
+        <TrustReasons />
         <FAQSection />
+        <AboutSection />
         <UrgencyBanner />
       </main>
       <Footer />
