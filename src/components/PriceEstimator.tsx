@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Phone, Calculator, AlertCircle, User, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { logger } from "@/lib/logger";
 
 type PestType = "boars" | "deer" | "porcupines";
 
@@ -91,7 +92,7 @@ const PriceEstimator = () => {
       setShowResult(true);
       toast.success("הפרטים נשלחו בהצלחה!");
     } catch (error) {
-      console.error("Error submitting lead:", error);
+      logger.error("Error submitting lead:", error);
       toast.error("שגיאה בשליחת הפרטים. נסה שוב.");
     } finally {
       setIsSubmitting(false);
