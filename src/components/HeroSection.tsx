@@ -43,10 +43,10 @@ const HeroSection = () => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight mb-6"
             style={{ textWrap: 'balance' }}
           >
-            <span className="text-primary text-glow">גדר חשמלית נגד חזירי בר</span>
-            {" "}– מחסלים לך את החלקה?
+            <span className="text-primary text-glow">חזירי בר</span>
+            {" "}מחסלים לך את החלקה?
             <br />
-            <span className="text-primary text-glow">אנחנו עוצרים אותם היום.</span>
+            <span className="text-primary text-glow">אנחנו עוצרים אותם היום!</span>
           </h1>
 
           {/* Sub-headline */}
