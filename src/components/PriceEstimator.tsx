@@ -184,6 +184,12 @@ const PriceEstimator = () => {
                 <p className="text-muted-foreground text-sm mt-1">
                   אורך הגדר הכולל סביב השטח
                 </p>
+                {perimeter > 0 && perimeter < 1000 && !showResult && (
+                  <p className="text-amber-500 text-sm mt-2 flex items-center gap-1.5">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>לעבודות קטנות מ-1,000 מטר ההערכה פחות מדויקת – מומלץ להתקשר לייעוץ</span>
+                  </p>
+                )}
               </div>
 
               {/* Gates */}
@@ -256,6 +262,12 @@ const PriceEstimator = () => {
                   <p className="text-4xl md:text-5xl font-black text-primary text-glow">
                     ₪{priceResult.minPrice.toLocaleString()} - ₪{priceResult.maxPrice.toLocaleString()}
                   </p>
+                  {perimeter < 1000 && (
+                    <p className="text-amber-500 text-sm mt-3 flex items-center justify-center gap-1.5">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                      <span>לעבודות קטנות ההערכה פחות מדויקת – התקשר למחיר מדויק</span>
+                    </p>
+                  )}
                 </div>
 
                 {/* The Hook */}
