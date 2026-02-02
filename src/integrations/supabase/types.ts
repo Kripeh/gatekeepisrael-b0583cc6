@@ -21,6 +21,7 @@ export type Database = {
           estimated_min_price: number
           gates: number
           id: string
+          lead_type: string
           name: string
           perimeter: number
           pest_types: string[]
@@ -32,6 +33,7 @@ export type Database = {
           estimated_min_price: number
           gates: number
           id?: string
+          lead_type?: string
           name: string
           perimeter: number
           pest_types?: string[]
@@ -43,6 +45,7 @@ export type Database = {
           estimated_min_price?: number
           gates?: number
           id?: string
+          lead_type?: string
           name?: string
           perimeter?: number
           pest_types?: string[]
