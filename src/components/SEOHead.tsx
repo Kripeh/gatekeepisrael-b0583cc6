@@ -5,9 +5,11 @@ interface SEOHeadProps {
   description: string;
   keywords?: string;
   canonicalPath?: string;
+  canonicalUrl?: string;
+  structuredData?: object;
 }
 
-const SEOHead = ({ title, description, keywords, canonicalPath }: SEOHeadProps) => {
+const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, structuredData }: SEOHeadProps) => {
   useEffect(() => {
     // Set document title
     document.title = title;
@@ -36,25 +38,37 @@ const SEOHead = ({ title, description, keywords, canonicalPath }: SEOHeadProps) 
       }
     }
 
-    // Set canonical URL if provided
-    if (canonicalPath) {
+    // Set canonical URL if provided (either full URL or path)
+    const finalCanonicalUrl = canonicalUrl || (canonicalPath ? `https://gatekeepisrael.com${canonicalPath}` : null);
+    if (finalCanonicalUrl) {
       let canonical = document.querySelector('link[rel="canonical"]');
-      const canonicalUrl = `https://gatekeepisrael.lovable.app${canonicalPath}`;
       if (canonical) {
-        canonical.setAttribute("href", canonicalUrl);
+        canonical.setAttribute("href", finalCanonicalUrl);
       } else {
         canonical = document.createElement("link");
         canonical.setAttribute("rel", "canonical");
-        canonical.setAttribute("href", canonicalUrl);
+        canonical.setAttribute("href", finalCanonicalUrl);
         document.head.appendChild(canonical);
       }
+    }
+
+    // Add structured data (JSON-LD) if provided
+    let scriptTag: HTMLScriptElement | null = null;
+    if (structuredData) {
+      scriptTag = document.createElement("script");
+      scriptTag.type = "application/ld+json";
+      scriptTag.text = JSON.stringify(structuredData);
+      document.head.appendChild(scriptTag);
     }
 
     // Cleanup function to restore original values
     return () => {
       document.title = "גייטקיפ - גדרות חשמליות נגד חזירי בר | הגנה מקצועית לשטחים חקלאיים";
+      if (scriptTag) {
+        document.head.removeChild(scriptTag);
+      }
     };
-  }, [title, description, keywords, canonicalPath]);
+  }, [title, description, keywords, canonicalPath, canonicalUrl, structuredData]);
 
   return null;
 };
