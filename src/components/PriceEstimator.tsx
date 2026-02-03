@@ -8,7 +8,7 @@ type PestType = "boars" | "deer" | "porcupines";
 
 const pestLabels: Record<PestType, string> = {
   boars: "חזירים",
-  deer: "איילות",
+  deer: "צביים",
   porcupines: "דורבנים",
 };
 
