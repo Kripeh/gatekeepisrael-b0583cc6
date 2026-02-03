@@ -66,6 +66,14 @@ const PriceEstimator = () => {
       toast.error("היקף החלקה צריך להיות בין 10 ל-10,000 מטרים");
       return;
     }
+    if (selectedPests.length === 0) {
+      toast.error("נא לבחור לפחות סוג מזיק אחד");
+      return;
+    }
+    if (gates < 0 || gates > 20) {
+      toast.error("כמות שערים צריכה להיות בין 0 ל-20");
+      return;
+    }
 
     setIsSubmitting(true);
     
