@@ -88,9 +88,26 @@ const PriceEstimator = () => {
         throw error;
       }
 
+      // Send Telegram notification (fire and forget)
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      fetch(`${supabaseUrl}/functions/v1/notify-new-lead`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          phone: phone.trim().replace(/[-\s]/g, ''),
+          perimeter,
+          gates,
+          pestTypes: selectedPests,
+          minPrice,
+          maxPrice,
+          leadType: 'agricultural',
+        }),
+      }).catch(err => logger.error('Telegram notification failed:', err));
+
       setPriceResult({ minPrice, maxPrice });
       setShowResult(true);
-      toast.success("הפרטים נשלחו בהצלחה!");
+      toast.success("קיבלנו! נציג יחזור אליך בהקדם");
     } catch (error) {
       logger.error("Error submitting lead:", error);
       toast.error("שגיאה בשליחת הפרטים. נסה שוב.");
