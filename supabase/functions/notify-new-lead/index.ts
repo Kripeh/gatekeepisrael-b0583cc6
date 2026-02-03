@@ -18,7 +18,7 @@ interface LeadNotification {
 
 const pestLabelsHebrew: Record<string, string> = {
   boars: "חזירים",
-  deer: "איילות",
+  deer: "צביים",
   porcupines: "דורבנים",
   foxes: "שועלים",
 };
