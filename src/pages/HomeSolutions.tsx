@@ -54,7 +54,8 @@ const HomeSolutions = () => {
       <SEOHead
         title="גדר חשמלית ביתית נגד חזירים | הגנה על הגינה | גייטקיפ"
         description="הגנו על הגינה מחזירים, דורבנים ושועלים עם גדר חשמלית ביתית. בטוח לילדים ולחיות מחמד. קבלו הצעת מחיר תוך 30 שניות."
-        canonicalUrl="https://gatekeepisrael.com/home-solutions"
+        keywords="גדר חשמלית ביתית, גדר לגינה נגד חזירים, הגנה על גינה מחזירי בר, גדר חשמלית לבית פרטי"
+        canonicalPath="/home-solutions"
         structuredData={faqSchema}
       />
       <PersistentHeader />
