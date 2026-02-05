@@ -92,7 +92,29 @@ const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, st
 
     // Add structured data (JSON-LD) if provided
     let scriptTag: HTMLScriptElement | null = null;
+    let removedFAQScript: { element: HTMLScriptElement; content: string } | null = null;
+    
     if (structuredData) {
+      // If adding FAQPage, first remove any existing FAQPage from index.html to prevent duplicates
+      const structuredDataObj = structuredData as { "@type"?: string };
+      if (structuredDataObj["@type"] === "FAQPage") {
+        const existingScripts = document.querySelectorAll('script[type="application/ld+json"]');
+        existingScripts.forEach((script) => {
+          try {
+            const content = JSON.parse(script.textContent || "");
+            if (content["@type"] === "FAQPage") {
+              removedFAQScript = { 
+                element: script as HTMLScriptElement, 
+                content: script.textContent || "" 
+              };
+              script.remove();
+            }
+          } catch (e) {
+            // Ignore parsing errors
+          }
+        });
+      }
+      
       scriptTag = document.createElement("script");
       scriptTag.type = "application/ld+json";
       scriptTag.text = JSON.stringify(structuredData);
@@ -102,8 +124,15 @@ const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, st
     // Cleanup function to restore original values
     return () => {
       document.title = "גייטקיפ - גדרות חשמליות נגד חזירי בר | הגנה מקצועית לשטחים חקלאיים";
-      if (scriptTag) {
-        document.head.removeChild(scriptTag);
+      if (scriptTag && scriptTag.parentNode) {
+        scriptTag.parentNode.removeChild(scriptTag);
+      }
+      // Restore the original FAQPage if it was removed
+      if (removedFAQScript) {
+        const restoredScript = document.createElement("script");
+        restoredScript.type = "application/ld+json";
+        restoredScript.text = removedFAQScript.content;
+        document.head.appendChild(restoredScript);
       }
     };
   }, [title, description, keywords, canonicalPath, canonicalUrl, structuredData, noIndex]);
