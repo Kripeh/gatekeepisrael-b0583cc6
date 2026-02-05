@@ -59,13 +59,13 @@
  
    return (
      <div className="min-h-screen bg-background">
-       <SEOHead
-         title="אזורי שירות | גייטקיפ - גדרות חשמליות בכל הארץ"
-         description="גייטקיפ מספקת שירותי התקנת גדרות חשמליות נגד חזירי בר בכל רחבי הארץ: גליל, שרון, נגב, שפלה ועוד. התקשרו להצעת מחיר!"
-         keywords="גדר חשמלית גליל, גדר חשמלית שרון, גדר חשמלית נגב, התקנת גדר חשמלית צפון, גדר נגד חזירי בר דרום"
-         canonicalUrl="https://gatekeepisrael.com/service-areas"
-         structuredData={structuredData}
-       />
+      <SEOHead
+        title="אזורי שירות | גייטקיפ - גדרות חשמליות בכל הארץ"
+        description="גייטקיפ מספקת שירותי התקנת גדרות חשמליות נגד חזירי בר בכל רחבי הארץ: גליל, שרון, נגב, שפלה ועוד. התקשרו להצעת מחיר!"
+        keywords="גדר חשמלית גליל, גדר חשמלית שרון, גדר חשמלית נגב, התקנת גדר חשמלית צפון, גדר נגד חזירי בר דרום"
+        canonicalPath="/service-areas"
+        structuredData={structuredData}
+      />
        <PersistentHeader />
  
        <main className="pt-24">

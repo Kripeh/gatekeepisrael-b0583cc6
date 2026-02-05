@@ -7,9 +7,10 @@ interface SEOHeadProps {
   canonicalPath?: string;
   canonicalUrl?: string;
   structuredData?: object;
+  noIndex?: boolean;
 }
 
-const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, structuredData }: SEOHeadProps) => {
+const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, structuredData, noIndex = false }: SEOHeadProps) => {
   useEffect(() => {
     // Set document title
     document.title = title;
@@ -38,6 +39,18 @@ const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, st
       }
     }
 
+    // Set robots meta tag - ensure pages are indexable unless specifically set to noIndex
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    const robotsContent = noIndex ? "noindex, follow" : "index, follow";
+    if (metaRobots) {
+      metaRobots.setAttribute("content", robotsContent);
+    } else {
+      metaRobots = document.createElement("meta");
+      metaRobots.setAttribute("name", "robots");
+      metaRobots.setAttribute("content", robotsContent);
+      document.head.appendChild(metaRobots);
+    }
+
     // Set canonical URL if provided (either full URL or path)
     const finalCanonicalUrl = canonicalUrl || (canonicalPath ? `https://gatekeepisrael.com${canonicalPath}` : null);
     if (finalCanonicalUrl) {
@@ -51,6 +64,31 @@ const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, st
         document.head.appendChild(canonical);
       }
     }
+
+    // Update Open Graph meta tags
+    const updateOGMeta = (property: string, content: string) => {
+      let tag = document.querySelector(`meta[property="${property}"]`);
+      if (tag) {
+        tag.setAttribute("content", content);
+      }
+    };
+
+    updateOGMeta("og:title", title);
+    updateOGMeta("og:description", description);
+    if (finalCanonicalUrl) {
+      updateOGMeta("og:url", finalCanonicalUrl);
+    }
+
+    // Update Twitter meta tags
+    const updateTwitterMeta = (name: string, content: string) => {
+      let tag = document.querySelector(`meta[name="${name}"]`);
+      if (tag) {
+        tag.setAttribute("content", content);
+      }
+    };
+
+    updateTwitterMeta("twitter:title", title);
+    updateTwitterMeta("twitter:description", description);
 
     // Add structured data (JSON-LD) if provided
     let scriptTag: HTMLScriptElement | null = null;
@@ -68,7 +106,7 @@ const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, st
         document.head.removeChild(scriptTag);
       }
     };
-  }, [title, description, keywords, canonicalPath, canonicalUrl, structuredData]);
+  }, [title, description, keywords, canonicalPath, canonicalUrl, structuredData, noIndex]);
 
   return null;
 };
