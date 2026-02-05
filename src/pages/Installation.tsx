@@ -107,11 +107,10 @@ const Installation = () => {
             </h2>
             <div className="space-y-6">
               {[
-                { step: 1, title: "סקר שטח חינם", description: "מגיעים לשטח, מודדים, מזהים אתגרים ומתכננים את המסלול האופטימלי", time: "יום 1" },
-                { step: 2, title: "הצעת מחיר מפורטת", description: "מקבלים הצעה שקופה הכוללת את כל הפריטים, העבודה והאחריות", time: "תוך 24 שעות" },
-                { step: 3, title: "הכנת התשתית", description: "קידוח חורים, הצבת עמודים והכנת נקודות חיבור", time: "יום התקנה 1" },
-                { step: 4, title: "מתיחת חוטים והתקנת בקר", description: "מתיחת חוטים מקצועית, חיבור הבקר ובדיקות ראשוניות", time: "יום התקנה 2" },
-                { step: 5, title: "בדיקות ומסירה", description: "בדיקת מתח בכל הנקודות, הדרכה והסבר על תפעול ותחזוקה", time: "יום התקנה 2" },
+                { step: 1, title: "סקר שטח חינם", description: "מגיעים לשטח, מודדים, מזהים אתגרים ומתכננים את המסלול האופטימלי" },
+                { step: 2, title: "הצעת מחיר מפורטת", description: "מקבלים הצעה שקופה הכוללת את כל הפריטים, העבודה והאחריות" },
+                { step: 3, title: "הכנת התשתית על ידי הלקוח", description: "גיזום עשבייה על היקף החלקה ובחירת מיקום למערכת" },
+                { step: 4, title: "התקנה ומסירה", description: "התקנה מקצועית, בדיקות מתח בכל הנקודות, הדרכה על תפעול ותחזוקה", time: "יום אחד" },
               ].map((item) => (
                 <div key={item.step} className="flex gap-4 bg-card p-6 rounded-2xl border border-border">
                   <div className="flex-shrink-0 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-xl">
@@ -120,9 +119,11 @@ const Installation = () => {
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="text-lg font-bold">{item.title}</h3>
-                      <span className="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">
-                        {item.time}
-                      </span>
+                      {item.time && (
+                        <span className="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">
+                          {item.time}
+                        </span>
+                      )}
                     </div>
                     <p className="text-muted-foreground">{item.description}</p>
                   </div>
@@ -131,7 +132,7 @@ const Installation = () => {
             </div>
             <p className="text-center text-muted-foreground mt-6">
               <Clock className="inline w-5 h-5 ml-2" />
-              זמן התקנה ממוצע: 1-3 ימים בהתאם לגודל השטח
+              זמן התקנה: יום אחד | לחלקות גדולות במיוחד: 2-3 ימים
             </p>
           </div>
         </div>
