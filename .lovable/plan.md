@@ -1,181 +1,52 @@
 
-# תוכנית שיפור SEO מקיפה לאתר גייטקיפ
+# עדכון דף מחירון
 
-## סקירת מצב נוכחי
+## סיכום השינויים הנדרשים
 
-**מה עשוי טוב:**
-- JSON-LD Structured Data (LocalBusiness, Service, FAQPage)
-- Open Graph & Twitter Cards
-- Sitemap עם 6 דפים
-- דפי נחיתה נפרדים עם SEOHead דינמי
-- Alt tags לתמונות בעברית
+### 1. עדכון טווחי מחירים
+**מחיר כללי:** 10-20 ש"ח למטר רץ (במקום 80-150)
 
-**בעיות קריטיות שזוהו:**
-- אי-התאמה בין דומיינים (lovable.app מול gatekeepisrael.com)
-- דף הבית חסר SEOHead component
-- חסר rating בביקורות ל-Review Schema
+**שלושת סוגי הגדרות:**
+| סוג | מחיר | תיאור |
+|-----|------|-------|
+| גדר בסיסית | 10-15 ש"ח/מ' | גדר סטנדרטית |
+| גדר גבוהה | 15-20 ש"ח/מ' | גדר בגובה מוגבר |
+| גדר גבוהה משופרת | 20-25 ש"ח/מ' | בזנטים לאורך כל הגדר, חומרים עמידים יותר |
 
----
+**הוספת הערה חשובה:** המחירים רלוונטיים רק מ-1000 מטר ומעלה. אם ההיקף קטן מ-1000, יש להתקשר לייעוץ.
 
-## שלב 1: תיקון בעיות קריטיות (עדיפות גבוהה)
+### 2. עדכון "מה משפיע על המחיר"
+החלפת 4 הקרטיסים הקיימים ב-4 גורמים חדשים:
+- **אורך הגדר** - ככל שהגדר ארוכה יותר, המחיר למטר יורד
+- **חוזק המערכת** - תלוי בסוג הגדר שנבחר
+- **סוג המזיק** - התאמה לחזירי בר, דורבנים, שועלים וכו'
+- **כמות שערים** - כל שער דורש ציוד נוסף
 
-### 1.1 תיאום דומיינים
-| קובץ | שינוי |
-|------|-------|
-| `index.html` | עדכון canonical ו-og:url ל-`https://gatekeepisrael.com/` |
-| `public/robots.txt` | עדכון sitemap URL ל-`https://gatekeepisrael.com/sitemap.xml` |
-| `index.html` | עדכון URL ב-JSON-LD LocalBusiness |
+### 3. הסרת חלק שיטות תשלום
+מחיקה מלאה של הסקציה "אפשרויות תשלום" (שורות 268-294)
 
-### 1.2 הוספת SEOHead לדף הבית
-| קובץ | שינוי |
-|------|-------|
-| `src/pages/Index.tsx` | הוספת SEOHead component עם כותרת, תיאור ו-Structured Data |
+### 4. תיקון סקציית "קבל הצעת מחיר"
+**בעיה נוכחית:** רקע ירוק בהיר (`bg-primary`) עם כפתור לבן - לא מתאים ל-Theme הכהה של האתר
 
----
+**פתרון:** החלפה לעיצוב תואם:
+- רקע: `bg-card` עם border ירוק
+- כותרת: בצבע foreground רגיל
+- כפתור: שימוש ב-`btn-cta-glow` הקיים באתר
 
-## שלב 2: העשרת Structured Data
-
-### 2.1 הוספת עמודה rating לביקורות
-פעולה: Migration להוספת עמודת `rating` (1-5) לטבלת testimonials
-
-### 2.2 הוספת Review Schema
-| קובץ | שינוי |
-|------|-------|
-| `src/pages/Index.tsx` | הוספת AggregateRating schema עם ממוצע דירוגים מהביקורות |
-
-### 2.3 הוספת BreadcrumbList Schema
-| קובץ | שינוי |
-|------|-------|
-| `src/components/Breadcrumbs.tsx` | הוספת JSON-LD BreadcrumbList לכל דף |
-
-### 2.4 שיפור Organization Schema
-| קובץ | שינוי |
-|------|-------|
-| `index.html` | הוספת Organization schema עם לוגו, sameAs (לינקים חברתיים), contactPoint |
+### 5. עדכון Schema Markup (SEO)
+עדכון התשובות ב-FAQ Schema להתאמה למחירים החדשים
 
 ---
 
-## שלב 3: שיפור ביצועים (Core Web Vitals)
+## פירוט טכני
 
-### 3.1 Lazy Loading לתמונות
-| קובץ | שינוי |
-|------|-------|
-| `src/components/HeroSection.tsx` | שימוש ב-`loading="eager"` לתמונת Hero (LCP) |
-| `src/components/ProjectGallery.tsx` | הוספת `loading="lazy"` לתמונות גלריה |
-| דפי נחיתה | הוספת lazy loading לתמונות שמתחת ל-fold |
+### קובץ: `src/pages/Pricing.tsx`
 
-### 3.2 יצירת Web App Manifest
-| קובץ | פעולה |
-|------|-------|
-| `public/manifest.json` | יצירה חדשה עם כל גדלי האייקונים |
-| `index.html` | הוספת link ל-manifest |
-
-### 3.3 Preload Critical Assets
-| קובץ | שינוי |
-|------|-------|
-| `index.html` | הוספת preload לתמונת Hero הראשית |
-
----
-
-## שלב 4: הוספת תוכן ודפים
-
-### 4.1 דף אזורי שירות (Local SEO)
-| קובץ | פעולה |
-|------|-------|
-| `src/pages/ServiceAreas.tsx` | דף חדש עם רשימת אזורים: גליל, שפלה, נגב וכו' |
-| `src/App.tsx` | הוספת נתיב `/service-areas` |
-| `public/sitemap.xml` | הוספת הדף החדש |
-
-### 4.2 דף בלוג/מאמרים (אופציונלי לעתיד)
-תשתית לבלוג עם מאמרים על:
-- "איך לזהות נזקי חזירי בר"
-- "תחזוקת גדר חשמלית - מדריך מלא"
-- "השוואת שיטות הגנה מחזירים"
-
----
-
-## שלב 5: עדכון OG Image
-
-### 5.1 העלאת OG Image חדש
-| פעולה | פירוט |
-|------|-------|
-| העלאה ל-Storage | יצירת תמונה 1200x630 עם הלוגו החדש |
-| `index.html` | עדכון og:image ו-twitter:image ל-URL החדש |
-
----
-
-## סיכום שינויים לפי קובץ
-
-| קובץ | פעולות |
-|------|--------|
-| `index.html` | תיקון דומיינים, הוספת manifest link, preload, Organization schema |
-| `public/robots.txt` | עדכון sitemap URL |
-| `public/sitemap.xml` | הוספת דף service-areas |
-| `public/manifest.json` | יצירה חדשה |
-| `src/pages/Index.tsx` | הוספת SEOHead עם AggregateRating |
-| `src/components/Breadcrumbs.tsx` | הוספת BreadcrumbList JSON-LD |
-| `src/components/HeroSection.tsx` | loading="eager" |
-| `src/pages/ServiceAreas.tsx` | דף חדש |
-| `src/App.tsx` | נתיב חדש |
-| DB Migration | הוספת עמודת rating לביקורות |
-
----
-
-## פרטים טכניים
-
-### דוגמת BreadcrumbList Schema
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "דף הבית", "item": "https://gatekeepisrael.com/"},
-    {"@type": "ListItem", "position": 2, "name": "התקנה", "item": "https://gatekeepisrael.com/installation"}
-  ]
-}
-```
-
-### דוגמת AggregateRating Schema
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "גייטקיפ",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "47",
-    "bestRating": "5"
-  }
-}
-```
-
-### דוגמת manifest.json
-```json
-{
-  "name": "גייטקיפ - גדרות חשמליות",
-  "short_name": "גייטקיפ",
-  "icons": [
-    {"src": "/favicon.png", "sizes": "512x512", "type": "image/png"}
-  ],
-  "theme_color": "#16a34a",
-  "background_color": "#0a0a0a",
-  "display": "standalone",
-  "start_url": "/",
-  "dir": "rtl",
-  "lang": "he"
-}
-```
-
----
-
-## סדר ביצוע מומלץ
-
-1. **תיקון דומיינים** (קריטי - משפיע על אינדוקס)
-2. **הוספת SEOHead לדף הבית**
-3. **יצירת manifest.json**
-4. **הוספת BreadcrumbList Schema**
-5. **DB Migration + AggregateRating**
-6. **אופטימיזציית תמונות**
-7. **דף אזורי שירות**
-8. **עדכון OG Image**
+**שינויים:**
+1. עדכון schemaMarkup עם המחירים החדשים (10-20 ש"ח)
+2. עדכון description ב-ServicePageLayout
+3. שינוי הקרטיס הראשי מ-"80-150" ל-"10-20" + הוספת הערה על 1000+ מטר
+4. החלפת 3 קרטיסי המחירים לסוגי הגדרות החדשים
+5. עדכון 4 הקרטיסים של "מה משפיע" לגורמים החדשים
+6. מחיקת סקציית "אפשרויות תשלום"
+7. עיצוב מחדש של סקציית ה-CTA לתאימות ל-Theme
