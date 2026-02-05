@@ -36,7 +36,7 @@ const Installation = () => {
               התקנת גדר חשמלית מקצועית נגד חזירי בר
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 text-pretty">
-              צוות מומחים עם ניסיון של למעלה מ-15 שנה בהתקנת גדרות חשמליות לשטחים חקלאיים בכל רחבי הארץ
+              צוות מומחים עם נסיון התקנה של עשרות קילומטרים
             </p>
             <a 
               href={PHONE_LINK}
