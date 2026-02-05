@@ -10,9 +10,8 @@ const NotFound = () => {
         title="404 - הדף לא נמצא | גייטקיפ"
         description="מצטערים, הדף שחיפשת לא נמצא. חזרו לדף הבית של גייטקיפ - גדרות חשמליות נגד חזירי בר."
         canonicalUrl="https://gatekeepisrael.com/"
+        noIndex={true}
       />
-      {/* Tell search engines not to index 404 pages */}
-      <meta name="robots" content="noindex, follow" />
       <div className="flex min-h-screen items-center justify-center bg-muted" dir="rtl">
         <div className="text-center p-8">
           <h1 className="mb-4 text-6xl font-black text-primary">404</h1>
