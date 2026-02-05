@@ -52,7 +52,14 @@ const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, st
     }
 
     // Set canonical URL if provided (either full URL or path)
-    const finalCanonicalUrl = canonicalUrl || (canonicalPath ? `https://gatekeepisrael.com${canonicalPath}` : null);
+    // Ensure consistent URL format: no trailing slash for non-root paths
+    let finalCanonicalUrl = canonicalUrl || (canonicalPath ? `https://gatekeepisrael.com${canonicalPath}` : null);
+    
+    // Normalize: remove trailing slash except for root
+    if (finalCanonicalUrl && finalCanonicalUrl !== "https://gatekeepisrael.com/" && finalCanonicalUrl.endsWith("/")) {
+      finalCanonicalUrl = finalCanonicalUrl.slice(0, -1);
+    }
+    
     if (finalCanonicalUrl) {
       let canonical = document.querySelector('link[rel="canonical"]');
       if (canonical) {
