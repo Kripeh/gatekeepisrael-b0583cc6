@@ -1,4 +1,4 @@
-import { Phone, CheckCircle, AlertCircle, Calculator, ArrowLeft } from "lucide-react";
+import { Phone, CheckCircle, AlertCircle, Calculator, Info } from "lucide-react";
 import { Link } from "react-router-dom";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
@@ -15,7 +15,7 @@ const Pricing = () => {
         "name": "כמה עולה גדר חשמלית נגד חזירי בר?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "המחיר נע בין 80-150 ₪ למטר רץ, תלוי באורך הגדר, סוג הקרקע והציוד הנדרש. המחיר כולל חומרים, התקנה ואחריות."
+          "text": "המחיר נע בין 10-20 ₪ למטר רץ עבור פרויקטים מ-1000 מטר ומעלה. גדר בסיסית 10-15 ₪/מ', גדר גבוהה 15-20 ₪/מ', גדר גבוהה משופרת 20-25 ₪/מ'. המחיר כולל חומרים, התקנה ואחריות."
         }
       },
       {
@@ -32,7 +32,7 @@ const Pricing = () => {
   return (
     <ServicePageLayout
       title="מחיר גדר חשמלית לחזירי בר | גייטקיפ"
-      description="מחירון גדרות חשמליות נגד חזירי בר. מ-80 ₪ למטר. כולל חומרים, התקנה ואחריות. קבל הצעת מחיר מדויקת תוך 24 שעות"
+      description="מחירון גדרות חשמליות נגד חזירי בר. מ-10 ₪ למטר לפרויקטים מ-1000 מ' ומעלה. כולל חומרים, התקנה ואחריות. קבל הצעת מחיר מדויקת תוך 24 שעות"
       keywords="מחיר גדר חשמלית, עלות גדר חזירי בר, מחירון גדרות חשמליות, הצעת מחיר גדר"
       canonicalPath="/pricing"
       breadcrumbs={[{ label: "מחירון" }]}
@@ -65,38 +65,50 @@ const Pricing = () => {
             </h2>
             <div className="bg-card p-8 rounded-2xl border border-primary/20 border-2 text-center mb-8">
               <p className="text-3xl md:text-4xl font-black text-primary mb-2">
-                80-150 ₪ למטר רץ
+                10-20 ₪ למטר רץ
               </p>
               <p className="text-muted-foreground">
                 כולל כל החומרים, ההתקנה והאחריות
               </p>
+              <div className="mt-4 p-4 bg-muted/50 rounded-xl border border-border">
+                <div className="flex items-center justify-center gap-2 text-amber-500 mb-2">
+                  <Info className="w-5 h-5" />
+                  <span className="font-semibold">שימו לב</span>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  המחירים רלוונטיים לפרויקטים מ-1000 מטר ומעלה.{" "}
+                  <a href={PHONE_LINK} className="text-primary hover:underline font-medium">
+                    להיקף קטן יותר - התקשרו לייעוץ
+                  </a>
+                </p>
+              </div>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-card p-6 rounded-2xl border border-border">
                 <h3 className="font-bold text-lg mb-2">גדר בסיסית</h3>
-                <p className="text-2xl font-bold text-primary mb-2">80-100 ₪/מ'</p>
+                <p className="text-2xl font-bold text-primary mb-2">10-15 ₪/מ'</p>
                 <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• קרקע ישרה ונגישה</li>
-                  <li>• חיבור לרשת החשמל</li>
-                  <li>• 2-3 חוטים</li>
-                </ul>
-              </div>
-              <div className="bg-card p-6 rounded-2xl border border-primary/50 border-2">
-                <h3 className="font-bold text-lg mb-2">גדר סטנדרטית</h3>
-                <p className="text-2xl font-bold text-primary mb-2">100-120 ₪/מ'</p>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• קרקע משתנה</li>
-                  <li>• 4 חוטים</li>
-                  <li>• שערים נוספים</li>
+                  <li>• גדר סטנדרטית</li>
+                  <li>• מתאימה לרוב השטחים</li>
+                  <li>• הגנה יעילה מחזירי בר</li>
                 </ul>
               </div>
               <div className="bg-card p-6 rounded-2xl border border-border">
-                <h3 className="font-bold text-lg mb-2">גדר מתקדמת</h3>
-                <p className="text-2xl font-bold text-primary mb-2">120-150 ₪/מ'</p>
+                <h3 className="font-bold text-lg mb-2">גדר גבוהה</h3>
+                <p className="text-2xl font-bold text-primary mb-2">15-20 ₪/מ'</p>
                 <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• קרקע קשה/סלעית</li>
-                  <li>• מערכת סולארית</li>
-                  <li>• ציוד פרימיום</li>
+                  <li>• גובה מוגבר</li>
+                  <li>• הגנה משופרת</li>
+                  <li>• לשטחים עם לחץ גבוה</li>
+                </ul>
+              </div>
+              <div className="bg-card p-6 rounded-2xl border border-primary/50 border-2">
+                <h3 className="font-bold text-lg mb-2">גדר גבוהה משופרת</h3>
+                <p className="text-2xl font-bold text-primary mb-2">20-25 ₪/מ'</p>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• בזנטים לאורך כל הגדר</li>
+                  <li>• חומרים עמידים יותר</li>
+                  <li>• הגנה מקסימלית</li>
                 </ul>
               </div>
             </div>
@@ -117,37 +129,24 @@ const Pricing = () => {
                 <p className="text-muted-foreground text-sm mb-3">
                   ככל שהגדר ארוכה יותר, המחיר למטר יורד. פרויקטים גדולים מעל 500 מטר מקבלים הנחת כמות.
                 </p>
-                <div className="bg-muted p-3 rounded-lg text-sm">
-                  <strong>טיפ:</strong> מדידה מדויקת של ההיקף חוסכת כסף
-                </div>
               </div>
               <div className="bg-card p-6 rounded-2xl border border-border">
-                <h3 className="font-bold text-lg mb-4">סוג הקרקע</h3>
+                <h3 className="font-bold text-lg mb-4">חוזק המערכת</h3>
                 <p className="text-muted-foreground text-sm mb-3">
-                  קרקע רכה וישרה = התקנה מהירה וזולה יותר. קרקע סלעית או משופעת דורשת יותר עבודה.
+                  תלוי בסוג הגדר שנבחר - גדר בסיסית, גבוהה או גבוהה משופרת עם בזנטים וחומרים עמידים יותר.
                 </p>
-                <div className="bg-muted p-3 rounded-lg text-sm">
-                  <strong>טיפ:</strong> סקר שטח חינם מגלה את האתגרים מראש
-                </div>
               </div>
               <div className="bg-card p-6 rounded-2xl border border-border">
-                <h3 className="font-bold text-lg mb-4">סולארי או רשת</h3>
+                <h3 className="font-bold text-lg mb-4">סוג המזיק</h3>
                 <p className="text-muted-foreground text-sm mb-3">
-                  מערכת סולארית עולה יותר בהתקנה (15-20%) אבל חוסכת בחשמל לאורך זמן.
+                  התאמה לסוג המזיק - חזירי בר, דורבנים, שועלים ועוד. כל מזיק דורש גובה וחוזק שונים.
                 </p>
-                <Link to="/solar-fence" className="text-primary text-sm hover:underline inline-flex items-center gap-1">
-                  קראו עוד על גדר סולארית
-                  <ArrowLeft className="w-4 h-4" />
-                </Link>
               </div>
               <div className="bg-card p-6 rounded-2xl border border-border">
                 <h3 className="font-bold text-lg mb-4">כמות שערים</h3>
                 <p className="text-muted-foreground text-sm mb-3">
-                  כל שער דורש ידית מיוחדת וחיבורים נוספים. מומלץ לתכנן מראש את כל נקודות הכניסה.
+                  כל שער דורש ציוד נוסף וחיבורים מיוחדים. מומלץ לתכנן מראש את כל נקודות הכניסה.
                 </p>
-                <div className="bg-muted p-3 rounded-lg text-sm">
-                  <strong>מחיר ממוצע:</strong> 300-500 ₪ לשער
-                </div>
               </div>
             </div>
           </div>
@@ -265,50 +264,22 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* Payment Options */}
-      <section className="py-12 md:py-16">
-        <div className="container">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6">
-              אפשרויות תשלום
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              אנחנו מציעים גמישות בתשלום כדי להקל עליכם:
-            </p>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-card p-6 rounded-2xl border border-border">
-                <h3 className="font-bold mb-2">תשלום רגיל</h3>
-                <p className="text-muted-foreground text-sm">50% מקדמה + 50% בסיום</p>
-              </div>
-              <div className="bg-card p-6 rounded-2xl border border-border">
-                <h3 className="font-bold mb-2">תשלומים</h3>
-                <p className="text-muted-foreground text-sm">עד 3 תשלומים ללא ריבית</p>
-              </div>
-              <div className="bg-card p-6 rounded-2xl border border-border">
-                <h3 className="font-bold mb-2">כרטיס אשראי</h3>
-                <p className="text-muted-foreground text-sm">כל כרטיסי האשראי</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Get Quote CTA */}
-      <section className="py-16 md:py-20 bg-primary text-primary-foreground">
+      <section className="py-16 md:py-20">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl md:text-4xl font-black mb-6">
+          <div className="max-w-3xl mx-auto text-center bg-card p-8 md:p-12 rounded-2xl border-2 border-primary/30">
+            <h2 className="text-2xl md:text-4xl font-black mb-6 text-foreground">
               קבל הצעת מחיר מדויקת תוך 24 שעות
             </h2>
-            <p className="text-lg opacity-90 mb-8">
+            <p className="text-lg text-muted-foreground mb-8">
               התקשר עכשיו או השאר פרטים - ניצור קשר במהרה עם הצעה מפורטת ושקופה
             </p>
             <a 
               href={PHONE_LINK}
-              className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors"
+              className="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold transition-colors"
             >
               <Phone className="w-6 h-6" />
-              <span>התקשר עכשיו - {PHONE_DISPLAY}</span>
+              <span>{PHONE_DISPLAY}</span>
             </a>
           </div>
         </div>
