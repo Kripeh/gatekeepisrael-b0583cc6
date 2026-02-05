@@ -189,7 +189,7 @@ const Installation = () => {
             </p>
             <div className="bg-card p-8 rounded-2xl border border-border mb-8">
               <p className="text-2xl font-bold text-primary mb-2">
-                טווח מחירים: 80-150 ₪ למטר רץ
+                טווח מחירים: 10-25 ₪ למטר רץ
               </p>
               <p className="text-muted-foreground">
                 כולל חומרים, עבודה ואחריות
