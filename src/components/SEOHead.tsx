@@ -102,24 +102,18 @@ const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, st
     let removedFAQScript: { element: HTMLScriptElement; content: string } | null = null;
     
     if (structuredData) {
-      // If adding FAQPage, first remove any existing FAQPage from index.html to prevent duplicates
+      // If adding FAQPage, first remove the homepage FAQPage from index.html to prevent duplicates
       const structuredDataObj = structuredData as { "@type"?: string };
       if (structuredDataObj["@type"] === "FAQPage") {
-        const existingScripts = document.querySelectorAll('script[type="application/ld+json"]');
-        existingScripts.forEach((script) => {
-          try {
-            const content = JSON.parse(script.textContent || "");
-            if (content["@type"] === "FAQPage") {
-              removedFAQScript = { 
-                element: script as HTMLScriptElement, 
-                content: script.textContent || "" 
-              };
-              script.remove();
-            }
-          } catch (e) {
-            // Ignore parsing errors
-          }
-        });
+        // Remove the homepage FAQ schema by its ID
+        const homepageFAQ = document.getElementById("homepage-faq-schema");
+        if (homepageFAQ) {
+          removedFAQScript = { 
+            element: homepageFAQ as HTMLScriptElement, 
+            content: homepageFAQ.textContent || "" 
+          };
+          homepageFAQ.remove();
+        }
       }
       
       scriptTag = document.createElement("script");
