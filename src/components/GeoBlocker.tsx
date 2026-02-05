@@ -13,12 +13,12 @@ const GeoBlocker = ({ children }: GeoBlockerProps) => {
   useEffect(() => {
     const checkLocation = async () => {
       try {
-        // Using ip-api.com (free, no API key required) via HTTPS for security
-        const response = await fetch("https://ip-api.com/json/?fields=countryCode");
-        const data = await response.json();
+        // Using ipapi.co (free tier supports HTTPS, no API key required)
+        const response = await fetch("https://ipapi.co/country_code/");
+        const countryCode = await response.text();
         
         // Allow if user is in Israel
-        setIsAllowed(data.countryCode === "IL");
+        setIsAllowed(countryCode.trim() === "IL");
       } catch (error) {
         // If geolocation fails, allow access (fail-open for better UX)
         logger.error("Geolocation check failed:", error);
