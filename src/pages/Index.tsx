@@ -9,9 +9,17 @@ import UrgencyBanner from "@/components/UrgencyBanner";
 import Footer from "@/components/Footer";
 import StickyMobileFooter from "@/components/StickyMobileFooter";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import SEOHead from "@/components/SEOHead";
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="גייטקיפ | גדרות חשמליות נגד חזירי בר - מיגון חקלאי מקצועי"
+        description="גייטקיפ - הפתרון המקצועי להגנה מפני חזירי בר. גדרות חשמליות איכותיות, התקנה מהירה, אחריות מלאה. התקשרו עכשיו להצעת מחיר!"
+        keywords="גדר חשמלית, גדר חשמלית נגד חזירי בר, גדר חשמלית לחקלאות, מיגון חקלאי, הגנה מחזירי בר, התקנת גדר חשמלית, גייטקיפ"
+        canonicalUrl="https://gatekeepisrael.com/"
+      />
       <PersistentHeader />
       <main>
         <HeroSection />
