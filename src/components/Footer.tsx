@@ -1,16 +1,20 @@
 import logo from "@/assets/logo.png";
-import { Phone, Shield, Award } from "lucide-react";
+import { Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const PHONE_LINK = "tel:+972508585310";
 
-const Footer = () => {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+const footerLinks = [
+  { label: "דף הבית", href: "/" },
+  { label: "התקנת גדר חשמלית", href: "/installation" },
+  { label: "גדר סולארית", href: "/solar-fence" },
+  { label: "פתרונות לבית", href: "/home-solutions" },
+  { label: "מחירון", href: "/pricing" },
+  { label: "למה גדר חשמלית?", href: "/why-electric-fence" },
+  { label: "אזורי שירות", href: "/service-areas" },
+];
 
+const Footer = () => {
   return (
     <footer className="py-12 bg-card border-t border-border pb-28 md:pb-12">
       <div className="container">
@@ -23,28 +27,19 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <nav className="flex flex-wrap items-center justify-center gap-6">
-              <button 
-                onClick={() => scrollToSection('gallery')}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium"
-              >
-                גלריית פרויקטים
-              </button>
-              <button 
-                onClick={() => scrollToSection('faq')}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium"
-              >
-                שאלות נפוצות
-              </button>
-              <button 
-                onClick={() => scrollToSection('calculator')}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium"
-              >
-                מחשבון מחיר
-              </button>
+            <nav className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+              {footerLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium text-sm md:text-base"
+                >
+                  {link.label}
+                </Link>
+              ))}
               <a 
                 href={PHONE_LINK}
-                className="text-primary font-bold hover:underline"
+                className="text-primary font-bold hover:underline text-sm md:text-base"
               >
                 050-858-5310
               </a>
@@ -65,7 +60,7 @@ const Footer = () => {
               מיגון חקלאי מקצועי | גדרות חשמליות לחזירי בר
             </p>
             <p className="text-muted-foreground text-xs">
-              © 2025 גייטקיפ. כל הזכויות שמורות.
+              © 2026 גייטקיפ. כל הזכויות שמורות.
             </p>
           </div>
         </div>
