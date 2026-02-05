@@ -3,7 +3,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GeoBlocker from "./components/GeoBlocker";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Installation from "./pages/Installation";
@@ -20,21 +19,19 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <GeoBlocker>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/installation" element={<Installation />} />
-            <Route path="/solar-fence" element={<SolarFence />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/why-electric-fence" element={<WhyElectricFence />} />
-            <Route path="/home-solutions" element={<HomeSolutions />} />
-            <Route path="/service-areas" element={<ServiceAreas />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </GeoBlocker>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/installation" element={<Installation />} />
+          <Route path="/solar-fence" element={<SolarFence />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/why-electric-fence" element={<WhyElectricFence />} />
+          <Route path="/home-solutions" element={<HomeSolutions />} />
+          <Route path="/service-areas" element={<ServiceAreas />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
