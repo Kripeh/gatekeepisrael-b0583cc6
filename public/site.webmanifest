@@ -1,7 +1,6 @@
 {
-  "name": "גייטקיפ - גדרות חשמליות נגד חזירי בר",
+  "name": "גייטקיפ ישראל",
   "short_name": "גייטקיפ",
-  "description": "גדרות חשמליות מקצועיות להגנה על שטחים חקלאיים מפני חזירי בר",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -16,12 +15,11 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#16a34a",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone",
   "start_url": "/",
   "scope": "/",
   "dir": "rtl",
-  "lang": "he",
-  "orientation": "portrait-primary"
+  "lang": "he"
 }
