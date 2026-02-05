@@ -1,7 +1,6 @@
  import { useState } from "react";
- import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
  import { NavLink } from "@/components/NavLink";
- import { useIsMobile } from "@/hooks/use-mobile";
  import {
    Sheet,
    SheetContent,
@@ -25,40 +24,20 @@
  
  const Navigation = () => {
    const [isOpen, setIsOpen] = useState(false);
-   const isMobile = useIsMobile();
  
    const closeMenu = () => setIsOpen(false);
  
-   // Desktop Navigation
-   if (!isMobile) {
-     return (
-       <nav className="hidden md:flex items-center gap-1">
-         {navLinks.map((link) => (
-           <NavLink
-             key={link.href}
-             to={link.href}
-             className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
-             activeClassName="text-primary font-bold bg-primary/10"
-           >
-             {link.label}
-           </NavLink>
-         ))}
-       </nav>
-     );
-   }
- 
-   // Mobile Navigation
    return (
      <Sheet open={isOpen} onOpenChange={setIsOpen}>
        <SheetTrigger asChild>
          <button
-           className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+          className="p-2 text-foreground hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
            aria-label="פתח תפריט"
          >
            <Menu className="w-6 h-6" />
          </button>
        </SheetTrigger>
-       <SheetContent side="right" className="w-full sm:w-80 p-0">
+      <SheetContent side="right" className="w-80 p-0">
          <SheetHeader className="p-4 border-b border-border">
            <div className="flex items-center justify-between">
              <img src={logo} alt="גייטקיפ" className="h-12 w-auto" />
@@ -72,7 +51,7 @@
                key={link.href}
                to={link.href}
                onClick={closeMenu}
-               className="py-4 px-4 text-lg font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-colors rounded-lg border-b border-border/50 last:border-b-0"
+              className="py-3 px-4 text-base font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-colors rounded-lg"
                activeClassName="text-primary font-bold bg-primary/10"
              >
                {link.label}
