@@ -61,6 +61,7 @@ export type Database = {
           id: string
           is_active: boolean
           location: string
+          rating: number | null
           reviewer_name: string
         }
         Insert: {
@@ -70,6 +71,7 @@ export type Database = {
           id?: string
           is_active?: boolean
           location: string
+          rating?: number | null
           reviewer_name: string
         }
         Update: {
@@ -79,6 +81,7 @@ export type Database = {
           id?: string
           is_active?: boolean
           location?: string
+          rating?: number | null
           reviewer_name?: string
         }
         Relationships: []

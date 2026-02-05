@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://gatekeepisrael.lovable.app/sitemap.xml
+Sitemap: https://gatekeepisrael.com/sitemap.xml

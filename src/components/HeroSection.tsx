@@ -24,6 +24,8 @@ const HeroSection = () => {
           alt="גדר חשמלית נגד חזירי בר - התקנה מקצועית בשטח חקלאי | גייטקיפ" 
           className="w-full h-[120%] object-cover will-change-transform"
           style={{ transform: `translateY(${scrollY * 0.4}px)` }}
+          loading="eager"
+          fetchPriority="high"
         />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-background/60" />
