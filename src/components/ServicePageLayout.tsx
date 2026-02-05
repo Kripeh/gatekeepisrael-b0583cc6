@@ -37,15 +37,8 @@ const ServicePageLayout = ({
         description={description} 
         keywords={keywords}
         canonicalPath={canonicalPath}
+        structuredData={schemaMarkup}
       />
-      
-      {/* Schema Markup */}
-      {schemaMarkup && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-        />
-      )}
       
       <PersistentHeader />
       
