@@ -1,31 +1,27 @@
- {
-   "name": "גייטקיפ - גדרות חשמליות נגד חזירי בר",
-   "short_name": "גייטקיפ",
-   "description": "גדרות חשמליות מקצועיות להגנה על שטחים חקלאיים מפני חזירי בר",
-   "icons": [
-     {
-       "src": "/favicon.png",
-       "sizes": "512x512",
-       "type": "image/png",
-       "purpose": "any maskable"
-     },
-     {
-       "src": "/favicon.png",
-       "sizes": "192x192",
-       "type": "image/png"
-     },
-     {
-       "src": "/favicon.png",
-       "sizes": "180x180",
-       "type": "image/png"
-     }
-   ],
-   "theme_color": "#16a34a",
-   "background_color": "#0a0a0a",
-   "display": "standalone",
-   "start_url": "/",
-   "scope": "/",
-   "dir": "rtl",
-   "lang": "he",
-   "orientation": "portrait-primary"
- }
+{
+  "name": "גייטקיפ - גדרות חשמליות נגד חזירי בר",
+  "short_name": "גייטקיפ",
+  "description": "גדרות חשמליות מקצועיות להגנה על שטחים חקלאיים מפני חזירי בר",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#16a34a",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "dir": "rtl",
+  "lang": "he",
+  "orientation": "portrait-primary"
+}
