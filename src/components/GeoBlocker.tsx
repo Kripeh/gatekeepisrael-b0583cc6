@@ -1,5 +1,6 @@
 import { useState, useEffect, ReactNode } from "react";
 import { Loader2, MapPin } from "lucide-react";
+import { logger } from "@/lib/logger";
 
 interface GeoBlockerProps {
   children: ReactNode;
@@ -12,15 +13,15 @@ const GeoBlocker = ({ children }: GeoBlockerProps) => {
   useEffect(() => {
     const checkLocation = async () => {
       try {
-        // Using ip-api.com (free, no API key required)
-        const response = await fetch("http://ip-api.com/json/?fields=countryCode");
+        // Using ip-api.com (free, no API key required) via HTTPS for security
+        const response = await fetch("https://ip-api.com/json/?fields=countryCode");
         const data = await response.json();
         
         // Allow if user is in Israel
         setIsAllowed(data.countryCode === "IL");
       } catch (error) {
         // If geolocation fails, allow access (fail-open for better UX)
-        console.error("Geolocation check failed:", error);
+        logger.error("Geolocation check failed:", error);
         setIsAllowed(true);
       } finally {
         setIsLoading(false);
