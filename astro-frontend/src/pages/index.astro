@@ -163,7 +163,7 @@ const galleryImages = [
         </div>
         {trust.internalLinks && (
           <div class="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
-            {trust.internalLinks.map((link) => (
+            {trust.internalLinks.map((link: any) => (
               <a href={link.href} class="text-primary font-semibold hover:underline">{link.label}</a>
             ))}
           </div>
@@ -319,7 +319,7 @@ const galleryImages = [
         <!-- Internal Links -->
         {about.internalLinks && (
           <div class="mt-16 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
-            {about.internalLinks.map((link) => (
+            {about.internalLinks.map((link: any) => (
               <a href={link.href} class="text-primary font-semibold hover:underline">{link.label}</a>
             ))}
           </div>
