@@ -5,6 +5,10 @@ import areasData from '../../../public/api/pages/service-areas.json';
 const page = areasData;
 const PHONE_LINK = 'tel:+972508585310';
 const PHONE_DISPLAY = '050-858-5310';
+
+const hero = page.sections.find(s => s.type === 'hero');
+const regions = page.sections.find(s => s.type === 'regions');
+const cta = page.sections.find(s => s.type === 'cta');
 ---
 <ServicePageLayout
   title={page.seo.title}
@@ -14,12 +18,13 @@ const PHONE_DISPLAY = '050-858-5310';
   breadcrumbs={page.breadcrumbs}
   structuredData={page.structuredData}
 >
+  <!-- Hero -->
   <section class="py-12 md:py-20 bg-gradient-to-b from-primary/5 to-background">
     <div class="container">
       <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-3xl md:text-5xl font-black mb-6" style="text-wrap: balance;">{page.h1}</h1>
         <p class="text-lg md:text-xl text-muted-foreground mb-8" style="text-wrap: pretty;">
-          {page.sections[0].subtitle}
+          {hero?.subtitle}
         </p>
         <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
           <span>התקשר לייעוץ - {PHONE_DISPLAY}</span>
@@ -28,60 +33,69 @@ const PHONE_DISPLAY = '050-858-5310';
     </div>
   </section>
 
-  {page.sections.map((section) => {
-    if (section.type === 'hero') return null;
-
-    if (section.type === 'areas' && section.regions) return (
-      <section class="py-12 md:py-16">
-        <div class="container">
-          <div class="max-w-5xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{section.h2}</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {section.regions.map((region) => (
-                <div class="bg-card p-6 rounded-2xl border border-border">
-                  <h3 class="text-xl font-bold mb-3 text-primary">{region.name}</h3>
+  <!-- Regions -->
+  {regions && (
+    <section class="py-12 md:py-16">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-8">
+            {regions.regions.map((region) => (
+              <div class="bg-card p-6 rounded-2xl border border-border">
+                <h2 class="text-xl font-bold mb-3 text-primary">{region.h2}</h2>
+                <p class="text-muted-foreground mb-4" style="text-wrap: pretty;">{region.description}</p>
+                <div class="mb-4">
+                  <h3 class="text-sm font-bold text-foreground mb-2">אזורים:</h3>
                   <ul class="text-muted-foreground space-y-1">
-                    {region.cities.map((city) => (
-                      <li>• {city}</li>
+                    {region.areas.map((area) => (
+                      <li class="flex items-start gap-2">
+                        <span class="text-primary mt-0.5 flex-shrink-0">📍</span>
+                        <span>{area}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
-              ))}
-            </div>
+                <div>
+                  <h3 class="text-sm font-bold text-foreground mb-2">גידולים עיקריים:</h3>
+                  <div class="flex flex-wrap gap-2">
+                    {region.crops.map((crop) => (
+                      <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">{crop}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
-    );
+      </div>
+    </section>
+  )}
 
-    if (section.type === 'cta') return (
-      <section class="py-16 md:py-20 bg-primary text-primary-foreground">
-        <div class="container">
-          <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-2xl md:text-4xl font-black mb-6">{section.h2}</h2>
-            <p class="text-lg opacity-90 mb-8">{section.subtitle}</p>
-            <a href={PHONE_LINK} class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors">
-              <span>התקשר - {PHONE_DISPLAY}</span>
-            </a>
-          </div>
+  <!-- CTA -->
+  {cta && (
+    <section class="py-16 md:py-20 bg-primary text-primary-foreground">
+      <div class="container">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-2xl md:text-4xl font-black mb-6">{cta.h2}</h2>
+          <p class="text-lg opacity-90 mb-8" style="text-wrap: pretty;">{cta.content}</p>
+          <a href={PHONE_LINK} class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors">
+            <span>התקשר - {PHONE_DISPLAY}</span>
+          </a>
         </div>
-      </section>
-    );
+      </div>
+    </section>
+  )}
 
-    if (section.type === 'internal-links') return (
-      <section class="py-12">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
-            <div class="flex flex-wrap gap-4">
-              {section.items?.map((link) => (
-                <a href={link.href} class="text-primary hover:underline">{link.label}</a>
-              ))}
-            </div>
-          </div>
+  <!-- Internal Links -->
+  <section class="py-12">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
+        <div class="flex flex-wrap gap-4">
+          {page.internalLinks.map((link) => (
+            <a href={link.href} class="text-primary hover:underline">{link.label}</a>
+          ))}
         </div>
-      </section>
-    );
-
-    return null;
-  })}
+      </div>
+    </div>
+  </section>
 </ServicePageLayout>

@@ -5,6 +5,14 @@ import installationData from '../../../public/api/pages/installation.json';
 const page = installationData;
 const PHONE_LINK = 'tel:+972508585310';
 const PHONE_DISPLAY = '050-858-5310';
+
+const hero = page.sections.find(s => s.type === 'hero');
+const features = page.sections.find(s => s.type === 'features');
+const process = page.sections.find(s => s.type === 'process');
+const benefits = page.sections.find(s => s.type === 'benefits');
+const pricingSummary = page.sections.find(s => s.type === 'pricing-summary');
+const caseStudies = page.sections.find(s => s.type === 'case-studies');
+const cta = page.sections.find(s => s.type === 'cta');
 ---
 <ServicePageLayout
   title={page.seo.title}
@@ -20,7 +28,7 @@ const PHONE_DISPLAY = '050-858-5310';
       <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-3xl md:text-5xl font-black mb-6" style="text-wrap: balance;">{page.h1}</h1>
         <p class="text-lg md:text-xl text-muted-foreground mb-8" style="text-wrap: pretty;">
-          {page.sections[0].subtitle}
+          {hero?.subtitle}
         </p>
         <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -30,129 +38,151 @@ const PHONE_DISPLAY = '050-858-5310';
     </div>
   </section>
 
-  <!-- Render all sections dynamically -->
-  {page.sections.map((section) => {
-    if (section.type === 'hero') return null; // already rendered
+  <!-- Features / What We Install -->
+  {features && (
+    <section class="py-12 md:py-16">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{features.h2}</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            {features.groups.map((group) => (
+              <div class="bg-card p-6 rounded-2xl border border-border">
+                <h3 class="text-xl font-bold mb-3">{group.h3}</h3>
+                <ul class="space-y-2 text-muted-foreground">
+                  {group.items.map((item) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-primary mt-0.5 flex-shrink-0">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 
-    if (section.type === 'specs') return (
-      <section class="py-12 md:py-16">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{section.h2}</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-              {section.items.map((item) => (
-                <div class="bg-card p-6 rounded-2xl border border-border">
-                  <h3 class="text-xl font-bold mb-3">{item.title}</h3>
-                  <ul class="space-y-2 text-muted-foreground">
-                    {item.details.map((d) => (
+  <!-- Process Steps -->
+  {process && (
+    <section class="py-12 md:py-16 bg-muted/30">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{process.h2}</h2>
+          <div class="space-y-6">
+            {process.steps.map((step) => (
+              <div class="flex gap-4 bg-card p-6 rounded-2xl border border-border">
+                <div class="flex-shrink-0 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-xl">
+                  {step.step}
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold mb-2">{step.title}</h3>
+                  <p class="text-muted-foreground" style="text-wrap: pretty;">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          {process.note && (
+            <p class="text-sm text-muted-foreground text-center mt-6">{process.note}</p>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Benefits -->
+  {benefits && (
+    <section class="py-12 md:py-16">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{benefits.h2}</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            {benefits.items.map((item) => (
+              <div class="card-forest rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300">
+                <h3 class="text-lg font-bold mb-2">{item.title}</h3>
+                <p class="text-muted-foreground text-sm" style="text-wrap: pretty;">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Pricing Summary -->
+  {pricingSummary && (
+    <section class="py-12 md:py-16 bg-muted/30">
+      <div class="container">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-2xl md:text-3xl font-bold mb-6">{pricingSummary.h2}</h2>
+          <p class="text-muted-foreground mb-6" style="text-wrap: pretty;">{pricingSummary.content}</p>
+          <div class="bg-card p-6 rounded-2xl border-2 border-primary/30 inline-block">
+            <p class="text-3xl font-black text-primary mb-1">{pricingSummary.priceRange}</p>
+            <p class="text-sm text-muted-foreground">{pricingSummary.includes}</p>
+          </div>
+          <div class="mt-6">
+            <a href="/pricing" class="text-primary font-bold hover:underline">לפירוט מלא של מחירים →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Case Studies -->
+  {caseStudies && (
+    <section class="py-12 md:py-16">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{caseStudies.h2}</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            {caseStudies.cases.map((cs) => (
+              <div class="bg-card rounded-2xl overflow-hidden border border-border">
+                <div class="p-6">
+                  <h3 class="text-lg font-bold mb-3">{cs.h3}</h3>
+                  <ul class="text-muted-foreground text-sm space-y-2">
+                    {cs.details.map((detail) => (
                       <li class="flex items-start gap-2">
                         <span class="text-primary mt-0.5 flex-shrink-0">✓</span>
-                        <span>{d}</span>
+                        <span>{detail}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
-    );
+      </div>
+    </section>
+  )}
 
-    if (section.type === 'process') return (
-      <section class="py-12 md:py-16 bg-muted/30">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{section.h2}</h2>
-            <div class="space-y-6">
-              {section.steps.map((step) => (
-                <div class="flex gap-4 bg-card p-6 rounded-2xl border border-border">
-                  <div class="flex-shrink-0 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-xl">
-                    {step.step}
-                  </div>
-                  <div class="flex-1">
-                    <h3 class="text-lg font-bold mb-2">{step.title}</h3>
-                    <p class="text-muted-foreground">{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+  <!-- CTA -->
+  {cta && (
+    <section class="py-16 md:py-20 bg-primary text-primary-foreground">
+      <div class="container">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-2xl md:text-4xl font-black mb-6">{cta.h2}</h2>
+          <p class="text-lg opacity-90 mb-8" style="text-wrap: pretty;">{cta.content}</p>
+          <a href={PHONE_LINK} class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors">
+            <span>התקשר לייעוץ חינם - {PHONE_DISPLAY}</span>
+          </a>
         </div>
-      </section>
-    );
+      </div>
+    </section>
+  )}
 
-    if (section.type === 'benefits') return (
-      <section class="py-12 md:py-16">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{section.h2}</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-              {section.items.map((item) => (
-                <div class="text-center p-6">
-                  <h3 class="text-lg font-bold mb-2">{item.title}</h3>
-                  <p class="text-muted-foreground text-sm">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+  <!-- Internal Links -->
+  <section class="py-12">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
+        <div class="flex flex-wrap gap-4">
+          {page.internalLinks.map((link) => (
+            <a href={link.href} class="text-primary hover:underline">{link.label}</a>
+          ))}
         </div>
-      </section>
-    );
-
-    if (section.type === 'case-studies') return (
-      <section class="py-12 md:py-16">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{section.h2}</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-              {section.items.map((cs) => (
-                <div class="bg-card rounded-2xl overflow-hidden border border-border">
-                  <div class="p-6">
-                    <h3 class="text-lg font-bold mb-2">{cs.title}</h3>
-                    <ul class="text-muted-foreground text-sm space-y-1">
-                      {cs.stats.map((stat) => (
-                        <li>• {stat}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-
-    if (section.type === 'cta') return (
-      <section class="py-16 md:py-20 bg-primary text-primary-foreground">
-        <div class="container">
-          <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-2xl md:text-4xl font-black mb-6">{section.h2}</h2>
-            <p class="text-lg opacity-90 mb-8">{section.subtitle}</p>
-            <a href={PHONE_LINK} class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors">
-              <span>התקשר לייעוץ חינם - {PHONE_DISPLAY}</span>
-            </a>
-          </div>
-        </div>
-      </section>
-    );
-
-    if (section.type === 'internal-links') return (
-      <section class="py-12">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
-            <div class="flex flex-wrap gap-4">
-              {section.items.map((link) => (
-                <a href={link.href} class="text-primary hover:underline">{link.label}</a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-
-    return null;
-  })}
+      </div>
+    </div>
+  </section>
 </ServicePageLayout>
