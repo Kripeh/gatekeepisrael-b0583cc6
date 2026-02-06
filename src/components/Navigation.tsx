@@ -21,7 +21,7 @@ const navLinks = [
   { label: "מחשבון מחיר", href: "/#calculator" },
   { label: "למה גדר חשמלית?", href: "/why-electric-fence" },
   { label: "אזורי שירות", href: "/service-areas" },
-  { label: "בלוג: חזירי בר", href: "/wild-boar-electric-fence-protection" },
+  { label: "בלוג", href: "/blog" },
 ];
  
  const Navigation = () => {

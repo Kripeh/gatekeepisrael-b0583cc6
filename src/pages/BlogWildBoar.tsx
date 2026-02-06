@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, ArrowLeft, Calendar, Clock, User, BookOpen, ChevronDown } from "lucide-react";
+import RelatedArticles from "@/components/RelatedArticles";
 import ServicePageLayout from "@/components/ServicePageLayout";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,13 +16,20 @@ const PHONE_LINK = "tel:+972508585310";
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "משבר חזירי הבר בישראל ופתרונות גידור מתקדמים ל-21",
+  "headline": "משבר חזירי הבר בישראל ופתרונות גידור מתקדמים",
   "description": "מדריך מקיף על משבר חזירי הבר בישראל - נזקים לחקלאות, סכנות בריאותיות, ופתרון הגדר החשמלית כהרתעה יעילה לבתים פרטיים ושטחים חקלאיים.",
   "image": "https://gatekeepisrael.com/og-image.png",
   "author": {
-    "@type": "Organization",
-    "name": "גייטקיפ - גדרות חשמליות",
-    "url": "https://gatekeepisrael.com"
+    "@type": "Person",
+    "name": "צוות גייטקיפ",
+    "url": "https://gatekeepisrael.com",
+    "knowsAbout": [
+      "חזירי בר",
+      "גידור חשמלי",
+      "מיגון חקלאי",
+      "הרתעת בעלי חיים",
+      "אקולוגיה עירונית"
+    ]
   },
   "publisher": {
     "@type": "Organization",
@@ -35,14 +43,17 @@ const articleSchema = {
   "dateModified": "2026-02-06",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://gatekeepisrael.com/wild-boar-electric-fence-protection"
+    "@id": "https://gatekeepisrael.com/blog/boar_history_israel"
   },
   "keywords": "חזירי בר, גדר חשמלית, נזקי חקלאות, מיגון בתים בחיפה, הרתעת חזירים, גידור חשמלי"
 };
 
 const BlogWildBoar = () => {
   const [sourcesOpen, setSourcesOpen] = useState(false);
-  const breadcrumbs = [{ label: "משבר חזירי הבר ופתרונות גידור" }];
+  const breadcrumbs = [
+    { label: "בלוג", href: "/blog" },
+    { label: "משבר חזירי הבר ופתרונות גידור" },
+  ];
 
   const sources = [
     { title: "מבקר המדינה: דו\"ח ביקורת על ניהול אוכלוסיות חזיר בר ותן ברשויות המקומיות", url: "https://www.mevaker.gov.il" },
@@ -73,7 +84,7 @@ const BlogWildBoar = () => {
       title="משבר חזירי הבר בישראל | גדר חשמלית נגד חזירי בר - גייטקיפ"
       description="מדריך מקיף על משבר חזירי הבר בישראל - נזקים לחקלאות ובתים, סכנות בריאותיות, ופתרון הגדר החשמלית כהרתעה יעילה. מיגון בתים בחיפה והצפון."
       keywords="חזירי בר, גדר חשמלית, נזקי חקלאות, מיגון בתים בחיפה, גדר חשמלית נגד חזירים, הרתעת חזירי בר, גידור חשמלי לחקלאות"
-      canonicalPath="/wild-boar-electric-fence-protection"
+      canonicalPath="/blog/boar_history_israel"
       breadcrumbs={breadcrumbs}
       schemaMarkup={articleSchema}
     >
@@ -614,14 +625,17 @@ const BlogWildBoar = () => {
             </CollapsibleContent>
           </Collapsible>
 
-          {/* Back to Home */}
+          {/* Related Articles */}
+          <RelatedArticles currentPath="/blog/boar_history_israel" />
+
+          {/* Back to Blog */}
           <div className="mt-10 text-center">
             <Link 
-              to="/" 
+              to="/blog" 
               className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>חזרה לדף הבית</span>
+              <span>חזרה לבלוג</span>
             </Link>
           </div>
         </div>

@@ -14,7 +14,7 @@ const NAV_LINKS = [
   { to: "/#calculator", label: "מחשבון מחיר" },
   { to: "/why-electric-fence", label: "למה גדר חשמלית?" },
   { to: "/service-areas", label: "אזורי שירות" },
-  { to: "/wild-boar-electric-fence-protection", label: "בלוג" },
+  { to: "/blog", label: "בלוג" },
 ];
 
 const PersistentHeader = () => {
