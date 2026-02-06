@@ -11,6 +11,7 @@ import Pricing from "./pages/Pricing";
 import WhyElectricFence from "./pages/WhyElectricFence";
 import HomeSolutions from "./pages/HomeSolutions";
 import ServiceAreas from "./pages/ServiceAreas";
+import BlogWildBoar from "./pages/BlogWildBoar";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/why-electric-fence" element={<WhyElectricFence />} />
           <Route path="/home-solutions" element={<HomeSolutions />} />
           <Route path="/service-areas" element={<ServiceAreas />} />
+          <Route path="/wild-boar-electric-fence-protection" element={<BlogWildBoar />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
