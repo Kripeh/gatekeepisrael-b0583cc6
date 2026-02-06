@@ -1,0 +1,124 @@
+---
+import ServicePageLayout from '../../layouts/ServicePageLayout.astro';
+import articleData from '../../../../public/api/pages/blog/electrical_fence_technology.json';
+
+const page = articleData;
+const PHONE_LINK = 'tel:+972508585310';
+---
+<ServicePageLayout
+  title={page.seo.title}
+  description={page.seo.description}
+  keywords={page.seo.keywords}
+  canonical={page.seo.canonical}
+  breadcrumbs={page.breadcrumbs}
+  structuredData={page.structuredData}
+>
+  <article class="py-8 md:py-12">
+    <div class="container max-w-4xl">
+      <!-- Article Header -->
+      <header class="mb-8 md:mb-12">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+          {page.h1}
+        </h1>
+        <div class="flex flex-wrap items-center gap-4 text-muted-foreground text-sm mb-6">
+          <div class="flex items-center gap-2">
+            <time datetime={page.article.datePublished}>{page.article.dateLabel}</time>
+          </div>
+          <span>זמן קריאה: {page.article.readTime}</span>
+          <span>מאת {page.article.author}</span>
+        </div>
+        <p class="text-lg md:text-xl text-muted-foreground leading-relaxed" set:html={page.article.intro} />
+      </header>
+
+      <!-- CTA Banner -->
+      <div class="bg-primary/10 border border-primary/20 rounded-2xl p-6 mb-10">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <h3 class="text-lg font-bold text-foreground mb-1">מעוניינים במערכת גידור מתקדמת?</h3>
+            <p class="text-muted-foreground">צרו קשר לקבלת ייעוץ טכני מקצועי</p>
+          </div>
+          <a href={PHONE_LINK} class="btn-cta-glow flex items-center gap-2 px-6 py-3 rounded-xl font-bold whitespace-nowrap">
+            <span>ייעוץ חינם</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Table of Contents -->
+      <nav class="bg-card border border-border rounded-xl p-6 mb-10">
+        <h2 class="text-lg font-bold mb-4">תוכן העניינים</h2>
+        <ul class="space-y-2 text-muted-foreground">
+          {page.sections.map((section) => (
+            <li><a href={`#${section.id}`} class="hover:text-primary transition-colors">{section.h2}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Article Content -->
+      <div class="prose prose-lg max-w-none">
+        {page.sections.map((section) => (
+          <section id={section.id} class="mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-foreground mb-4">{section.h2}</h2>
+            {section.content && section.content.map((paragraph) => (
+              <p class="text-muted-foreground leading-relaxed mb-4" set:html={paragraph} />
+            ))}
+            {section.subsections && section.subsections.map((sub) => (
+              <div class="mb-8">
+                <h3 class="text-xl md:text-2xl font-bold text-foreground mb-3 mt-8">{sub.h3}</h3>
+                {sub.content && sub.content.map((p) => (
+                  <p class="text-muted-foreground leading-relaxed mb-4" set:html={p} />
+                ))}
+                {sub.list && (
+                  <ul class="space-y-2 text-muted-foreground mb-4">
+                    {sub.list.map((item) => (
+                      <li class="flex items-start gap-2">
+                        <span class="text-primary mt-0.5 flex-shrink-0">•</span>
+                        <span set:html={item} />
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+            {section.table && (
+              <div class="overflow-x-auto mb-6">
+                <table class="w-full border-collapse border border-border text-sm">
+                  <thead class="bg-muted">
+                    <tr>
+                      {section.table.headers.map((h) => (
+                        <th class="border border-border p-3 text-right font-bold">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {section.table.rows.map((row, i) => (
+                      <tr class={i % 2 === 1 ? 'bg-muted/50' : ''}>
+                        {row.map((cell) => (
+                          <td class="border border-border p-3">{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </section>
+        ))}
+      </div>
+
+      <!-- Related Articles -->
+      {page.relatedArticles && (
+        <section class="mt-12 pt-8 border-t border-border">
+          <h2 class="text-2xl font-bold mb-6">מאמרים נוספים</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            {page.relatedArticles.map((article) => (
+              <a href={article.href} class="block bg-card border border-border rounded-2xl p-6 hover:border-primary/40 transition-all">
+                <h3 class="text-lg font-bold mb-2">{article.title}</h3>
+                <p class="text-muted-foreground text-sm">{article.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  </article>
+</ServicePageLayout>

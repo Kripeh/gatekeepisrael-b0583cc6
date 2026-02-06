@@ -1,0 +1,69 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  canonical: string;
+  structuredData?: object | object[];
+  noIndex?: boolean;
+}
+
+const { title, description, keywords, canonical, structuredData, noIndex = false } = Astro.props;
+
+// Normalize canonical: no trailing slash except root
+let finalCanonical = canonical;
+if (finalCanonical !== 'https://gatekeepisrael.com/' && finalCanonical.endsWith('/')) {
+  finalCanonical = finalCanonical.slice(0, -1);
+}
+---
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="robots" content={noIndex ? 'noindex, follow' : 'index, follow'} />
+    <link rel="canonical" href={finalCanonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={finalCanonical} />
+    <meta property="og:locale" content="he_IL" />
+    <meta property="og:site_name" content="גייטקיפ" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Structured Data -->
+    {structuredData && Array.isArray(structuredData) ? (
+      structuredData.map((sd) => (
+        <script type="application/ld+json" set:html={JSON.stringify(sd)} />
+      ))
+    ) : structuredData ? (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    ) : null}
+  </head>
+  <body>
+    <Header currentPath={Astro.url.pathname} />
+    <slot />
+    <Footer />
+    <FloatingWhatsApp />
+  </body>
+</html>

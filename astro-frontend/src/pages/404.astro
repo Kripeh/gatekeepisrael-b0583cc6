@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="404 - העמוד לא נמצא | גייטקיפ"
+  description="העמוד שחיפשת לא נמצא. חזרו לדף הבית של גייטקיפ."
+  canonical="https://gatekeepisrael.com/404"
+  noIndex={true}
+>
+  <main class="pt-24 md:pt-28 min-h-screen flex items-center justify-center">
+    <div class="container text-center">
+      <h1 class="text-6xl md:text-8xl font-black text-primary mb-4">404</h1>
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">העמוד לא נמצא</h2>
+      <p class="text-muted-foreground text-lg mb-8">
+        מצטערים, העמוד שחיפשת לא קיים או הועבר.
+      </p>
+      <a href="/" class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
+        חזרה לדף הבית
+      </a>
+    </div>
+  </main>
+</BaseLayout>

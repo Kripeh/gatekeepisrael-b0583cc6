@@ -1,0 +1,87 @@
+---
+import ServicePageLayout from '../layouts/ServicePageLayout.astro';
+import areasData from '../../../public/api/pages/service-areas.json';
+
+const page = areasData;
+const PHONE_LINK = 'tel:+972508585310';
+const PHONE_DISPLAY = '050-858-5310';
+---
+<ServicePageLayout
+  title={page.seo.title}
+  description={page.seo.description}
+  keywords={page.seo.keywords}
+  canonical={page.seo.canonical}
+  breadcrumbs={page.breadcrumbs}
+  structuredData={page.structuredData}
+>
+  <section class="py-12 md:py-20 bg-gradient-to-b from-primary/5 to-background">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-3xl md:text-5xl font-black mb-6" style="text-wrap: balance;">{page.h1}</h1>
+        <p class="text-lg md:text-xl text-muted-foreground mb-8" style="text-wrap: pretty;">
+          {page.sections[0].subtitle}
+        </p>
+        <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
+          <span>התקשר לייעוץ - {PHONE_DISPLAY}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {page.sections.map((section) => {
+    if (section.type === 'hero') return null;
+
+    if (section.type === 'areas' && section.regions) return (
+      <section class="py-12 md:py-16">
+        <div class="container">
+          <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{section.h2}</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {section.regions.map((region) => (
+                <div class="bg-card p-6 rounded-2xl border border-border">
+                  <h3 class="text-xl font-bold mb-3 text-primary">{region.name}</h3>
+                  <ul class="text-muted-foreground space-y-1">
+                    {region.cities.map((city) => (
+                      <li>• {city}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    if (section.type === 'cta') return (
+      <section class="py-16 md:py-20 bg-primary text-primary-foreground">
+        <div class="container">
+          <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-2xl md:text-4xl font-black mb-6">{section.h2}</h2>
+            <p class="text-lg opacity-90 mb-8">{section.subtitle}</p>
+            <a href={PHONE_LINK} class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors">
+              <span>התקשר - {PHONE_DISPLAY}</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+
+    if (section.type === 'internal-links') return (
+      <section class="py-12">
+        <div class="container">
+          <div class="max-w-4xl mx-auto">
+            <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
+            <div class="flex flex-wrap gap-4">
+              {section.items?.map((link) => (
+                <a href={link.href} class="text-primary hover:underline">{link.label}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    return null;
+  })}
+</ServicePageLayout>
