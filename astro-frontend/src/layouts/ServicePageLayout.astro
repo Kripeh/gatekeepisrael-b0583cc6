@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  canonical: string;
+  breadcrumbs: BreadcrumbItem[];
+  structuredData?: object | object[];
+}
+
+const { title, description, keywords, canonical, breadcrumbs, structuredData } = Astro.props;
+---
+<BaseLayout title={title} description={description} keywords={keywords} canonical={canonical} structuredData={structuredData}>
+  <main class="pt-24 md:pt-28">
+    <div class="container">
+      <Breadcrumbs items={breadcrumbs} currentPath={Astro.url.pathname} />
+    </div>
+    <slot />
+  </main>
+</BaseLayout>
