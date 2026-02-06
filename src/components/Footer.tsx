@@ -12,6 +12,7 @@ const footerLinks = [
   { label: "מחירון", href: "/pricing" },
   { label: "למה גדר חשמלית?", href: "/why-electric-fence" },
   { label: "אזורי שירות", href: "/service-areas" },
+  { label: "בלוג: חזירי בר", href: "/wild-boar-electric-fence-protection" },
 ];
 
 const Footer = () => {
