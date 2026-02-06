@@ -12,15 +12,16 @@ import { Menu, Phone } from "lucide-react";
  
  const PHONE_LINK = "tel:+972508585310";
  
- const navLinks = [
-   { label: "דף הבית", href: "/" },
-   { label: "התקנת גדר חשמלית", href: "/installation" },
-   { label: "גדר סולארית", href: "/solar-fence" },
-   { label: "פתרונות לבית", href: "/home-solutions" },
-   { label: "מחירון", href: "/pricing" },
-   { label: "למה גדר חשמלית?", href: "/why-electric-fence" },
-   { label: "אזורי שירות", href: "/service-areas" },
- ];
+const navLinks = [
+  { label: "דף הבית", href: "/" },
+  { label: "התקנת גדר חשמלית", href: "/installation" },
+  { label: "גדר סולארית", href: "/solar-fence" },
+  { label: "פתרונות לבית", href: "/home-solutions" },
+  { label: "מחירון", href: "/pricing" },
+  { label: "למה גדר חשמלית?", href: "/why-electric-fence" },
+  { label: "אזורי שירות", href: "/service-areas" },
+  { label: "בלוג: חזירי בר", href: "/wild-boar-electric-fence-protection" },
+];
  
  const Navigation = () => {
    const [isOpen, setIsOpen] = useState(false);
