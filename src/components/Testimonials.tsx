@@ -33,7 +33,7 @@ const Testimonials = () => {
             style={{ textWrap: 'balance' }}
           >
             השטח שלהם{" "}
-            <span className="text-primary text-glow">כבר מוגן</span>
+            <span className="text-primary">כבר מוגן</span>
           </h2>
           <p 
             className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto"
@@ -97,7 +97,7 @@ const Testimonials = () => {
           </p>
           <a 
             href={PHONE_LINK} 
-            className="btn-cta-glow inline-flex items-center gap-3 px-10 py-5 rounded-xl text-xl font-black pulse-urgent"
+            className="btn-cta-glow inline-flex items-center gap-3 px-10 py-5 rounded-xl text-xl font-black"
           >
             <Phone className="w-6 h-6 animate-bounce-subtle" />
             <span>התקשר עכשיו</span>

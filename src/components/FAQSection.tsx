@@ -44,7 +44,7 @@ const FAQSection = () => {
               style={{ textWrap: 'balance' }}
             >
               כל מה שחשוב לדעת{" "}
-              <span className="text-primary text-glow">על מיגון השטח</span>
+              <span className="text-primary">על מיגון השטח</span>
             </h2>
             <p 
               className="text-muted-foreground text-lg md:text-xl"

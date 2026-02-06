@@ -45,10 +45,10 @@ const HeroSection = () => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight mb-6"
             style={{ textWrap: 'balance' }}
           >
-            <span className="text-primary text-glow">חיות בר</span>
+            <span className="text-primary">חיות בר</span>
             {" "}מחסלות לך את החלקה?
             <br />
-            <span className="text-primary text-glow">אנחנו עוצרים אותן היום!</span>
+            <span className="text-primary">אנחנו עוצרים אותן היום!</span>
           </h1>
 
           {/* Sub-headline */}
@@ -64,7 +64,7 @@ const HeroSection = () => {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             {/* Primary CTA - Call */}
-            <a href={PHONE_LINK} className="btn-cta-glow inline-flex items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-xl text-xl md:text-2xl pulse-urgent">
+            <a href={PHONE_LINK} className="btn-cta-glow inline-flex items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-xl text-xl md:text-2xl">
               <Phone className="w-7 h-7 animate-bounce-subtle" />
               <span>התקשר עכשיו</span>
             </a>

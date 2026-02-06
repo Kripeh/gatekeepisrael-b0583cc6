@@ -44,7 +44,7 @@ const HomeHeroSection = () => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight mb-6"
             style={{ textWrap: 'balance' }}
           >
-            <span className="text-primary text-glow">חזירים בגינה?</span>
+            <span className="text-primary">חזירים בגינה?</span>
             <br />
             <span className="text-foreground">שומרים על הבית!</span>
           </h1>
@@ -64,7 +64,7 @@ const HomeHeroSection = () => {
             {/* Primary CTA - Call */}
             <a 
               href={PHONE_LINK} 
-              className="btn-cta-glow inline-flex items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-xl text-xl md:text-2xl pulse-urgent"
+              className="btn-cta-glow inline-flex items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-xl text-xl md:text-2xl"
             >
               <Phone className="w-7 h-7 animate-bounce-subtle" />
               <span>התקשר עכשיו</span>

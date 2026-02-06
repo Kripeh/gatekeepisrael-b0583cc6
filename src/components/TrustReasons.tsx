@@ -37,7 +37,7 @@ const TrustReasons = () => {
             style={{ textWrap: 'balance' }}
           >
             למה לבחור{" "}
-            <span className="text-primary text-glow">בגייטקיפ?</span>
+            <span className="text-primary">בגייטקיפ?</span>
           </h2>
           <p 
             className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto"

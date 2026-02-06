@@ -22,7 +22,7 @@ const UrgencyBanner = () => {
 
           <a
             href={PHONE_LINK}
-            className="btn-cta-glow inline-flex items-center gap-3 px-8 py-4 rounded-xl text-lg md:text-xl pulse-urgent"
+            className="btn-cta-glow inline-flex items-center gap-3 px-8 py-4 rounded-xl text-lg md:text-xl"
           >
             <Phone className="w-6 h-6 animate-bounce-subtle" />
             <span>הזמן סקר שטח - התקשר עכשיו</span>

@@ -110,7 +110,7 @@ const AboutSection = () => {
             style={{ textWrap: 'balance' }}
           >
             מגינים על הבית, שומרים על האדמה:{" "}
-            <span className="text-primary text-glow">הסיפור שמאחורי הגדר</span>
+            <span className="text-primary">הסיפור שמאחורי הגדר</span>
           </h2>
           <p 
             className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto"
