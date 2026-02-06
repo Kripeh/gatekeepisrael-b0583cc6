@@ -327,20 +327,6 @@ const HomePriceCalculator = () => {
                 
                 {/* Price Display */}
                 <div className="space-y-4">
-                  {/* Equipment Only Price */}
-                  <div className="bg-muted/50 rounded-xl p-4 text-center border border-border">
-                    <div className="flex items-center justify-center gap-2 text-muted-foreground mb-1 text-sm">
-                      <span>ציוד בלבד (ללא התקנה)</span>
-                    </div>
-                    <div className="flex items-center justify-center gap-3">
-                      <span className="text-muted-foreground line-through text-lg">
-                        ₪{priceResult.equipmentMin.toLocaleString()} - ₪{priceResult.equipmentMax.toLocaleString()}
-                      </span>
-                      <span className="text-2xl font-black text-foreground">
-                        ₪{priceResult.discountedEquipmentMin.toLocaleString()} - ₪{priceResult.discountedEquipmentMax.toLocaleString()}
-                      </span>
-                    </div>
-                  </div>
 
                   {/* With Installation Price - Featured */}
                   <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl p-5 text-center border-2 border-primary relative overflow-hidden">
@@ -352,7 +338,7 @@ const HomePriceCalculator = () => {
                     
                     <div className="flex items-center justify-center gap-2 text-primary mb-2 mt-2">
                       <Wrench className="w-5 h-5" />
-                      <span className="font-bold">כולל התקנה מקצועית</span>
+                      <span className="font-bold">מחיר סופי כולל הכל</span>
                     </div>
                     
                     {/* Original Price (crossed out) */}
@@ -365,8 +351,13 @@ const HomePriceCalculator = () => {
                       ₪{priceResult.discountedInstallationMin.toLocaleString()} - ₪{priceResult.discountedInstallationMax.toLocaleString()}
                     </p>
                     
+                    {/* What's Included */}
+                    <p className="text-sm text-muted-foreground mt-3 mb-2">
+                      חומרים + מערכת חשמלית + שערים + התקנה מקצועית
+                    </p>
+                    
                     {/* Savings Badge */}
-                    <div className="inline-flex items-center gap-1 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold mt-3">
+                    <div className="inline-flex items-center gap-1 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold">
                       <Gift className="w-4 h-4" />
                       חוסכים ₪{WINTER_DISCOUNT.toLocaleString()}!
                     </div>
