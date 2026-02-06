@@ -99,25 +99,24 @@ const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, st
 
     // Add structured data (JSON-LD) if provided
     let scriptTag: HTMLScriptElement | null = null;
-    let removedFAQScript: { element: HTMLScriptElement; content: string } | null = null;
+    let homepageFAQWasRemoved = false;
     
     if (structuredData) {
-      // If adding FAQPage, first remove the homepage FAQPage from index.html to prevent duplicates
+      // If adding FAQPage, first hide the homepage FAQPage from index.html to prevent duplicates
       const structuredDataObj = structuredData as { "@type"?: string };
       if (structuredDataObj["@type"] === "FAQPage") {
-        // Remove the homepage FAQ schema by its ID
+        // Hide the homepage FAQ schema by setting its type to empty (effectively disabling it)
         const homepageFAQ = document.getElementById("homepage-faq-schema");
         if (homepageFAQ) {
-          removedFAQScript = { 
-            element: homepageFAQ as HTMLScriptElement, 
-            content: homepageFAQ.textContent || "" 
-          };
-          homepageFAQ.remove();
+          homepageFAQ.setAttribute("data-original-type", "application/ld+json");
+          homepageFAQ.setAttribute("type", "application/json-disabled");
+          homepageFAQWasRemoved = true;
         }
       }
       
       scriptTag = document.createElement("script");
       scriptTag.type = "application/ld+json";
+      scriptTag.id = "page-specific-schema";
       scriptTag.text = JSON.stringify(structuredData);
       document.head.appendChild(scriptTag);
     }
@@ -128,12 +127,13 @@ const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, st
       if (scriptTag && scriptTag.parentNode) {
         scriptTag.parentNode.removeChild(scriptTag);
       }
-      // Restore the original FAQPage if it was removed
-      if (removedFAQScript) {
-        const restoredScript = document.createElement("script");
-        restoredScript.type = "application/ld+json";
-        restoredScript.text = removedFAQScript.content;
-        document.head.appendChild(restoredScript);
+      // Restore the homepage FAQPage if it was disabled
+      if (homepageFAQWasRemoved) {
+        const homepageFAQ = document.getElementById("homepage-faq-schema");
+        if (homepageFAQ) {
+          homepageFAQ.setAttribute("type", "application/ld+json");
+          homepageFAQ.removeAttribute("data-original-type");
+        }
       }
     };
   }, [title, description, keywords, canonicalPath, canonicalUrl, structuredData, noIndex]);
