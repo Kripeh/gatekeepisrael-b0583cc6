@@ -6,13 +6,13 @@ const page = installationData;
 const PHONE_LINK = 'tel:+972508585310';
 const PHONE_DISPLAY = '050-858-5310';
 
-const hero = page.sections.find(s => s.type === 'hero');
-const features = page.sections.find(s => s.type === 'features');
-const process = page.sections.find(s => s.type === 'process');
-const benefits = page.sections.find(s => s.type === 'benefits');
-const pricingSummary = page.sections.find(s => s.type === 'pricing-summary');
-const caseStudies = page.sections.find(s => s.type === 'case-studies');
-const cta = page.sections.find(s => s.type === 'cta');
+const hero = (page.sections as any[]).find(s => s.type === 'hero');
+const features = (page.sections as any[]).find(s => s.type === 'features');
+const process = (page.sections as any[]).find(s => s.type === 'process');
+const benefits = (page.sections as any[]).find(s => s.type === 'benefits');
+const pricingSummary = (page.sections as any[]).find(s => s.type === 'pricing-summary');
+const caseStudies = (page.sections as any[]).find(s => s.type === 'case-studies');
+const cta = (page.sections as any[]).find(s => s.type === 'cta');
 ---
 <ServicePageLayout
   title={page.seo.title}
@@ -45,11 +45,11 @@ const cta = page.sections.find(s => s.type === 'cta');
         <div class="max-w-4xl mx-auto">
           <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{features.h2}</h2>
           <div class="grid md:grid-cols-2 gap-6">
-            {features.groups.map((group) => (
+            {features.groups?.map((group: any) => (
               <div class="bg-card p-6 rounded-2xl border border-border">
                 <h3 class="text-xl font-bold mb-3">{group.h3}</h3>
                 <ul class="space-y-2 text-muted-foreground">
-                  {group.items.map((item) => (
+                  {group.items?.map((item: any) => (
                     <li class="flex items-start gap-2">
                       <span class="text-primary mt-0.5 flex-shrink-0">✓</span>
                       <span>{item}</span>
@@ -71,7 +71,7 @@ const cta = page.sections.find(s => s.type === 'cta');
         <div class="max-w-4xl mx-auto">
           <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{process.h2}</h2>
           <div class="space-y-6">
-            {process.steps.map((step) => (
+            {process.steps?.map((step: any) => (
               <div class="flex gap-4 bg-card p-6 rounded-2xl border border-border">
                 <div class="flex-shrink-0 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-xl">
                   {step.step}
@@ -98,7 +98,7 @@ const cta = page.sections.find(s => s.type === 'cta');
         <div class="max-w-4xl mx-auto">
           <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{benefits.h2}</h2>
           <div class="grid md:grid-cols-3 gap-6">
-            {benefits.items.map((item) => (
+            {benefits.items?.map((item: any) => (
               <div class="card-forest rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300">
                 <h3 class="text-lg font-bold mb-2">{item.title}</h3>
                 <p class="text-muted-foreground text-sm" style="text-wrap: pretty;">{item.description}</p>
@@ -136,12 +136,12 @@ const cta = page.sections.find(s => s.type === 'cta');
         <div class="max-w-4xl mx-auto">
           <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{caseStudies.h2}</h2>
           <div class="grid md:grid-cols-2 gap-8">
-            {caseStudies.cases.map((cs) => (
+            {caseStudies.cases?.map((cs: any) => (
               <div class="bg-card rounded-2xl overflow-hidden border border-border">
                 <div class="p-6">
                   <h3 class="text-lg font-bold mb-3">{cs.h3}</h3>
                   <ul class="text-muted-foreground text-sm space-y-2">
-                    {cs.details.map((detail) => (
+                    {cs.details?.map((detail: any) => (
                       <li class="flex items-start gap-2">
                         <span class="text-primary mt-0.5 flex-shrink-0">✓</span>
                         <span>{detail}</span>
@@ -178,7 +178,7 @@ const cta = page.sections.find(s => s.type === 'cta');
       <div class="max-w-4xl mx-auto">
         <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
         <div class="flex flex-wrap gap-4">
-          {page.internalLinks.map((link) => (
+          {page.internalLinks.map((link: any) => (
             <a href={link.href} class="text-primary hover:underline">{link.label}</a>
           ))}
         </div>

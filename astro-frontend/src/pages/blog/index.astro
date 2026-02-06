@@ -1,8 +1,8 @@
 ---
-import ServicePageLayout from '../layouts/ServicePageLayout.astro';
-import blogData from '../../../public/api/pages/blog.json';
+import ServicePageLayout from '../../layouts/ServicePageLayout.astro';
+import blogData from '../../../../public/api/pages/blog.json';
 
-const page = blogData;
+const page = blogData as any;
 ---
 <ServicePageLayout
   title={page.seo.title}
@@ -24,7 +24,7 @@ const page = blogData;
       </header>
 
       <div class="grid gap-6">
-        {page.articles.map((article) => (
+        {page.articles.map((article: any) => (
           <a href={article.href} class="group block bg-card border border-border rounded-2xl p-6 md:p-8 hover:border-primary/40 hover:shadow-lg transition-all">
             <h2 class="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors mb-3">
               {article.title}

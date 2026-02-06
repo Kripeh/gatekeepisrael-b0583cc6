@@ -2,7 +2,7 @@
 import ServicePageLayout from '../../layouts/ServicePageLayout.astro';
 import articleData from '../../../../public/api/pages/blog/electrical_fence_technology.json';
 
-const page = articleData;
+const page = articleData as any;
 const article = page.article;
 const PHONE_LINK = 'tel:+972508585310';
 ---
@@ -57,7 +57,7 @@ const PHONE_LINK = 'tel:+972508585310';
       <nav class="bg-card border border-border rounded-xl p-6 mb-10">
         <h2 class="text-lg font-bold mb-4">תוכן העניינים</h2>
         <ul class="space-y-2 text-muted-foreground">
-          {article.tableOfContents.map((toc) => (
+          {article.tableOfContents.map((toc: any) => (
             <li><a href={`#${toc.id}`} class="hover:text-primary transition-colors">{toc.label}</a></li>
           ))}
         </ul>
@@ -65,17 +65,17 @@ const PHONE_LINK = 'tel:+972508585310';
 
       <!-- Article Content -->
       <div class="prose prose-lg max-w-none">
-        {article.sections.map((section) => (
+        {article.sections.map((section: any) => (
           <section id={section.id} class="mb-12">
             <h2 class="text-2xl md:text-3xl font-bold text-foreground mb-4" style="text-wrap: balance;">{section.h2}</h2>
             
-            {section.paragraphs && section.paragraphs.map((p) => (
+            {section.paragraphs && section.paragraphs.map((p: any) => (
               <p class="text-muted-foreground leading-relaxed mb-4" style="text-wrap: pretty;">{p}</p>
             ))}
 
             {section.list && (
               <ul class="space-y-2 text-muted-foreground mb-4">
-                {section.list.map((item) => (
+                {section.list.map((item: any) => (
                   <li class="flex items-start gap-2">
                     <span class="text-primary mt-0.5 flex-shrink-0">•</span>
                     <span>{item}</span>
@@ -91,15 +91,15 @@ const PHONE_LINK = 'tel:+972508585310';
                 <table class="w-full border-collapse border border-border text-sm">
                   <thead class="bg-muted">
                     <tr>
-                      {section.table.headers.map((h) => (
+                      {section.table.headers.map((h: any) => (
                         <th class="border border-border p-3 text-right font-bold">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
-                    {section.table.rows.map((row, i) => (
+                    {section.table.rows.map((row: any, i: number) => (
                       <tr class={i % 2 === 1 ? 'bg-muted/50' : ''}>
-                        {row.map((cell) => (
+                        {row.map((cell: any) => (
                           <td class="border border-border p-3">{cell}</td>
                         ))}
                       </tr>
@@ -110,15 +110,15 @@ const PHONE_LINK = 'tel:+972508585310';
             )}
 
             {/* H3 subsections */}
-            {section.h3_items && section.h3_items.map((sub) => (
+            {section.h3_items && section.h3_items.map((sub: any) => (
               <div class="mb-8">
                 <h3 class="text-xl md:text-2xl font-bold text-foreground mb-3 mt-8">{sub.h3}</h3>
-                {sub.paragraphs && sub.paragraphs.map((p) => (
+                {sub.paragraphs && sub.paragraphs.map((p: any) => (
                   <p class="text-muted-foreground leading-relaxed mb-4" style="text-wrap: pretty;">{p}</p>
                 ))}
                 {sub.list && (
                   <ul class="space-y-2 text-muted-foreground mb-4">
-                    {sub.list.map((item) => (
+                    {sub.list.map((item: any) => (
                       <li class="flex items-start gap-2">
                         <span class="text-primary mt-0.5 flex-shrink-0">•</span>
                         <span>{item}</span>
@@ -139,7 +139,7 @@ const PHONE_LINK = 'tel:+972508585310';
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180 flex-shrink-0 mr-2"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <ul class="mt-4 space-y-2 text-sm text-muted-foreground">
-          {article.sources.map((source) => (
+          {article.sources.map((source: any) => (
             <li>
               <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{source.title}</a>
             </li>
