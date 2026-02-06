@@ -1,4 +1,5 @@
 import { Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -70,6 +71,19 @@ const FAQSection = () => {
               </AccordionItem>
             ))}
           </Accordion>
+
+          {/* Internal Links */}
+          <div className="mt-10 p-6 bg-card/50 border border-border rounded-xl">
+            <p className="text-muted-foreground leading-relaxed text-center" style={{ textWrap: 'pretty' }}>
+              למידע נוסף על{" "}
+              <Link to="/installation" className="text-primary font-semibold hover:underline">התקנת גדר חשמלית</Link>
+              {" "}מקצועית, בקרו בעמוד ההתקנה שלנו. רוצים לדעת{" "}
+              <Link to="/pricing" className="text-primary font-semibold hover:underline">כמה עולה גדר חשמלית</Link>?
+              {" "}ראו את המחירון המלא. תוהים{" "}
+              <Link to="/why-electric-fence" className="text-primary font-semibold hover:underline">למה גדר חשמלית עדיפה</Link>
+              {" "}על פתרונות אחרים? יש לנו את כל התשובות.
+            </p>
+          </div>
 
           {/* CTA */}
           <div className="text-center mt-12">
