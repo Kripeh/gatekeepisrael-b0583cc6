@@ -6,13 +6,13 @@ const page = pricingData;
 const PHONE_LINK = 'tel:+972508585310';
 const PHONE_DISPLAY = '050-858-5310';
 
-const hero = page.sections.find(s => s.type === 'hero');
-const calculatorCta = page.sections.find(s => s.type === 'calculator-cta');
-const priceTiers = page.sections.find(s => s.type === 'price-tiers');
-const factors = page.sections.find(s => s.type === 'factors');
-const included = page.sections.find(s => s.type === 'included');
-const warning = page.sections.find(s => s.type === 'warning');
-const cta = page.sections.find(s => s.type === 'cta');
+const hero = (page.sections as any[]).find(s => s.type === 'hero');
+const calculatorCta = (page.sections as any[]).find(s => s.type === 'calculator-cta');
+const priceTiers = (page.sections as any[]).find(s => s.type === 'price-tiers');
+const factors = (page.sections as any[]).find(s => s.type === 'factors');
+const included = (page.sections as any[]).find(s => s.type === 'included');
+const warning = (page.sections as any[]).find(s => s.type === 'warning');
+const cta = (page.sections as any[]).find(s => s.type === 'cta');
 ---
 <ServicePageLayout
   title={page.seo.title}
@@ -65,12 +65,12 @@ const cta = page.sections.find(s => s.type === 'cta');
           </div>
           <p class="text-sm text-muted-foreground text-center mb-8">{priceTiers.disclaimer}</p>
           <div class="grid md:grid-cols-3 gap-6">
-            {priceTiers.tiers.map((tier, i) => (
+            {priceTiers.tiers?.map((tier: any, i: number) => (
               <div class:list={['bg-card p-6 rounded-2xl border', i === 2 ? 'border-primary/50 border-2' : 'border-border']}>
                 <h3 class="font-bold text-lg mb-2">{tier.h3}</h3>
                 <p class="text-2xl font-bold text-primary mb-2">{tier.price}</p>
                 <ul class="text-sm text-muted-foreground space-y-1">
-                  {tier.features.map((f) => (
+                  {tier.features?.map((f: any) => (
                     <li class="flex items-start gap-2">
                       <span class="text-primary mt-0.5 flex-shrink-0">✓</span>
                       <span>{f}</span>
@@ -92,7 +92,7 @@ const cta = page.sections.find(s => s.type === 'cta');
         <div class="max-w-4xl mx-auto">
           <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{factors.h2}</h2>
           <div class="grid md:grid-cols-2 gap-6">
-            {factors.items.map((item) => (
+            {factors.items?.map((item: any) => (
               <div class="bg-card p-6 rounded-2xl border border-border">
                 <h3 class="font-bold text-lg mb-4">{item.h3}</h3>
                 <p class="text-muted-foreground text-sm" style="text-wrap: pretty;">{item.content}</p>
@@ -116,7 +116,7 @@ const cta = page.sections.find(s => s.type === 'cta');
                 <span class="text-primary">✓</span> חומרים
               </h3>
               <ul class="space-y-2 text-muted-foreground">
-                {included.materials.map((item) => (
+                {included.materials?.map((item: any) => (
                   <li class="flex items-start gap-2">
                     <span class="text-primary mt-0.5 flex-shrink-0">✓</span>
                     <span>{item}</span>
@@ -129,7 +129,7 @@ const cta = page.sections.find(s => s.type === 'cta');
                 <span class="text-primary">✓</span> שירות
               </h3>
               <ul class="space-y-2 text-muted-foreground">
-                {included.service.map((item) => (
+                {included.service?.map((item: any) => (
                   <li class="flex items-start gap-2">
                     <span class="text-primary mt-0.5 flex-shrink-0">✓</span>
                     <span>{item}</span>
@@ -152,7 +152,7 @@ const cta = page.sections.find(s => s.type === 'cta');
           <p class="text-lg text-muted-foreground text-center mb-8" style="text-wrap: pretty;">{warning.content}</p>
           <div class="bg-card p-6 rounded-2xl border border-destructive/20 mb-6">
             <ul class="space-y-3">
-              {warning.failures.map((failure) => (
+              {warning.failures?.map((failure: any) => (
                 <li class="flex items-start gap-3 text-muted-foreground">
                   <span class="text-destructive mt-0.5 flex-shrink-0">✗</span>
                   <span>{failure}</span>
@@ -188,7 +188,7 @@ const cta = page.sections.find(s => s.type === 'cta');
       <div class="max-w-4xl mx-auto">
         <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
         <div class="flex flex-wrap gap-4">
-          {page.internalLinks.map((link) => (
+          {page.internalLinks.map((link: any) => (
             <a href={link.href} class="text-primary hover:underline">{link.label}</a>
           ))}
         </div>

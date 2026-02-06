@@ -58,7 +58,7 @@ export default function PriceEstimatorIsland() {
       perimeter, gates, pest_types: selectedPests,
       estimated_min_price: prices.originalMin, estimated_max_price: prices.originalMax,
       lead_type: 'agricultural',
-    }).select('id').single().then(({ data, error }) => {
+    }).select('id').single().then(({ data, error }: { data: any; error: any }) => {
       if (error) logger.error('Session save error:', error);
       else if (data) setSessionId(data.id);
     });
@@ -80,7 +80,7 @@ export default function PriceEstimatorIsland() {
       if (error) throw error;
       if (sessionId && leadData) {
         supabase.from('calculator_sessions').update({ converted_to_lead: true, lead_id: leadData.id }).eq('id', sessionId)
-          .then(({ error: e }) => { if (e) logger.error('Session update error:', e); });
+          .then(({ error: e }: { error: any }) => { if (e) logger.error('Session update error:', e); });
       }
       fetch(`https://sqxmgqqtcgkjztpvhzzr.supabase.co/functions/v1/notify-new-lead`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
