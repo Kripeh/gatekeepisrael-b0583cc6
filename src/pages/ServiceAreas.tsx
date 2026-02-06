@@ -77,7 +77,7 @@
              <div className="max-w-4xl mx-auto text-center mt-8">
                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-6">
                  גייטקיפ מגיעה{" "}
-                 <span className="text-primary text-glow">לכל מקום בארץ</span>
+                 <span className="text-primary">לכל מקום בארץ</span>
                </h1>
                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
                  מהגליל ועד הנגב, אנחנו מתקינים גדרות חשמליות מקצועיות נגד חזירי בר. 

@@ -207,7 +207,7 @@ const PriceEstimator = () => {
               style={{ textWrap: 'balance' }}
             >
               קבל הערכת מחיר{" "}
-              <span className="text-primary text-glow">תוך 30 שניות</span>
+              <span className="text-primary">תוך 30 שניות</span>
             </h2>
             <p 
               className="text-muted-foreground"
@@ -341,7 +341,7 @@ const PriceEstimator = () => {
                   </p>
                   
                   {/* Discounted Price */}
-                  <p className="text-4xl md:text-5xl font-black text-primary text-glow">
+                  <p className="text-4xl md:text-5xl font-black text-primary">
                     ₪{priceResult.discountedMin.toLocaleString()} - ₪{priceResult.discountedMax.toLocaleString()}
                   </p>
                   
@@ -439,7 +439,7 @@ const PriceEstimator = () => {
                 <div className="bg-muted/50 rounded-xl p-6 text-center border border-primary/30">
                   <p className="text-foreground font-bold mb-1">מחיר סופי כולל הכל:</p>
                   <p className="text-muted-foreground text-sm mb-2">חומרים + מערכת חשמלית + שערים + התקנה</p>
-                  <p className="text-4xl md:text-5xl font-black text-primary text-glow">
+                  <p className="text-4xl md:text-5xl font-black text-primary">
                     ₪{priceResult.discountedMin.toLocaleString()} - ₪{priceResult.discountedMax.toLocaleString()}
                   </p>
                 </div>
@@ -459,7 +459,7 @@ const PriceEstimator = () => {
 
                   <a
                     href="tel:+972508585310"
-                    className="btn-cta-glow w-full flex items-center justify-center gap-3 py-5 rounded-xl text-xl font-black pulse-urgent"
+                    className="btn-cta-glow w-full flex items-center justify-center gap-3 py-5 rounded-xl text-xl font-black"
                   >
                     <Phone className="w-6 h-6 animate-bounce-subtle" />
                     <span>התקשר עכשיו</span>

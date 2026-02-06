@@ -225,7 +225,7 @@ const HomePriceCalculator = () => {
               style={{ textWrap: 'balance' }}
             >
               כמה עולה להגן על{" "}
-              <span className="text-primary text-glow">הגינה שלך?</span>
+              <span className="text-primary">הגינה שלך?</span>
             </h2>
             <p 
               className="text-muted-foreground"
@@ -347,7 +347,7 @@ const HomePriceCalculator = () => {
                     </p>
                     
                     {/* Discounted Price */}
-                    <p className="text-4xl md:text-5xl font-black text-primary text-glow">
+                    <p className="text-4xl md:text-5xl font-black text-primary">
                       ₪{priceResult.discountedInstallationMin.toLocaleString()} - ₪{priceResult.discountedInstallationMax.toLocaleString()}
                     </p>
                     
@@ -471,7 +471,7 @@ const HomePriceCalculator = () => {
                 {/* Final Price Reminder */}
                 <div className="bg-primary/10 rounded-xl p-6 text-center border-2 border-primary">
                   <p className="text-muted-foreground mb-2">המחיר שלך עם ההנחה:</p>
-                  <p className="text-3xl md:text-4xl font-black text-primary text-glow">
+                  <p className="text-3xl md:text-4xl font-black text-primary">
                     ₪{priceResult.discountedInstallationMin.toLocaleString()} - ₪{priceResult.discountedInstallationMax.toLocaleString()}
                   </p>
                   <div className="inline-flex items-center gap-1 text-primary text-sm font-bold mt-2">

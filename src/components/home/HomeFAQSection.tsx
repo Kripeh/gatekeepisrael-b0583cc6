@@ -48,7 +48,7 @@ const HomeFAQSection = () => {
               style={{ textWrap: 'balance' }}
             >
               שאלות נפוצות{" "}
-              <span className="text-primary text-glow">לבעלי בתים</span>
+              <span className="text-primary">לבעלי בתים</span>
             </h2>
             <p 
               className="text-muted-foreground text-lg md:text-xl"

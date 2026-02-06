@@ -29,7 +29,7 @@ const HomeHowItWorks = () => {
             style={{ textWrap: 'balance' }}
           >
             איך המערכת{" "}
-            <span className="text-primary text-glow">עובדת?</span>
+            <span className="text-primary">עובדת?</span>
           </h2>
           <p 
             className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto"

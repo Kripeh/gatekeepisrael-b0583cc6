@@ -29,7 +29,7 @@ const HomeWhySection = () => {
             style={{ textWrap: 'balance' }}
           >
             למה גדר חשמלית{" "}
-            <span className="text-primary text-glow">לבית?</span>
+            <span className="text-primary">לבית?</span>
           </h2>
           <p 
             className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto"

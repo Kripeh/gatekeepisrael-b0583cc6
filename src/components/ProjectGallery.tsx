@@ -60,7 +60,7 @@ const ProjectGallery = () => {
             style={{ textWrap: 'balance' }}
           >
             גייטקיפ בפעולה:{" "}
-            <span className="text-primary text-glow">פרויקטים מהשטח</span>
+            <span className="text-primary">פרויקטים מהשטח</span>
           </h2>
           <p 
             className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto"
