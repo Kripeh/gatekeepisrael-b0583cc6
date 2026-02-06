@@ -18,6 +18,7 @@ const navLinks = [
   { label: "גדר סולארית", href: "/solar-fence" },
   { label: "פתרונות לבית", href: "/home-solutions" },
   { label: "מחירון", href: "/pricing" },
+  { label: "מחשבון מחיר", href: "/#calculator" },
   { label: "למה גדר חשמלית?", href: "/why-electric-fence" },
   { label: "אזורי שירות", href: "/service-areas" },
   { label: "בלוג: חזירי בר", href: "/wild-boar-electric-fence-protection" },

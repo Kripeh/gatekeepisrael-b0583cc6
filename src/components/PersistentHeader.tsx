@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { to: "/solar-fence", label: "גדר סולארית" },
   { to: "/home-solutions", label: "פתרונות לבית" },
   { to: "/pricing", label: "מחירון" },
+  { to: "/#calculator", label: "מחשבון מחיר" },
   { to: "/why-electric-fence", label: "למה גדר חשמלית?" },
   { to: "/service-areas", label: "אזורי שירות" },
   { to: "/wild-boar-electric-fence-protection", label: "בלוג" },
