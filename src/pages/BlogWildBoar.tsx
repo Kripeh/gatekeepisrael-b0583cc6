@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
-import { Phone, ArrowLeft, Calendar, Clock, User } from "lucide-react";
+import { Phone, ArrowLeft, Calendar, Clock, User, BookOpen, ChevronDown } from "lucide-react";
 import ServicePageLayout from "@/components/ServicePageLayout";
 import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { useState } from "react";
 
 const PHONE_LINK = "tel:+972508585310";
 
@@ -35,7 +41,32 @@ const articleSchema = {
 };
 
 const BlogWildBoar = () => {
+  const [sourcesOpen, setSourcesOpen] = useState(false);
   const breadcrumbs = [{ label: "משבר חזירי הבר ופתרונות גידור" }];
+
+  const sources = [
+    { title: "מבקר המדינה: דו\"ח ביקורת על ניהול אוכלוסיות חזיר בר ותן ברשויות המקומיות", url: "https://www.mevaker.gov.il" },
+    { title: "Local Authorities' Management of Wild Boar and Jackal Populations Within Their Jurisdictions", url: "https://www.mevaker.gov.il" },
+    { title: "השפעת נבירה של חזירי בר בקרקע על חברת הצמחים העשבוניים - מחקר אקולוגי", url: null },
+    { title: "ויקיפדיה - חזירי הבר בחיפה", url: "https://he.wikipedia.org/wiki/%D7%97%D7%96%D7%99%D7%A8%D7%99_%D7%94%D7%91%D7%A8_%D7%91%D7%97%D7%99%D7%A4%D7%94" },
+    { title: "Wild Boar in the Technion Campus", url: "https://www.technion.ac.il" },
+    { title: "Farmers helpless as wild boars ravage Arava communities - The Jerusalem Post", url: "https://www.jpost.com" },
+    { title: "מועצה אזורית מטה יהודה - חיות בר", url: "https://www.mateh-yehuda.org.il" },
+    { title: "דו\"ח המדינה: 865 חזירים דוללו, 24,000 פניות התקבלו, 1.3 מ' שקל לתביעות", url: null },
+    { title: "גדר חשמלית קבועה/ניידת למניעת חדירת בע\"ח מזיקים - ציוד חקלאי גידור חשמלי", url: null },
+    { title: "השפעות ואיומים אקולוגיים - חזיר בר כמפיץ זרעים בפארק רמת הנדיב", url: null },
+    { title: "Wild boars are arriving in new neighborhoods - Haifa residents are concerned", url: null },
+    { title: "An experiment was conducted at Tivon as part of the effort to find a solution to the wild boar problem", url: null },
+    { title: "Electric Fencing for Serious Graziers - Rutherford County", url: "https://rutherford.ces.ncsu.edu" },
+    { title: "Chart of animal voltage requirements for electric fence chargers - Speedrite", url: "https://www.valleyfarmsupply.com" },
+    { title: "Electric Fence for Pigs and Hogs - Zareba Systems", url: "https://www.zarebasystems.com" },
+    { title: "How to install an electric fence that is effective against wild boars", url: null },
+    { title: "Electric Fencing for Pigs/Hogs - FenceFast Ltd.", url: "https://www.fencefast.ca" },
+    { title: "עיריית חיפה - הקמת גדר למניעת כניסה של חזירי בר לשטח הפרטי", url: "https://www.haifa.muni.il" },
+    { title: "עיריית חיפה - פרויקט לצמצום קונפליקט עם חזירי הבר בחיפה (סיכום אפריל 2025)", url: "https://www.haifa.muni.il" },
+    { title: "עיריית חיפה - פרויקט לצמצום קונפליקט עם חזירי הבר בחיפה (סיכום יולי 2025)", url: "https://www.haifa.muni.il" },
+    { title: "תחזית אוכלוסיית ישראל עד שנת 2030 - הלשכה המרכזית לסטטיסטיקה", url: "https://www.cbs.gov.il" },
+  ];
 
   return (
     <ServicePageLayout
@@ -539,6 +570,49 @@ const BlogWildBoar = () => {
               או התקשרו ישירות: 050-858-5310
             </p>
           </div>
+
+          {/* Sources Section */}
+          <Collapsible
+            open={sourcesOpen}
+            onOpenChange={setSourcesOpen}
+            className="mt-10 border border-border rounded-xl overflow-hidden"
+          >
+            <CollapsibleTrigger asChild>
+              <button className="w-full flex items-center justify-between p-4 bg-card hover:bg-muted/50 transition-colors">
+                <div className="flex items-center gap-3">
+                  <BookOpen className="w-5 h-5 text-primary" />
+                  <span className="font-bold text-foreground">מקורות ומחקרים ({sources.length})</span>
+                </div>
+                <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-200 ${sourcesOpen ? 'rotate-180' : ''}`} />
+              </button>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <div className="p-4 pt-0 bg-card">
+                <p className="text-sm text-muted-foreground mb-4">
+                  המאמר מבוסס על מחקרים אקדמיים, דו"חות רשמיים ומידע מקצועי:
+                </p>
+                <ol className="space-y-2 text-sm">
+                  {sources.map((source, index) => (
+                    <li key={index} className="flex gap-2 text-muted-foreground">
+                      <span className="font-medium text-foreground shrink-0">{index + 1}.</span>
+                      {source.url ? (
+                        <a 
+                          href={source.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline"
+                        >
+                          {source.title}
+                        </a>
+                      ) : (
+                        <span>{source.title}</span>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Back to Home */}
           <div className="mt-10 text-center">
