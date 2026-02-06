@@ -28,6 +28,7 @@ const PriceEstimator = () => {
   
   // State
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
   const [priceResult, setPriceResult] = useState<{ 
     originalMin: number; 
     originalMax: number;
@@ -63,7 +64,7 @@ const PriceEstimator = () => {
   };
 
   // Step 1: Calculate and show results
-  const handleCalculate = () => {
+  const handleCalculate = async () => {
     if (perimeter < 10 || perimeter > 10000) {
       toast.error("היקף החלקה צריך להיות בין 10 ל-10,000 מטרים");
       return;
@@ -78,6 +79,27 @@ const PriceEstimator = () => {
     }
 
     const prices = calculatePrice();
+
+    // Save calculator session for analytics (fire and forget)
+    supabase
+      .from('calculator_sessions')
+      .insert({
+        perimeter,
+        gates,
+        pest_types: selectedPests,
+        estimated_min_price: prices.originalMin,
+        estimated_max_price: prices.originalMax,
+        lead_type: 'agricultural',
+      })
+      .select('id')
+      .single()
+      .then(({ data, error }) => {
+        if (error) {
+          logger.error('Failed to save calculator session:', error);
+        } else if (data) {
+          setSessionId(data.id);
+        }
+      });
     setPriceResult(prices);
     setStep(2);
   };
@@ -106,7 +128,7 @@ const PriceEstimator = () => {
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
+      const insertResult = await supabase
         .from('leads' as any)
         .insert({
           name: name.trim(),
@@ -116,10 +138,26 @@ const PriceEstimator = () => {
           pest_types: selectedPests,
           estimated_min_price: priceResult.discountedMin,
           estimated_max_price: priceResult.discountedMax,
-        } as any);
+        } as any)
+        .select('id')
+        .single();
 
-      if (error) {
-        throw error;
+      if (insertResult.error) {
+        throw insertResult.error;
+      }
+
+      // Update calculator session to mark conversion
+      if (sessionId && insertResult.data) {
+        const leadId = (insertResult.data as unknown as { id: string }).id;
+        supabase
+          .from('calculator_sessions')
+          .update({ converted_to_lead: true, lead_id: leadId })
+          .eq('id', sessionId)
+          .then(({ error: updateError }) => {
+            if (updateError) {
+              logger.error('Failed to update calculator session:', updateError);
+            }
+          });
       }
 
       // Send Telegram notification (fire and forget)
