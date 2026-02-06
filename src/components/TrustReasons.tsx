@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Zap, Shield, Headphones } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const reasons = [
   {
@@ -93,6 +94,13 @@ const TrustReasons = () => {
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </div>
           ))}
+        </div>
+
+        {/* Internal Links */}
+        <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
+          <Link to="/installation" className="text-primary font-semibold hover:underline">תהליך ההתקנה שלנו</Link>
+          <Link to="/solar-fence" className="text-primary font-semibold hover:underline">גדר סולארית לשטחים ללא חשמל</Link>
+          <Link to="/service-areas" className="text-primary font-semibold hover:underline">אזורי שירות בכל הארץ</Link>
         </div>
       </div>
     </section>

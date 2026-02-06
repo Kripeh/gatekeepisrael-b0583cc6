@@ -276,6 +276,9 @@ const Installation = () => {
               <Link to="/solar-fence" className="text-primary hover:underline">גדר חשמלית סולארית</Link>
               <Link to="/pricing" className="text-primary hover:underline">מחירון מלא</Link>
               <Link to="/why-electric-fence" className="text-primary hover:underline">למה גדר חשמלית?</Link>
+              <Link to="/home-solutions" className="text-primary hover:underline">פתרונות לבית פרטי</Link>
+              <Link to="/service-areas" className="text-primary hover:underline">אזורי שירות</Link>
+              <Link to="/wild-boar-electric-fence-protection" className="text-primary hover:underline">מדריך חזירי בר</Link>
             </div>
           </div>
         </div>

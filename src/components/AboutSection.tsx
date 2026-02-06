@@ -1,4 +1,5 @@
 import { Zap, ShieldCheck, Sprout, GraduationCap, Wrench, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 import aboutVineyard from "@/assets/about-vineyard.jpg";
 const STORAGE_BASE = "https://sqxmgqqtcgkjztpvhzzr.supabase.co/storage/v1/object/public/images";
 
@@ -232,6 +233,12 @@ const AboutSection = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Internal Links */}
+        <div className="mt-16 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
+          <Link to="/wild-boar-electric-fence-protection" className="text-primary font-semibold hover:underline">המדריך המקיף שלנו על חזירי בר</Link>
+          <Link to="/home-solutions" className="text-primary font-semibold hover:underline">פתרונות גדר חשמלית לבית פרטי</Link>
         </div>
       </div>
     </section>

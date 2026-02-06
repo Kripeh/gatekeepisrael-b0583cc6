@@ -169,7 +169,24 @@
                </div>
              </div>
            </div>
-         </section>
+      </section>
+
+        {/* Internal Links */}
+        <section className="py-12">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-lg font-bold mb-4">קישורים נוספים:</h3>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/installation" className="text-primary hover:underline">התקנת גדר חשמלית</Link>
+                <Link to="/solar-fence" className="text-primary hover:underline">גדר סולארית</Link>
+                <Link to="/pricing" className="text-primary hover:underline">מחירון מלא</Link>
+                <Link to="/why-electric-fence" className="text-primary hover:underline">למה גדר חשמלית?</Link>
+                <Link to="/home-solutions" className="text-primary hover:underline">פתרונות לבית פרטי</Link>
+                <Link to="/wild-boar-electric-fence-protection" className="text-primary hover:underline">מדריך חזירי בר</Link>
+              </div>
+            </div>
+          </div>
+        </section>
        </main>
  
        <Footer />
