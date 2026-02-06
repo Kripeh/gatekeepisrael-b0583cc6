@@ -5,101 +5,162 @@ import homeData from '../../../public/api/pages/home-solutions.json';
 const page = homeData;
 const PHONE_LINK = 'tel:+972508585310';
 const PHONE_DISPLAY = '050-858-5310';
+
+const hero = page.sections.find(s => s.type === 'hero')!;
+const benefits = page.sections.find(s => s.type === 'benefits')!;
+const calculator = page.sections.find(s => s.type === 'calculator')!;
+const howItWorks = page.sections.find(s => s.type === 'how-it-works')!;
+const faq = page.sections.find(s => s.type === 'faq')!;
 ---
 <ServicePageLayout
   title={page.seo.title}
   description={page.seo.description}
   keywords={page.seo.keywords}
   canonical={page.seo.canonical}
-  breadcrumbs={page.breadcrumbs}
+  breadcrumbs={[{ label: "פתרונות לבית" }]}
   structuredData={page.structuredData}
 >
+  <!-- Hero -->
   <section class="py-12 md:py-20 bg-gradient-to-b from-primary/5 to-background">
     <div class="container">
       <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
+          <span class="font-bold">{hero.badge}</span>
+        </div>
         <h1 class="text-3xl md:text-5xl font-black mb-6" style="text-wrap: balance;">{page.h1}</h1>
-        <p class="text-lg md:text-xl text-muted-foreground mb-8" style="text-wrap: pretty;">
-          {page.sections[0].subtitle}
+        <p class="text-lg md:text-xl text-muted-foreground mb-4" style="text-wrap: pretty;">
+          {hero.subtitle}
         </p>
+        <p class="text-sm text-muted-foreground mb-8">{hero.trustLine}</p>
         <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span>התקשר לייעוץ - {PHONE_DISPLAY}</span>
         </a>
       </div>
     </div>
   </section>
 
-  {page.sections.map((section) => {
-    if (section.type === 'hero') return null;
-
-    if ((section.type === 'features' || section.type === 'benefits' || section.type === 'solutions') && section.items) return (
-      <section class="py-12 md:py-16">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{section.h2}</h2>
-            {section.subtitle && <p class="text-center text-muted-foreground mb-8">{section.subtitle}</p>}
-            <div class="grid md:grid-cols-2 gap-6">
-              {section.items.map((item) => (
-                <div class="bg-card p-6 rounded-2xl border border-border">
-                  <h3 class="text-xl font-bold mb-3">{item.title}</h3>
-                  <p class="text-muted-foreground">{item.description}</p>
-                </div>
-              ))}
+  <!-- Benefits -->
+  <section class="py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-center">{benefits.h2}</h2>
+        <p class="text-center text-muted-foreground mb-8" style="text-wrap: pretty;">{benefits.subtitle}</p>
+        <div class="grid md:grid-cols-3 gap-6">
+          {benefits.items.map((item) => (
+            <div class="card-forest rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300">
+              <h3 class="text-xl font-bold mb-3">{item.title}</h3>
+              <p class="text-muted-foreground" style="text-wrap: pretty;">{item.description}</p>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
-    );
+      </div>
+    </div>
+  </section>
 
-    if (section.type === 'faq' && section.items) return (
-      <section class="py-12 md:py-16 bg-muted/30">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{section.h2}</h2>
-            <div class="space-y-4">
-              {section.items.map((item) => (
-                <details class="bg-card rounded-2xl border border-border p-6 group">
-                  <summary class="text-lg font-bold cursor-pointer list-none flex items-center justify-between">
-                    <span>{item.question}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180 flex-shrink-0 mr-2"><path d="m6 9 6 6 6-6"/></svg>
-                  </summary>
-                  <p class="text-muted-foreground mt-4 leading-relaxed">{item.answer}</p>
-                </details>
-              ))}
+  <!-- Calculator (React Island placeholder) -->
+  <section id="calculator" class="py-16 md:py-24 bg-background">
+    <div class="container">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+            <span class="font-bold">מחשבון מחיר ביתי</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-black text-foreground mb-3" style="text-wrap: balance;">
+            {calculator.h2}
+          </h2>
+          <p class="text-muted-foreground" style="text-wrap: pretty;">{calculator.subtitle}</p>
+        </div>
+        <!-- React Island: HomePriceCalculator will mount here -->
+        <div id="home-calculator-root" class="card-forest rounded-2xl p-6 md:p-8">
+          <noscript>
+            <div class="text-center py-8">
+              <p class="text-muted-foreground mb-4">מחשבון מחירים אינטראקטיבי - יש צורך ב-JavaScript</p>
+              <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
+                <span>התקשר לקבלת הצעת מחיר</span>
+              </a>
             </div>
-          </div>
-        </div>
-      </section>
-    );
-
-    if (section.type === 'cta') return (
-      <section class="py-16 md:py-20 bg-primary text-primary-foreground">
-        <div class="container">
-          <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-2xl md:text-4xl font-black mb-6">{section.h2}</h2>
-            <p class="text-lg opacity-90 mb-8">{section.subtitle}</p>
-            <a href={PHONE_LINK} class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors">
-              <span>התקשר - {PHONE_DISPLAY}</span>
+          </noscript>
+          <div class="text-center py-8">
+            <p class="text-muted-foreground mb-4">טוען מחשבון מחירים...</p>
+            <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
+              <span>התקשר לקבלת הצעת מחיר</span>
             </a>
           </div>
         </div>
-      </section>
-    );
+      </div>
+    </div>
+  </section>
 
-    if (section.type === 'internal-links') return (
-      <section class="py-12">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
-            <div class="flex flex-wrap gap-4">
-              {section.items?.map((link) => (
-                <a href={link.href} class="text-primary hover:underline">{link.label}</a>
-              ))}
+  <!-- How It Works -->
+  <section class="py-12 md:py-16 bg-muted/30">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-center">{howItWorks.h2}</h2>
+        <p class="text-center text-muted-foreground mb-8">{howItWorks.subtitle}</p>
+        <div class="space-y-6">
+          {howItWorks.steps.map((step, i) => (
+            <div class="flex gap-4 bg-card p-6 rounded-2xl border border-border">
+              <div class="flex-shrink-0 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-xl">
+                {i + 1}
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-bold mb-2">{step.title}</h3>
+                <p class="text-muted-foreground" style="text-wrap: pretty;">{step.description}</p>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
-    );
+      </div>
+    </div>
+  </section>
 
-    return null;
-  })}
+  <!-- FAQ -->
+  <section class="py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-center">{faq.h2}</h2>
+        <p class="text-center text-muted-foreground mb-8">{faq.subtitle}</p>
+        <div class="space-y-4">
+          {faq.items.map((item) => (
+            <details class="card-forest rounded-xl px-6 group">
+              <summary class="text-right text-lg font-bold cursor-pointer list-none flex items-center justify-between text-foreground hover:text-primary py-6">
+                <span style="text-wrap: balance;">{item.question}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180 flex-shrink-0 mr-2"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <p class="text-muted-foreground leading-relaxed pb-6" style="text-wrap: pretty;">{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-20 bg-primary text-primary-foreground">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl md:text-4xl font-black mb-6">מוכנים להגן על הגינה?</h2>
+        <p class="text-lg opacity-90 mb-8">התקשרו עכשיו לייעוץ חינם ולהצעת מחיר מותאמת</p>
+        <a href={PHONE_LINK} class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors">
+          <span>התקשר - {PHONE_DISPLAY}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal Links -->
+  <section class="py-12">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
+        <div class="flex flex-wrap gap-4">
+          {page.internalLinks.map((link) => (
+            <a href={link.href} class="text-primary hover:underline">{link.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 </ServicePageLayout>
