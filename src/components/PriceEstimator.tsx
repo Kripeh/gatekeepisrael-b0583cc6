@@ -332,7 +332,8 @@ const PriceEstimator = () => {
 
                 {/* Price Display */}
                 <div className="bg-muted/50 rounded-xl p-6 text-center border border-primary/30">
-                  <p className="text-muted-foreground mb-2">הערכת מחיר לפרויקט שלך:</p>
+                  <p className="text-foreground font-bold mb-1">מחיר סופי כולל הכל:</p>
+                  <p className="text-muted-foreground text-sm mb-3">חומרים + מערכת חשמלית + שערים + התקנה מקצועית</p>
                   
                   {/* Original Price - Crossed Out */}
                   <p className="text-xl text-muted-foreground line-through mb-1">
@@ -436,7 +437,8 @@ const PriceEstimator = () => {
 
                 {/* Final Price */}
                 <div className="bg-muted/50 rounded-xl p-6 text-center border border-primary/30">
-                  <p className="text-muted-foreground mb-2">המחיר המשוער שלך (כולל הנחה):</p>
+                  <p className="text-foreground font-bold mb-1">מחיר סופי כולל הכל:</p>
+                  <p className="text-muted-foreground text-sm mb-2">חומרים + מערכת חשמלית + שערים + התקנה</p>
                   <p className="text-4xl md:text-5xl font-black text-primary text-glow">
                     ₪{priceResult.discountedMin.toLocaleString()} - ₪{priceResult.discountedMax.toLocaleString()}
                   </p>
