@@ -1,136 +1,99 @@
+# Astro SSG Migration Plan — Full SEO + Design Parity
 
+## Architecture Overview
 
-## העברת מאמרים לנתיבי בלוג חדשים + הקמת עמוד בלוג
-
-### סקירה כללית
-העברת המאמר הקיים מ-`/wild-boar-electric-fence-protection` ל-`/blog/boar_history_israel`, שינוי נתיב המאמר הטכני החדש ל-`/blog/electrical_fence_technology`, והקמת עמוד אינדקס בלוג ב-`/blog`.
-
-**חשוב:** מכיוון שהנתיב הישן `/wild-boar-electric-fence-protection` כבר נמצא בסייטמאפ ואולי אינדקס של גוגל, נוסיף redirect (301) דרך React כדי לשמור על ה-SEO equity.
-
----
-
-### שלב 1: הקמת עמוד אינדקס בלוג (`/blog`)
-
-יצירת עמוד חדש שמציג את כל המאמרים בכרטיסי תצוגה מקדימה:
-- כותרת H1: "בלוג גייטקיפ | מדריכים מקצועיים לגידור חשמלי"
-- כרטיס לכל מאמר עם: כותרת, תיאור קצר, תאריך, זמן קריאה, ולינק "קרא עוד"
-- SEOHead עם canonical, OG tags
-- Breadcrumbs: דף הבית > בלוג
-- JSON-LD schema מסוג CollectionPage
-
-**קובץ חדש:** `src/pages/Blog.tsx`
-
----
-
-### שלב 2: יצירת המאמר הטכני החדש (`/blog/electrical_fence_technology`)
-
-מאמר מלא המבוסס על המסמך שהועלה - "ארכיטקטורה הנדסית ומפרט טכנולוגי". יכלול:
-- H1 ממוקד מילות מפתח
-- סקציות H2/H3 היררכיות (פיזיקת Energizer, טכנולוגיית Ultra-Low Impedance, מערכת סולארית, הארקה, בטיחות)
-- תוכן עניינים עם anchor links
-- טבלאות אינטראקטיביות (פרמטרים טכניים, השוואת מערכות)
-- Internal links לדפי שירות
-- מקורות בתחתית (Collapsible dropdown)
-- רכיב "קריאה נוספת" (RelatedArticles)
-- Article JSON-LD + Person author + knowsAbout
-- Breadcrumbs: דף הבית > בלוג > ארכיטקטורה הנדסית
-- Canonical: `https://gatekeepisrael.com/blog/electrical_fence_technology`
-
-**קובץ חדש:** `src/pages/BlogTechnicalFencing.tsx`
-
----
-
-### שלב 3: רכיב "קריאה נוספת" משותף
-
-רכיב React שמציג מאמרים קשורים בסוף כל מאמר בלוג - כדי ליצור Content Cluster ולהאריך זמן שהייה.
-
-**קובץ חדש:** `src/components/RelatedArticles.tsx`
-
----
-
-### שלב 4: עדכון המאמר הקיים (BlogWildBoar)
-
-- שינוי canonical מ-`/wild-boar-electric-fence-protection` ל-`/blog/boar_history_israel`
-- עדכון Breadcrumbs: דף הבית > בלוג > משבר חזירי הבר
-- עדכון Article schema עם `mainEntityOfPage` לנתיב החדש
-- עדכון Article schema עם Person author + knowsAbout
-- הוספת רכיב RelatedArticles בתחתית
-- עדכון כל הלינקים הפנימיים בתוך המאמר
-
----
-
-### שלב 5: עדכון Routing ב-App.tsx
-
-- הוספת נתיבים: `/blog`, `/blog/electrical_fence_technology`, `/blog/boar_history_israel`
-- הוספת redirect מ-`/wild-boar-electric-fence-protection` ל-`/blog/boar_history_israel` (באמצעות `Navigate` של React Router) לשמירה על SEO equity מהאינדוקס הקיים
-- הסרת הנתיב הישן כ-route עצמאי
-
----
-
-### שלב 6: עדכון ניווט (כל הנקודות)
-
-| קובץ | שינוי |
-|---|---|
-| `src/components/PersistentHeader.tsx` | שינוי לינק "בלוג" ל-`/blog` |
-| `src/components/Navigation.tsx` | שינוי "בלוג: חזירי בר" ל-"בלוג" עם href `/blog` |
-| `src/components/Footer.tsx` | שינוי לינק הבלוג ל-`/blog` |
-
----
-
-### שלב 7: עדכון SSR Fallback ב-index.html
-
-- עדכון לינק הבלוג ב-nav הסטטי מ-`/wild-boar-electric-fence-protection` ל-`/blog`
-- עדכון לינק הבלוג בסקציית "השירותים שלנו" ל-`/blog`
-- עדכון SiteNavigationElement schema ל-`/blog`
-
----
-
-### שלב 8: עדכון Sitemap
-
-- הסרת `/wild-boar-electric-fence-protection` 
-- הוספת `/blog` (priority 0.8)
-- הוספת `/blog/boar_history_israel` (priority 0.8)
-- הוספת `/blog/electrical_fence_technology` (priority 0.8)
-
----
-
-### פירוט טכני
-
-**קבצים חדשים (3):**
-
-| קובץ | תיאור |
-|---|---|
-| `src/pages/Blog.tsx` | עמוד אינדקס הבלוג עם כרטיסי תצוגה מקדימה |
-| `src/pages/BlogTechnicalFencing.tsx` | המאמר הטכני החדש |
-| `src/components/RelatedArticles.tsx` | רכיב "קריאה נוספת" משותף |
-
-**קבצים שישתנו (7):**
-
-| קובץ | שינוי |
-|---|---|
-| `src/App.tsx` | הוספת routes חדשים + redirect מהנתיב הישן |
-| `src/pages/BlogWildBoar.tsx` | עדכון canonical, breadcrumbs, schema, הוספת RelatedArticles |
-| `src/components/PersistentHeader.tsx` | לינק בלוג ל-`/blog` |
-| `src/components/Navigation.tsx` | לינק בלוג ל-`/blog` |
-| `src/components/Footer.tsx` | לינק בלוג ל-`/blog` |
-| `index.html` | עדכון SSR nav + SiteNavigationElement schema |
-| `public/sitemap.xml` | החלפת URL ישן + הוספת 3 URLs חדשים |
-
-**נתיבים סופיים:**
-
-```text
-/blog                            -> עמוד אינדקס הבלוג
-/blog/boar_history_israel        -> המאמר על חזירי בר (הועבר)
-/blog/electrical_fence_technology -> המאמר הטכני החדש
-/wild-boar-electric-fence-protection -> redirect 301 ל-/blog/boar_history_israel
+```
+JSON Files (CMS) → Astro SSG → Static HTML + React Islands
 ```
 
-**עקרונות SEO:**
-- Redirect מהנתיב הישן לשמירה על link equity
-- Canonical tags מדויקים בכל דף
-- Article schema עם Person author + knowsAbout
-- Breadcrumbs מקושרים ל-BreadcrumbList schema
-- Internal linking בין כל המאמרים (Content Cluster)
-- מקורות מלאים בתחתית כל מאמר
-- טבלה השוואתית אינטראקטיבית במאמר הטכני
+- **Static HTML**: All content (headings, text, FAQs, lists) rendered at build time
+- **React Islands**: Only interactive elements (calculators, dynamic testimonials)
+- **CSS**: Shared design system via `global.css` + `tailwind.config.mjs`
 
+---
+
+## Component Classification
+
+### ✅ STATIC (Astro-only, pure HTML at build)
+
+| Component | Source | Notes |
+|-----------|--------|-------|
+| Header (desktop nav) | `Header.astro` | ✅ Done - vanilla JS for mobile drawer |
+| Footer | `Footer.astro` | ✅ Done |
+| Breadcrumbs | `Breadcrumbs.astro` | ✅ Done |
+| FloatingWhatsApp | `FloatingWhatsApp.astro` | ✅ Done |
+| HeroSection (agri) | `index.json` | Static HTML, parallax as optional CSS/JS |
+| HomeHeroSection (residential) | `home-solutions.json` | Static HTML |
+| TrustReasons | `index.json → trust` | Static cards, CSS hover effects |
+| AboutSection | `index.json → about` | Static team/values/story/gallery |
+| UrgencyBanner | `index.json → urgency` | Static CTA banner |
+| HomeWhySection | `home-solutions.json → benefits` | Static benefit cards |
+| HomeHowItWorks | `home-solutions.json → how-it-works` | Static step cards |
+| All service pages | Respective JSON files | Static HTML content |
+| Blog articles | Blog JSON files | Static HTML content |
+| FAQ sections | All JSON files | Static `<details>` elements |
+| Internal links | All JSON files | Static anchor links |
+
+### ⚛️ REACT ISLANDS (client-side interactive)
+
+| Component | Why React? | Hydration |
+|-----------|------------|-----------|
+| PriceEstimator | Supabase writes, multi-step form, validation, toast | `client:visible` |
+| HomePriceCalculator | Same for residential | `client:visible` |
+| Testimonials | Fetches random data from Supabase | `client:visible` |
+
+### 🔀 HYBRID (Static content + CSS animation)
+
+| Element | Static Part | Enhancement |
+|---------|------------|-------------|
+| Hero parallax | Static `<img>` + content | Vanilla JS scroll listener |
+| Trust card hover | All content always visible | CSS `transition-all duration-500` |
+| Phone bounce icon | Static SVG icon | CSS `animate-bounce-subtle` |
+| Mobile nav drawer | Static nav in HTML | Vanilla JS toggle |
+| FAQ chevron | Static `<details><summary>` | CSS `group-open:rotate-180` |
+
+---
+
+## Page Implementation Status
+
+| Page | Status | React Islands |
+|------|--------|---------------|
+| `/` (agri home) | ⬜ Needs full redesign | PriceEstimator, Testimonials |
+| `/home-solutions` | ⬜ Needs full redesign | HomePriceCalculator |
+| `/pricing` | ⬜ Needs full redesign | None |
+| `/installation` | ⬜ Needs full redesign | None |
+| `/solar-fence` | ⬜ Needs full redesign | None |
+| `/why-electric-fence` | ⬜ Needs full redesign | Testimonials (optional) |
+| `/service-areas` | ✅ Done | None |
+| `/blog` | ⬜ Needs full redesign | None |
+| `/blog/boar_history_israel` | ⬜ Basic | None |
+| `/blog/electrical_fence_technology` | ⬜ Basic | None |
+| `/404` | ✅ Done | None |
+
+---
+
+## SEO Checklist (per page)
+
+- [x] `<title>` from JSON `seo.title`
+- [x] `<meta description>` from JSON `seo.description`
+- [x] `<link rel="canonical">` no trailing slash
+- [x] Open Graph + Twitter tags
+- [x] JSON-LD structured data
+- [x] Single `<h1>` per page
+- [x] All FAQ Q&A in raw HTML source
+- [x] All internal links in HTML source
+- [x] Semantic HTML elements
+
+## Design Parity Checklist
+
+- [x] Dark Forest Green theme (HSL variables)
+- [x] Heebo font family
+- [x] RTL direction
+- [x] `btn-cta-glow` gradient buttons
+- [x] `card-forest` card styling
+- [x] `animate-bounce-subtle` phone animation
+- [x] Trust card hover/expand effects
+- [x] Gallery grid with hover zoom
+- [x] Urgency banner styling
+- [x] FAQ details/summary with chevron
+- [x] Responsive grids
