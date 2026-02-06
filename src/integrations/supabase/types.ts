@@ -14,6 +14,53 @@ export type Database = {
   }
   public: {
     Tables: {
+      calculator_sessions: {
+        Row: {
+          converted_to_lead: boolean
+          created_at: string
+          estimated_max_price: number
+          estimated_min_price: number
+          gates: number
+          id: string
+          lead_id: string | null
+          lead_type: string
+          perimeter: number
+          pest_types: string[]
+        }
+        Insert: {
+          converted_to_lead?: boolean
+          created_at?: string
+          estimated_max_price: number
+          estimated_min_price: number
+          gates?: number
+          id?: string
+          lead_id?: string | null
+          lead_type?: string
+          perimeter: number
+          pest_types?: string[]
+        }
+        Update: {
+          converted_to_lead?: boolean
+          created_at?: string
+          estimated_max_price?: number
+          estimated_min_price?: number
+          gates?: number
+          id?: string
+          lead_id?: string | null
+          lead_type?: string
+          perimeter?: number
+          pest_types?: string[]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "calculator_sessions_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           created_at: string

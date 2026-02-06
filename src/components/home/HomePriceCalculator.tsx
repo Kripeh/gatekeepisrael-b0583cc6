@@ -25,6 +25,7 @@ const HomePriceCalculator = () => {
   const [gates, setGates] = useState<number>(1);
   const [selectedPests, setSelectedPests] = useState<PestType[]>(["boars"]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
   const [priceResult, setPriceResult] = useState<{
     equipmentMin: number;
     equipmentMax: number;
@@ -75,7 +76,7 @@ const HomePriceCalculator = () => {
     return phoneRegex.test(phoneNumber.replace(/[-\s]/g, ''));
   };
 
-  const handleCalculate = () => {
+  const handleCalculate = async () => {
     // Validate parameters
     if (perimeter < 10 || perimeter > 1000) {
       toast.error("היקף החצר צריך להיות בין 10 ל-1,000 מטרים");
@@ -92,6 +93,28 @@ const HomePriceCalculator = () => {
 
     const prices = calculatePrice();
     setPriceResult(prices);
+
+    // Save calculator session for analytics (fire and forget)
+    supabase
+      .from('calculator_sessions')
+      .insert({
+        perimeter,
+        gates,
+        pest_types: selectedPests,
+        estimated_min_price: prices.equipmentMin,
+        estimated_max_price: prices.equipmentMax,
+        lead_type: 'residential',
+      })
+      .select('id')
+      .single()
+      .then(({ data, error }) => {
+        if (error) {
+          logger.error('Failed to save calculator session:', error);
+        } else if (data) {
+          setSessionId(data.id);
+        }
+      });
+
     setStep("details");
   };
 
@@ -119,7 +142,7 @@ const HomePriceCalculator = () => {
     const prices = priceResult || calculatePrice();
     
     try {
-      const { error } = await supabase
+      const { data: leadData, error } = await supabase
         .from('leads')
         .insert({
           name: name.trim(),
@@ -130,10 +153,25 @@ const HomePriceCalculator = () => {
           estimated_min_price: prices.discountedEquipmentMin,
           estimated_max_price: prices.discountedEquipmentMax,
           lead_type: 'residential',
-        });
+        })
+        .select('id')
+        .single();
 
       if (error) {
         throw error;
+      }
+
+      // Update calculator session to mark conversion
+      if (sessionId && leadData) {
+        supabase
+          .from('calculator_sessions')
+          .update({ converted_to_lead: true, lead_id: leadData.id })
+          .eq('id', sessionId)
+          .then(({ error: updateError }) => {
+            if (updateError) {
+              logger.error('Failed to update calculator session:', updateError);
+            }
+          });
       }
 
       // Send Telegram notification (fire and forget)
@@ -169,6 +207,7 @@ const HomePriceCalculator = () => {
     setName("");
     setPhone("");
     setPriceResult(null);
+    setSessionId(null);
   };
 
   return (
