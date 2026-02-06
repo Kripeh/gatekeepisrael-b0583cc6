@@ -43,7 +43,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gatekeepisrael.com/wild-boar-electric-fence-protection</loc>
+    <loc>https://gatekeepisrael.com/blog</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gatekeepisrael.com/blog/boar_history_israel</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gatekeepisrael.com/blog/electrical_fence_technology</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
