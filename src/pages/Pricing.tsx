@@ -56,6 +56,29 @@ const Pricing = () => {
         </div>
       </section>
 
+      {/* Calculator CTA */}
+      <section className="py-8 md:py-12">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <Link
+              to="/#calculator"
+              className="block bg-primary/10 hover:bg-primary/15 border border-primary/30 rounded-2xl p-6 md:p-8 text-center transition-colors group"
+            >
+              <Calculator className="w-8 h-8 text-primary mx-auto mb-3" />
+              <h2 className="text-xl md:text-2xl font-bold mb-2">
+                רוצה לבדוק כמה זה יעלה בשטח שלך?
+              </h2>
+              <p className="text-muted-foreground mb-4">
+                השתמש במחשבון המחירים שלנו לקבלת הערכה מיידית
+              </p>
+              <span className="inline-flex items-center gap-2 text-primary font-bold group-hover:underline">
+                למחשבון המחירים ←
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Price Ranges */}
       <section className="py-12 md:py-16">
         <div className="container">
