@@ -5,130 +5,88 @@ import whyData from '../../../public/api/pages/why-electric-fence.json';
 const page = whyData;
 const PHONE_LINK = 'tel:+972508585310';
 const PHONE_DISPLAY = '050-858-5310';
+const problem = page.sections.find(s => s.type === 'problem');
+const comparison = page.sections.find(s => s.type === 'comparison');
+const howItWorks = page.sections.find(s => s.type === 'how-it-works');
+const stats = page.sections.find(s => s.type === 'stats');
+const maintenance = page.sections.find(s => s.type === 'maintenance');
+const safety = page.sections.find(s => s.type === 'safety');
+const cta = page.sections.find(s => s.type === 'cta');
 ---
-<ServicePageLayout
-  title={page.seo.title}
-  description={page.seo.description}
-  keywords={page.seo.keywords}
-  canonical={page.seo.canonical}
-  breadcrumbs={page.breadcrumbs}
-  structuredData={page.structuredData}
->
+<ServicePageLayout title={page.seo.title} description={page.seo.description} keywords={page.seo.keywords} canonical={page.seo.canonical} breadcrumbs={page.breadcrumbs} structuredData={page.structuredData}>
   <section class="py-12 md:py-20 bg-gradient-to-b from-primary/5 to-background">
-    <div class="container">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-3xl md:text-5xl font-black mb-6" style="text-wrap: balance;">{page.h1}</h1>
-        <p class="text-lg md:text-xl text-muted-foreground mb-8" style="text-wrap: pretty;">
-          {page.sections[0].subtitle}
-        </p>
-        <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
-          <span>התקשר לייעוץ - {PHONE_DISPLAY}</span>
-        </a>
+    <div class="container"><div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-3xl md:text-5xl font-black mb-6" style="text-wrap: balance;">{page.h1}</h1>
+      <p class="text-lg md:text-xl text-muted-foreground mb-8" style="text-wrap: pretty;">{page.sections[0].subtitle}</p>
+    </div></div>
+  </section>
+  {problem && <section class="py-12 md:py-16"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">{problem.h2}</h2>
+    <p class="text-lg text-muted-foreground mb-8 text-center leading-relaxed" style="text-wrap: pretty;">{problem.content}</p>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-destructive/5 border border-destructive/20 rounded-2xl p-6">
+        <h3 class="font-bold text-lg mb-4 text-destructive">נזקים נפוצים</h3>
+        <ul class="space-y-2 text-muted-foreground">{problem.damages.map((d) => (<li class="flex items-start gap-2"><span class="text-destructive mt-0.5 flex-shrink-0">✗</span><span>{d}</span></li>))}</ul>
+      </div>
+      <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6">
+        <h3 class="font-bold text-lg mb-4 text-primary">אזורים מושפעים</h3>
+        <ul class="space-y-2 text-muted-foreground">{problem.affectedAreas.map((area) => (<li class="flex items-start gap-2"><span class="text-primary mt-0.5 flex-shrink-0">📍</span><span>{area}</span></li>))}</ul>
       </div>
     </div>
-  </section>
-
-  {page.sections.map((section) => {
-    if (section.type === 'hero') return null;
-
-    if (section.type === 'comparison' && section.table) return (
-      <section class="py-12 md:py-16">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{section.h2}</h2>
-            <div class="overflow-x-auto">
-              <table class="w-full border-collapse border border-border text-sm">
-                <thead class="bg-muted">
-                  <tr>
-                    {section.table.headers.map((h) => (
-                      <th class="border border-border p-3 text-right font-bold">{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {section.table.rows.map((row, i) => (
-                    <tr class={i % 2 === 1 ? 'bg-muted/50' : ''}>
-                      {row.map((cell) => (
-                        <td class="border border-border p-3">{cell}</td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-
-    if ((section.type === 'advantages' || section.type === 'benefits' || section.type === 'features') && section.items) return (
-      <section class="py-12 md:py-16 bg-muted/30">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{section.h2}</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-              {section.items.map((item) => (
-                <div class="bg-card p-6 rounded-2xl border border-border">
-                  <h3 class="text-xl font-bold mb-3">{item.title}</h3>
-                  <p class="text-muted-foreground">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-
-    if (section.type === 'faq' && section.items) return (
-      <section class="py-12 md:py-16">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{section.h2}</h2>
-            <div class="space-y-4">
-              {section.items.map((item) => (
-                <details class="bg-card rounded-2xl border border-border p-6 group">
-                  <summary class="text-lg font-bold cursor-pointer list-none flex items-center justify-between">
-                    <span>{item.question}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180 flex-shrink-0 mr-2"><path d="m6 9 6 6 6-6"/></svg>
-                  </summary>
-                  <p class="text-muted-foreground mt-4 leading-relaxed">{item.answer}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-
-    if (section.type === 'cta') return (
-      <section class="py-16 md:py-20 bg-primary text-primary-foreground">
-        <div class="container">
-          <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-2xl md:text-4xl font-black mb-6">{section.h2}</h2>
-            <p class="text-lg opacity-90 mb-8">{section.subtitle}</p>
-            <a href={PHONE_LINK} class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors">
-              <span>התקשר - {PHONE_DISPLAY}</span>
-            </a>
-          </div>
-        </div>
-      </section>
-    );
-
-    if (section.type === 'internal-links') return (
-      <section class="py-12">
-        <div class="container">
-          <div class="max-w-4xl mx-auto">
-            <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
-            <div class="flex flex-wrap gap-4">
-              {section.items?.map((link) => (
-                <a href={link.href} class="text-primary hover:underline">{link.label}</a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-
-    return null;
-  })}
+  </div></div></section>}
+  {comparison && <section class="py-12 md:py-16 bg-muted/30"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{comparison.h2}</h2>
+    <div class="grid md:grid-cols-2 gap-6">{comparison.methods.map((method) => (
+      <div class="bg-card p-6 rounded-2xl border border-border">
+        <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><span class="text-destructive">✗</span>{method.title}</h3>
+        <p class="text-muted-foreground" style="text-wrap: pretty;">{method.why_fails}</p>
+      </div>
+    ))}</div>
+  </div></div></section>}
+  {howItWorks && <section class="py-12 md:py-16"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{howItWorks.h2}</h2>
+    <div class="grid md:grid-cols-3 gap-6 mb-10">{howItWorks.mechanisms.map((mech) => (
+      <div class="card-forest rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300">
+        <h3 class="text-xl font-bold mb-3">{mech.title}</h3><p class="text-muted-foreground" style="text-wrap: pretty;">{mech.description}</p>
+      </div>
+    ))}</div>
+    <div class="bg-card border border-border rounded-2xl p-6">
+      <h3 class="text-lg font-bold mb-4 text-center">נתונים טכניים</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">{howItWorks.technicalData.map((td) => (
+        <div class="text-center p-4 bg-primary/5 rounded-xl"><p class="text-2xl font-black text-primary">{td.value}</p><p class="text-sm text-muted-foreground">{td.parameter}</p></div>
+      ))}</div>
+    </div>
+  </div></div></section>}
+  {stats && <section class="py-12 md:py-16 bg-primary text-primary-foreground"><div class="container"><div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">{stats.h2}</h2>
+    <p class="text-6xl md:text-8xl font-black mb-4">{stats.stat}</p>
+    <p class="text-xl opacity-90 mb-4">{stats.description}</p><p class="text-sm opacity-70">{stats.note}</p>
+  </div></div></section>}
+  {maintenance && <section class="py-12 md:py-16"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{maintenance.h2}</h2>
+    <div class="grid md:grid-cols-3 gap-6">{maintenance.items.map((item) => (
+      <div class="bg-card p-6 rounded-2xl border border-border">
+        <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-bold mb-4">{item.frequency}</div>
+        <h3 class="text-lg font-bold mb-2">{item.title}</h3><p class="text-muted-foreground text-sm">{item.description}</p>
+      </div>
+    ))}</div>
+  </div></div></section>}
+  {safety && <section class="py-12 md:py-16 bg-muted/30"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{safety.h2}</h2>
+    <div class="grid md:grid-cols-2 gap-6">{safety.items.map((item) => (
+      <div class="bg-card p-6 rounded-2xl border border-border">
+        <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><span class="text-primary">✓</span>{item.title}</h3>
+        <p class="text-muted-foreground" style="text-wrap: pretty;">{item.description}</p>
+      </div>
+    ))}</div>
+  </div></div></section>}
+  {cta && <section class="py-16 md:py-20"><div class="container"><div class="max-w-3xl mx-auto text-center bg-card p-8 md:p-12 rounded-2xl border-2 border-primary/30">
+    <h2 class="text-2xl md:text-4xl font-black mb-6 text-foreground">{cta.h2}</h2>
+    <p class="text-lg text-muted-foreground mb-8">{cta.content}</p>
+    <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold"><span>התקשר לייעוץ חינם - {PHONE_DISPLAY}</span></a>
+  </div></div></section>}
+  <section class="py-12"><div class="container"><div class="max-w-4xl mx-auto">
+    <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
+    <div class="flex flex-wrap gap-4">{page.internalLinks.map((link) => (<a href={link.href} class="text-primary hover:underline">{link.label}</a>))}</div>
+  </div></div></section>
 </ServicePageLayout>
