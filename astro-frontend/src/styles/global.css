@@ -86,6 +86,109 @@
   }
 }
 
+/* ── Section Divider ── */
+.section-divider {
+  @apply relative;
+}
+.section-divider::after {
+  content: '';
+  @apply block mx-auto my-0;
+  width: 80px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ── Reading Progress Bar (pure CSS, scroll-driven) ── */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 100;
+  background: transparent;
+  pointer-events: none;
+}
+.reading-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: hsl(var(--primary));
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: reading-progress-fill linear;
+  animation-timeline: scroll(root);
+}
+@keyframes reading-progress-fill {
+  to { transform: scaleX(1); }
+}
+
+/* ── Callout / Key Takeaway Box ── */
+.callout-box {
+  @apply relative bg-primary/5 border-r-4 border-primary rounded-xl p-6 my-8;
+}
+.callout-box::before {
+  content: '💡';
+  @apply text-2xl absolute -top-3 right-4;
+}
+.callout-box p {
+  @apply text-foreground leading-relaxed;
+}
+
+/* ── Article Prose Enhancements ── */
+.article-prose h2 {
+  @apply relative pb-4 mb-6;
+}
+.article-prose h2::after {
+  content: '';
+  @apply absolute bottom-0 right-0;
+  width: 48px;
+  height: 3px;
+  border-radius: 2px;
+  background: hsl(var(--primary));
+}
+.article-prose section {
+  @apply pb-10 mb-10 border-b border-border/50;
+}
+.article-prose section:last-child {
+  @apply border-b-0 mb-0 pb-0;
+}
+
+/* ── Sticky TOC (Desktop) ── */
+@media (min-width: 1280px) {
+  .article-with-toc {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 3rem;
+    align-items: start;
+  }
+  .sticky-toc {
+    position: sticky;
+    top: 7rem;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+  }
+}
+
+/* ── Back to Top ── */
+.back-to-top {
+  @apply inline-flex items-center gap-2 text-primary font-semibold transition-colors;
+}
+.back-to-top:hover {
+  @apply text-foreground;
+}
+
+/* ── Smooth Scrolling ── */
+html {
+  scroll-behavior: smooth;
+}
+
 @keyframes bounce-subtle {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-3px); }
