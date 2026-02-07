@@ -54,13 +54,15 @@ export default function PriceEstimatorIsland() {
     if (selectedPests.length === 0) { alert('נא לבחור לפחות סוג מזיק אחד'); return; }
     if (gates < 0 || gates > 20) { alert('כמות שערים צריכה להיות בין 0 ל-20'); return; }
     const prices = calculatePrice();
+    const newSessionId = crypto.randomUUID();
+    setSessionId(newSessionId);
     supabase.from('calculator_sessions').insert({
+      id: newSessionId,
       perimeter, gates, pest_types: selectedPests,
       estimated_min_price: prices.originalMin, estimated_max_price: prices.originalMax,
       lead_type: 'agricultural',
-    }).select('id').single().then(({ data, error }: { data: any; error: any }) => {
+    }).then(({ error }: { error: any }) => {
       if (error) logger.error('Session save error:', error);
-      else if (data) setSessionId(data.id);
     });
     setPriceResult(prices);
     setStep(2);
@@ -72,14 +74,16 @@ export default function PriceEstimatorIsland() {
     if (!priceResult) return;
     setIsSubmitting(true);
     try {
-      const { data: leadData, error } = await supabase.from('leads').insert({
+      const leadId = crypto.randomUUID();
+      const { error } = await supabase.from('leads').insert({
+        id: leadId,
         name: name.trim(), phone: phone.trim().replace(/[-\s]/g, ''),
         perimeter, gates, pest_types: selectedPests,
         estimated_min_price: priceResult.discountedMin, estimated_max_price: priceResult.discountedMax,
-      }).select('id').single();
+      });
       if (error) throw error;
-      if (sessionId && leadData) {
-        supabase.from('calculator_sessions').update({ converted_to_lead: true, lead_id: leadData.id }).eq('id', sessionId)
+      if (sessionId) {
+        supabase.from('calculator_sessions').update({ converted_to_lead: true, lead_id: leadId }).eq('id', sessionId)
           .then(({ error: e }: { error: any }) => { if (e) logger.error('Session update error:', e); });
       }
       fetch(`https://sqxmgqqtcgkjztpvhzzr.supabase.co/functions/v1/notify-new-lead`, {
