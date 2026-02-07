@@ -15,7 +15,10 @@ const PHONE_LINK = 'tel:+972508585310';
   structuredData={page.structuredData}
 >
   <!-- Reading Progress Bar -->
-  <div class="reading-progress"></div>
+  <div class="reading-progress"><div class="reading-progress-bar" id="rpb"></div></div>
+  <script is:inline>
+    (function(){var b=document.getElementById('rpb');if(!b)return;window.addEventListener('scroll',function(){var h=document.documentElement;var pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;b.style.width=pct+'%';},{passive:true});})();
+  </script>
 
   <article class="py-8 md:py-12">
     <div class="container max-w-4xl">

@@ -101,7 +101,7 @@
   margin-bottom: 0;
 }
 
-/* ── Reading Progress Bar (pure CSS, scroll-driven) ── */
+/* ── Reading Progress Bar ── */
 .reading-progress {
   position: fixed;
   top: 0;
@@ -112,21 +112,11 @@
   background: transparent;
   pointer-events: none;
 }
-.reading-progress::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.reading-progress-bar {
+  height: 100%;
   background: hsl(var(--primary));
-  transform-origin: left;
-  transform: scaleX(0);
-  animation: reading-progress-fill linear;
-  animation-timeline: scroll(root);
-}
-@keyframes reading-progress-fill {
-  to { transform: scaleX(1); }
+  width: 0%;
+  transition: width 80ms linear;
 }
 
 /* ── Callout / Key Takeaway Box ── */
