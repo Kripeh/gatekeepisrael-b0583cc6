@@ -1,5 +1,6 @@
 ---
 import ServicePageLayout from '../layouts/ServicePageLayout.astro';
+import HomePriceCalculatorIsland from '../components/react/HomePriceCalculatorIsland';
 import homeData from '../../../public/api/pages/home-solutions.json';
 
 const page = homeData;
@@ -75,23 +76,8 @@ const faq = (page.sections as any[]).find(s => s.type === 'faq');
             </h2>
             <p class="text-muted-foreground" style="text-wrap: pretty;">{calculator.subtitle}</p>
           </div>
-          <!-- React Island: HomePriceCalculator will mount here -->
-          <div id="home-calculator-root" class="card-forest rounded-2xl p-6 md:p-8">
-            <noscript>
-              <div class="text-center py-8">
-                <p class="text-muted-foreground mb-4">מחשבון מחירים אינטראקטיבי - יש צורך ב-JavaScript</p>
-                <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
-                  <span>התקשר לקבלת הצעת מחיר</span>
-                </a>
-              </div>
-            </noscript>
-            <div class="text-center py-8">
-              <p class="text-muted-foreground mb-4">טוען מחשבון מחירים...</p>
-              <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
-                <span>התקשר לקבלת הצעת מחיר</span>
-              </a>
-            </div>
-          </div>
+          <!-- React Island: HomePriceCalculator -->
+          <HomePriceCalculatorIsland client:visible />
         </div>
       </div>
     </section>

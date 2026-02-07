@@ -72,7 +72,7 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
                 <ul class="text-sm text-muted-foreground space-y-1">
                   {tier.features?.map((f: any) => (
                     <li class="flex items-start gap-2">
-                      <span class="text-primary mt-0.5 flex-shrink-0">✓</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mt-0.5 flex-shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
                       <span>{f}</span>
                     </li>
                   ))}
@@ -113,12 +113,12 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
           <div class="grid md:grid-cols-2 gap-8">
             <div>
               <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
-                <span class="text-primary">✓</span> חומרים
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary inline-block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg> חומרים
               </h3>
               <ul class="space-y-2 text-muted-foreground">
                 {included.materials?.map((item: any) => (
                   <li class="flex items-start gap-2">
-                    <span class="text-primary mt-0.5 flex-shrink-0">✓</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mt-0.5 flex-shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -126,12 +126,12 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
             </div>
             <div>
               <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
-                <span class="text-primary">✓</span> שירות
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary inline-block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg> שירות
               </h3>
               <ul class="space-y-2 text-muted-foreground">
                 {included.service?.map((item: any) => (
                   <li class="flex items-start gap-2">
-                    <span class="text-primary mt-0.5 flex-shrink-0">✓</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mt-0.5 flex-shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -154,7 +154,7 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
             <ul class="space-y-3">
               {warning.failures?.map((failure: any) => (
                 <li class="flex items-start gap-3 text-muted-foreground">
-                  <span class="text-destructive mt-0.5 flex-shrink-0">✗</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-destructive mt-0.5 flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
                   <span>{failure}</span>
                 </li>
               ))}
