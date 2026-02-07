@@ -25,9 +25,9 @@ const HeroSection = () => {
 
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Professional Badge */}
+          {/* Keyword Badge for SEO */}
           <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/30 text-primary px-5 py-2.5 rounded-full mb-6">
-            
+            <span className="font-bold text-sm sm:text-base">גדר חשמלית נגד חזירי בר ומזיקים | מיגון חקלאי מקצועי</span>
           </div>
 
           {/* Main Headline */}
@@ -45,8 +45,8 @@ const HeroSection = () => {
           textWrap: 'pretty'
         }}>
             אל תחכה לפשיטה של הלילה.{" "}
-            <strong className="text-foreground">גדר חשמלית מקצועית</strong> היא הפתרון היחיד שעובד.{" "}
-            <span className="text-primary font-semibold">גדר חשמלית איכותית ומקצועית</span> – הכל על פי תקן.
+            <strong className="text-foreground">גדר חשמלית נגד חזירי בר</strong> היא הפתרון היחיד שעובד.{" "}
+            <span className="text-primary font-semibold">גדר חשמלית לחקלאות</span> – התקנה מקצועית, אחריות מלאה.
           </p>
 
           {/* CTAs */}
