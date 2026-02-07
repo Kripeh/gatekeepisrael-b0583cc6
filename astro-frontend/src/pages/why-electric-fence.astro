@@ -26,7 +26,7 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     <div class="grid md:grid-cols-2 gap-8">
       <div class="bg-destructive/5 border border-destructive/20 rounded-2xl p-6">
         <h3 class="font-bold text-lg mb-4 text-destructive">נזקים נפוצים</h3>
-        <ul class="space-y-2 text-muted-foreground">{problem.damages?.map((d: any) => (<li class="flex items-start gap-2"><span class="text-destructive mt-0.5 flex-shrink-0">✗</span><span>{d}</span></li>))}</ul>
+        <ul class="space-y-2 text-muted-foreground">{problem.damages?.map((d: any) => (<li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-destructive mt-0.5 flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg><span>{d}</span></li>))}</ul>
       </div>
       <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6">
         <h3 class="font-bold text-lg mb-4 text-primary">אזורים מושפעים</h3>
@@ -38,7 +38,7 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{comparison.h2}</h2>
     <div class="grid md:grid-cols-2 gap-6">{comparison.methods?.map((method: any) => (
       <div class="bg-card p-6 rounded-2xl border border-border">
-        <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><span class="text-destructive">✗</span>{method.title}</h3>
+        <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-destructive flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>{method.title}</h3>
         <p class="text-muted-foreground" style="text-wrap: pretty;">{method.why_fails}</p>
       </div>
     ))}</div>
@@ -75,7 +75,7 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{safety.h2}</h2>
     <div class="grid md:grid-cols-2 gap-6">{safety.items?.map((item: any) => (
       <div class="bg-card p-6 rounded-2xl border border-border">
-        <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><span class="text-primary">✓</span>{item.title}</h3>
+        <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary flex-shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>{item.title}</h3>
         <p class="text-muted-foreground" style="text-wrap: pretty;">{item.description}</p>
       </div>
     ))}</div>

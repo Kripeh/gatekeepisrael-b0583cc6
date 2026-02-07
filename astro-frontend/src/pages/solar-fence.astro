@@ -35,7 +35,7 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     <div class="grid md:grid-cols-2 gap-6 mb-8">{specs.groups?.map((group: any) => (
       <div class="bg-card p-6 rounded-2xl border border-border">
         <h3 class="text-xl font-bold mb-4 text-primary">{group.h3}</h3>
-        <ul class="space-y-2 text-muted-foreground">{group.items?.map((item: any) => (<li class="flex items-start gap-2"><span class="text-primary mt-0.5 flex-shrink-0">✓</span><span>{item}</span></li>))}</ul>
+        <ul class="space-y-2 text-muted-foreground">{group.items?.map((item: any) => (<li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mt-0.5 flex-shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg><span>{item}</span></li>))}</ul>
       </div>
     ))}</div>
     <div class="bg-primary/5 border border-primary/20 rounded-xl p-6 text-center"><p class="text-muted-foreground leading-relaxed" style="text-wrap: pretty;">{specs.operatingNote}</p></div>
