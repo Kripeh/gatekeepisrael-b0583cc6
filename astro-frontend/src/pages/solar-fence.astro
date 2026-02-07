@@ -1,5 +1,6 @@
 ---
 import ServicePageLayout from '../layouts/ServicePageLayout.astro';
+import SectionDivider from '../components/SectionDivider.astro';
 import solarData from '../../../public/api/pages/solar-fence.json';
 
 const page = solarData;
@@ -14,56 +15,170 @@ const text = (page.sections as any[]).find(s => s.type === 'text');
 const cta = (page.sections as any[]).find(s => s.type === 'cta');
 ---
 <ServicePageLayout title={page.seo.title} description={page.seo.description} keywords={page.seo.keywords} canonical={page.seo.canonical} breadcrumbs={page.breadcrumbs} structuredData={page.structuredData}>
+  <!-- Hero -->
   <section class="py-12 md:py-20 bg-gradient-to-b from-primary/5 to-background">
-    <div class="container"><div class="max-w-4xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6"><span class="font-bold">{hero?.badge}</span></div>
-      <h1 class="text-3xl md:text-5xl font-black mb-6" style="text-wrap: balance;">{page.h1}</h1>
-      <p class="text-lg md:text-xl text-muted-foreground mb-8" style="text-wrap: pretty;">{hero?.subtitle}</p>
-      <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold"><span>התקשר לייעוץ חינם - {PHONE_DISPLAY}</span></a>
-    </div></div>
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
+          <span class="font-bold">{hero?.badge}</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-black mb-6" style="text-wrap: balance;">{page.h1}</h1>
+        <p class="text-lg md:text-xl text-muted-foreground mb-8" style="text-wrap: pretty;">{hero?.subtitle}</p>
+        <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
+          <span>התקשר לייעוץ חינם - {PHONE_DISPLAY}</span>
+        </a>
+      </div>
+    </div>
   </section>
-  {benefits && <section class="py-12 md:py-16"><div class="container"><div class="max-w-4xl mx-auto">
-    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{benefits.h2}</h2>
-    <div class="grid md:grid-cols-3 gap-6">{benefits.items?.map((item: any) => (
-      <div class="card-forest rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300">
-        <h3 class="text-xl font-bold mb-3">{item.title}</h3><p class="text-muted-foreground" style="text-wrap: pretty;">{item.description}</p>
+
+  <SectionDivider />
+
+  <!-- Benefits -->
+  {benefits && (
+    <section class="py-12 md:py-16">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{benefits.h2}</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            {benefits.items?.map((item: any) => (
+              <div class="card-forest rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+                <h3 class="text-xl font-bold mb-3">{item.title}</h3>
+                <p class="text-muted-foreground leading-relaxed" style="text-wrap: pretty;">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    ))}</div>
-  </div></div></section>}
-  {specs && <section class="py-12 md:py-16 bg-muted/30"><div class="container"><div class="max-w-4xl mx-auto">
-    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{specs.h2}</h2>
-    <div class="grid md:grid-cols-2 gap-6 mb-8">{specs.groups?.map((group: any) => (
-      <div class="bg-card p-6 rounded-2xl border border-border">
-        <h3 class="text-xl font-bold mb-4 text-primary">{group.h3}</h3>
-        <ul class="space-y-2 text-muted-foreground">{group.items?.map((item: any) => (<li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mt-0.5 flex-shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg><span>{item}</span></li>))}</ul>
+    </section>
+  )}
+
+  <SectionDivider />
+
+  <!-- Specs -->
+  {specs && (
+    <section class="py-12 md:py-16 bg-muted/30">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{specs.h2}</h2>
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            {specs.groups?.map((group: any) => (
+              <div class="bg-card p-6 rounded-2xl border border-border hover:border-primary/30 transition-colors">
+                <h3 class="text-xl font-bold mb-4 text-primary flex items-center gap-2">
+                  <span class="w-2 h-5 bg-primary rounded-full flex-shrink-0"></span>
+                  {group.h3}
+                </h3>
+                <ul class="space-y-2 text-muted-foreground">
+                  {group.items?.map((item: any) => (
+                    <li class="flex items-start gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mt-0.5 flex-shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div class="bg-primary/5 border border-primary/20 rounded-xl p-6 text-center">
+            <p class="text-muted-foreground leading-relaxed" style="text-wrap: pretty;">{specs.operatingNote}</p>
+          </div>
+        </div>
       </div>
-    ))}</div>
-    <div class="bg-primary/5 border border-primary/20 rounded-xl p-6 text-center"><p class="text-muted-foreground leading-relaxed" style="text-wrap: pretty;">{specs.operatingNote}</p></div>
-  </div></div></section>}
-  {audience && <section class="py-12 md:py-16"><div class="container"><div class="max-w-4xl mx-auto">
-    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{audience.h2}</h2>
-    <div class="grid md:grid-cols-2 gap-6">{audience.items?.map((item: any) => (
-      <div class="bg-card p-6 rounded-2xl border border-border"><h3 class="text-xl font-bold mb-3">{item.title}</h3><p class="text-muted-foreground">{item.description}</p></div>
-    ))}</div>
-  </div></div></section>}
-  {comparison && <section class="py-12 md:py-16 bg-muted/30"><div class="container"><div class="max-w-4xl mx-auto">
-    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{comparison.h2}</h2>
-    <div class="overflow-x-auto"><table class="w-full border-collapse border border-border text-sm md:text-base">
-      <thead class="bg-muted"><tr>{comparison.headers?.map((h: any) => (<th class="border border-border p-4 text-right font-bold">{h}</th>))}</tr></thead>
-      <tbody>{comparison.rows?.map((row: any, i: number) => (<tr class={i % 2 === 1 ? 'bg-muted/50' : ''}>{row.map((cell: any) => (<td class="border border-border p-4">{cell}</td>))}</tr>))}</tbody>
-    </table></div>
-    <p class="text-sm text-primary mt-4 text-center font-semibold">{comparison.note}</p>
-  </div></div></section>}
-  {text && <section class="py-12 md:py-16"><div class="container"><div class="max-w-4xl mx-auto">
-    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">{text.h2}</h2>
-    <p class="text-lg text-muted-foreground text-center leading-relaxed" style="text-wrap: pretty;">{text.content}</p>
-  </div></div></section>}
-  {cta && <section class="py-16 md:py-20 bg-primary text-primary-foreground"><div class="container"><div class="max-w-3xl mx-auto text-center">
-    <h2 class="text-2xl md:text-4xl font-black mb-6">{cta.h2}</h2><p class="text-lg opacity-90 mb-8">{cta.content}</p>
-    <a href={PHONE_LINK} class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors"><span>התקשר - {PHONE_DISPLAY}</span></a>
-  </div></div></section>}
-  <section class="py-12"><div class="container"><div class="max-w-4xl mx-auto">
-    <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
-    <div class="flex flex-wrap gap-4">{page.internalLinks.map((link: any) => (<a href={link.href} class="text-primary hover:underline">{link.label}</a>))}</div>
-  </div></div></section>
+    </section>
+  )}
+
+  <SectionDivider />
+
+  <!-- Target Audience -->
+  {audience && (
+    <section class="py-12 md:py-16">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{audience.h2}</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            {audience.items?.map((item: any) => (
+              <div class="bg-card p-6 rounded-2xl border border-border hover:border-primary/30 transition-colors">
+                <h3 class="text-xl font-bold mb-3">{item.title}</h3>
+                <p class="text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <SectionDivider />
+
+  <!-- Comparison Table -->
+  {comparison && (
+    <section class="py-12 md:py-16 bg-muted/30">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{comparison.h2}</h2>
+          <div class="overflow-x-auto rounded-xl border border-border">
+            <table class="w-full border-collapse text-sm md:text-base">
+              <thead class="bg-muted">
+                <tr>
+                  {comparison.headers?.map((h: any) => (
+                    <th class="border-b border-border p-4 text-right font-bold">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.rows?.map((row: any, i: number) => (
+                  <tr class={i % 2 === 1 ? 'bg-muted/30' : ''}>
+                    {row.map((cell: any) => (
+                      <td class="border-b border-border/50 p-4">{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-primary mt-4 text-center font-semibold">{comparison.note}</p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Text Section -->
+  {text && (
+    <section class="py-12 md:py-16">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">{text.h2}</h2>
+          <p class="text-lg text-muted-foreground text-center leading-relaxed" style="text-wrap: pretty;">{text.content}</p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  {cta && (
+    <section class="py-16 md:py-20 bg-primary text-primary-foreground">
+      <div class="container">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-2xl md:text-4xl font-black mb-6">{cta.h2}</h2>
+          <p class="text-lg opacity-90 mb-8">{cta.content}</p>
+          <a href={PHONE_LINK} class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors">
+            <span>התקשר - {PHONE_DISPLAY}</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Internal Links -->
+  <section class="py-12">
+    <div class="container">
+      <div class="max-w-4xl mx-auto p-6 bg-card/50 border border-border rounded-xl">
+        <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
+        <div class="flex flex-wrap gap-4">
+          {page.internalLinks.map((link: any) => (
+            <a href={link.href} class="text-primary hover:underline">{link.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 </ServicePageLayout>

@@ -1,5 +1,6 @@
 ---
 import ServicePageLayout from '../layouts/ServicePageLayout.astro';
+import SectionDivider from '../components/SectionDivider.astro';
 import installationData from '../../../public/api/pages/installation.json';
 
 const page = installationData;
@@ -38,6 +39,8 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     </div>
   </section>
 
+  <SectionDivider />
+
   <!-- Features / What We Install -->
   {features && (
     <section class="py-12 md:py-16">
@@ -46,8 +49,11 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
           <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{features.h2}</h2>
           <div class="grid md:grid-cols-2 gap-6">
             {features.groups?.map((group: any) => (
-              <div class="bg-card p-6 rounded-2xl border border-border">
-                <h3 class="text-xl font-bold mb-3">{group.h3}</h3>
+              <div class="bg-card p-6 rounded-2xl border border-border hover:border-primary/30 transition-colors">
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                  <span class="w-2 h-5 bg-primary rounded-full flex-shrink-0"></span>
+                  {group.h3}
+                </h3>
                 <ul class="space-y-2 text-muted-foreground">
                   {group.items?.map((item: any) => (
                     <li class="flex items-start gap-2">
@@ -64,6 +70,8 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     </section>
   )}
 
+  <SectionDivider />
+
   <!-- Process Steps -->
   {process && (
     <section class="py-12 md:py-16 bg-muted/30">
@@ -72,13 +80,13 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
           <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{process.h2}</h2>
           <div class="space-y-6">
             {process.steps?.map((step: any) => (
-              <div class="flex gap-4 bg-card p-6 rounded-2xl border border-border">
+              <div class="flex gap-4 bg-card p-6 rounded-2xl border border-border hover:border-primary/30 transition-colors">
                 <div class="flex-shrink-0 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-xl">
                   {step.step}
                 </div>
                 <div class="flex-1">
                   <h3 class="text-lg font-bold mb-2">{step.title}</h3>
-                  <p class="text-muted-foreground" style="text-wrap: pretty;">{step.description}</p>
+                  <p class="text-muted-foreground leading-relaxed" style="text-wrap: pretty;">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -91,6 +99,8 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     </section>
   )}
 
+  <SectionDivider />
+
   <!-- Benefits -->
   {benefits && (
     <section class="py-12 md:py-16">
@@ -99,9 +109,9 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
           <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{benefits.h2}</h2>
           <div class="grid md:grid-cols-3 gap-6">
             {benefits.items?.map((item: any) => (
-              <div class="card-forest rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300">
-                <h3 class="text-lg font-bold mb-2">{item.title}</h3>
-                <p class="text-muted-foreground text-sm" style="text-wrap: pretty;">{item.description}</p>
+              <div class="card-forest rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+                <h3 class="text-lg font-bold mb-3">{item.title}</h3>
+                <p class="text-muted-foreground text-sm leading-relaxed" style="text-wrap: pretty;">{item.description}</p>
               </div>
             ))}
           </div>
@@ -110,24 +120,31 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     </section>
   )}
 
+  <SectionDivider />
+
   <!-- Pricing Summary -->
   {pricingSummary && (
     <section class="py-12 md:py-16 bg-muted/30">
       <div class="container">
         <div class="max-w-3xl mx-auto text-center">
           <h2 class="text-2xl md:text-3xl font-bold mb-6">{pricingSummary.h2}</h2>
-          <p class="text-muted-foreground mb-6" style="text-wrap: pretty;">{pricingSummary.content}</p>
+          <p class="text-muted-foreground mb-6 leading-relaxed" style="text-wrap: pretty;">{pricingSummary.content}</p>
           <div class="bg-card p-6 rounded-2xl border-2 border-primary/30 inline-block">
             <p class="text-3xl font-black text-primary mb-1">{pricingSummary.priceRange}</p>
             <p class="text-sm text-muted-foreground">{pricingSummary.includes}</p>
           </div>
           <div class="mt-6">
-            <a href="/pricing" class="text-primary font-bold hover:underline">לפירוט מלא של מחירים →</a>
+            <a href="/pricing" class="text-primary font-bold hover:underline inline-flex items-center gap-1">
+              לפירוט מלא של מחירים
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </a>
           </div>
         </div>
       </div>
     </section>
   )}
+
+  <SectionDivider />
 
   <!-- Case Studies -->
   {caseStudies && (
@@ -137,7 +154,7 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
           <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{caseStudies.h2}</h2>
           <div class="grid md:grid-cols-2 gap-8">
             {caseStudies.cases?.map((cs: any) => (
-              <div class="bg-card rounded-2xl overflow-hidden border border-border">
+              <div class="bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-colors">
                 <div class="p-6">
                   <h3 class="text-lg font-bold mb-3">{cs.h3}</h3>
                   <ul class="text-muted-foreground text-sm space-y-2">
@@ -175,7 +192,7 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
   <!-- Internal Links -->
   <section class="py-12">
     <div class="container">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-4xl mx-auto p-6 bg-card/50 border border-border rounded-xl">
         <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
         <div class="flex flex-wrap gap-4">
           {page.internalLinks.map((link: any) => (
