@@ -85,8 +85,23 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     <p class="text-lg text-muted-foreground mb-8">{cta.content}</p>
     <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold"><span>התקשר לייעוץ חינם - {PHONE_DISPLAY}</span></a>
   </div></div></section>}
-  <section class="py-12"><div class="container"><div class="max-w-4xl mx-auto">
-    <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
-    <div class="flex flex-wrap gap-4">{page.internalLinks.map((link: any) => (<a href={link.href} class="text-primary hover:underline">{link.label}</a>))}</div>
+  <!-- Contextual Content -->
+  <section class="py-12 md:py-16"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">השלב הבא: הגנה על השטח שלכם</h2>
+    <p class="text-muted-foreground leading-relaxed mb-4" style="text-wrap: pretty;">
+      מוכנים להתחיל? <a href="/installation" class="text-primary font-semibold hover:underline">תהליך ההתקנה</a> שלנו מתחיל בסקר שטח מקצועי חינם. בדקו <a href="/pricing" class="text-primary font-semibold hover:underline">את המחירון המפורט</a> או השתמשו במחשבון המחירים לקבלת הערכה מיידית.
+    </p>
+    <p class="text-muted-foreground leading-relaxed mb-4" style="text-wrap: pretty;">
+      עבור שטחים ללא חיבור חשמל, יש לנו <a href="/solar-fence" class="text-primary font-semibold hover:underline">פתרון גדר סולארית</a> אוטונומי. לבעלי בתים פרטיים עם בעיית חזירים בגינה – ראו את <a href="/home-solutions" class="text-primary font-semibold hover:underline">הפתרונות הביתיים</a> שלנו.
+    </p>
+    <p class="text-muted-foreground leading-relaxed" style="text-wrap: pretty;">
+      להעמקה נוספת, קראו את <a href="/blog/boar_history_israel" class="text-primary font-semibold hover:underline">המדריך המקיף על משבר חזירי הבר בישראל</a> ואת <a href="/blog/electrical_fence_technology" class="text-primary font-semibold hover:underline">המפרט הטכני</a> של מערכות הגידור שלנו.
+    </p>
   </div></div></section>
+
+  <!-- Internal Links -->
+  <nav aria-label="דפים קשורים" class="py-12"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-lg font-bold mb-4">עמודים קשורים:</h2>
+    <div class="flex flex-wrap gap-4">{page.internalLinks.map((link: any) => (<a href={link.href} class="text-primary hover:underline">{link.label}</a>))}</div>
+  </div></div></nav>
 </ServicePageLayout>

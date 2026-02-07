@@ -182,11 +182,29 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     </section>
   )}
 
-  <!-- Internal Links -->
-  <section class="py-12">
+  <!-- Contextual Content -->
+  <section class="py-12 md:py-16">
     <div class="container">
       <div class="max-w-4xl mx-auto">
-        <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">איך מתחילים?</h2>
+        <p class="text-muted-foreground leading-relaxed mb-4" style="text-wrap: pretty;">
+          הצעד הראשון לקבלת הצעת מחיר מדויקת הוא סקר שטח מקצועי. הצוות שלנו מגיע לשטח, מזהה את נקודות הפריצה של חזירי הבר, ובונה תוכנית מותאמת. קראו על <a href="/installation" class="text-primary font-semibold hover:underline">תהליך ההתקנה המלא</a> שלנו כדי להבין מה מחכה לכם.
+        </p>
+        <p class="text-muted-foreground leading-relaxed mb-4" style="text-wrap: pretty;">
+          שטח ללא חיבור חשמל? לא בעיה. <a href="/solar-fence" class="text-primary font-semibold hover:underline">גדר חשמלית סולארית</a> מספקת אנרגיה אוטונומית 24/7 ומתאימה במיוחד לשטחים חקלאיים מרוחקים. לבתים פרטיים, ראו את <a href="/home-solutions" class="text-primary font-semibold hover:underline">הפתרונות הביתיים</a> שלנו.
+        </p>
+        <p class="text-muted-foreground leading-relaxed" style="text-wrap: pretty;">
+          עדיין לא בטוחים? למדו <a href="/why-electric-fence" class="text-primary font-semibold hover:underline">למה גדר חשמלית היא הפתרון היעיל ביותר</a> נגד חזירי בר, או קראו את <a href="/blog/boar_history_israel" class="text-primary font-semibold hover:underline">המדריך המקיף על משבר חזירי הבר בישראל</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal Links -->
+  <nav aria-label="דפים קשורים" class="py-12">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-lg font-bold mb-4">עמודים קשורים:</h2>
         <div class="flex flex-wrap gap-4">
           {page.internalLinks.map((link: any) => (
             <a href={link.href} class="text-primary hover:underline">{link.label}</a>
@@ -194,5 +212,5 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
         </div>
       </div>
     </div>
-  </section>
+  </nav>
 </ServicePageLayout>
