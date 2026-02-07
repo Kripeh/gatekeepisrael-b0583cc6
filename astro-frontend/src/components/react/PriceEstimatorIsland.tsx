@@ -2,7 +2,7 @@
  * React Island: Agricultural Price Calculator
  * Ported from src/components/PriceEstimator.tsx for use in Astro with client:visible
  */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase, logger } from './SupabaseProvider';
 
 type PestType = 'boars' | 'deer' | 'porcupines';
@@ -25,6 +25,7 @@ export default function PriceEstimatorIsland() {
   const [gates, setGates] = useState<number>(1);
   const [selectedPests, setSelectedPests] = useState<PestType[]>(['boars']);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [priceResult, setPriceResult] = useState<{
     originalMin: number; originalMax: number;
@@ -90,7 +91,11 @@ export default function PriceEstimatorIsland() {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: name.trim(), phone: phone.trim().replace(/[-\s]/g, ''), perimeter, gates, pestTypes: selectedPests, minPrice: priceResult.discountedMin, maxPrice: priceResult.discountedMax, leadType: 'agricultural', winterPromo: true }),
       }).catch(err => logger.error('Telegram failed:', err));
-      setStep(3);
+      setShowThankYou(true);
+      setTimeout(() => {
+        setShowThankYou(false);
+        setStep(3);
+      }, 4000);
     } catch (error) {
       logger.error('Lead submit error:', error);
       alert('שגיאה בשליחת הפרטים. נסה שוב.');
@@ -100,7 +105,18 @@ export default function PriceEstimatorIsland() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 relative">
+      {/* Thank You Popup */}
+      {showThankYou && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 animate-in fade-in duration-300" style={{ direction: 'rtl' }}>
+          <div className="bg-card rounded-2xl p-8 md:p-10 max-w-md mx-4 text-center border-2 border-primary/30 animate-in zoom-in-95 duration-300">
+            <div className="text-5xl mb-4">✅</div>
+            <h3 className="text-2xl font-black text-foreground mb-3">תודה רבה!</h3>
+            <p className="text-lg text-muted-foreground mb-2">קיבלנו את הפרטים שלך בהצלחה.</p>
+            <p className="text-foreground font-semibold">נציג שלנו יחזור אליך בהקדם האפשרי.</p>
+          </div>
+        </div>
+      )}
       {step === 1 && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <div>
