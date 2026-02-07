@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://gatekeepisrael.com',
+  output: 'static',
   integrations: [
     react(),
     tailwind(),
