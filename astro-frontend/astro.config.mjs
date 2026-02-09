@@ -19,7 +19,15 @@ export default defineConfig({
   redirects: {
     '/wild-boar-electric-fence-protection': {
       status: 301,
-      destination: '/blog/boar_history_israel',
+      destination: '/blog/boar-history-israel',
+    },
+    '/blog/boar_history_israel': {
+      status: 301,
+      destination: '/blog/boar-history-israel',
+    },
+    '/blog/electrical_fence_technology': {
+      status: 301,
+      destination: '/blog/electrical-fence-technology',
     },
   },
   trailingSlash: 'never',

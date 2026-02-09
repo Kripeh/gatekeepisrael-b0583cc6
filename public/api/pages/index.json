@@ -113,7 +113,7 @@
         { "name": "הצוות שלנו", "role": "משמעת ודיוק", "description": "כל העובדים הם חיילים משוחררים משירות קרבי, המביאים משמעת, דיוק ועבודה קשה לכל פרויקט." }
       ],
       "internalLinks": [
-        { "label": "המדריך המקיף שלנו על חזירי בר", "href": "/blog/boar_history_israel" },
+        { "label": "המדריך המקיף שלנו על חזירי בר", "href": "/blog/boar-history-israel" },
         { "label": "פתרונות גדר חשמלית לבית פרטי", "href": "/home-solutions" }
       ]
     },

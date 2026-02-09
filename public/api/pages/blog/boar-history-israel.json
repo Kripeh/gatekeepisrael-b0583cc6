@@ -1,12 +1,12 @@
 {
-  "slug": "/blog/boar_history_israel",
+  "slug": "/blog/boar-history-israel",
   "type": "blog-article",
   "updatedAt": "2026-02-06",
   "seo": {
     "title": "חזירי בר בישראל – משבר, נזקים ופתרונות גידור חשמלי | גייטקיפ",
     "description": "מדריך מקיף: משבר חזירי הבר בישראל – נזקים של מיליונים לחקלאות, פלישות לבתים בחיפה והצפון, סכנות בריאותיות, והפתרון המוכח: גדר חשמלית.",
     "keywords": "חזירי בר, גדר חשמלית, נזקי חקלאות, מיגון בתים בחיפה, גדר חשמלית נגד חזירים, הרתעת חזירי בר, גידור חשמלי לחקלאות",
-    "canonical": "https://gatekeepisrael.com/blog/boar_history_israel"
+    "canonical": "https://gatekeepisrael.com/blog/boar-history-israel"
   },
   "breadcrumbs": [
     { "label": "בלוג", "href": "/blog" },
@@ -187,6 +187,6 @@
     "publisher": { "@type": "Organization", "name": "גייטקיפ", "logo": { "@type": "ImageObject", "url": "https://gatekeepisrael.com/logo.png" } },
     "datePublished": "2026-02-06",
     "dateModified": "2026-02-06",
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://gatekeepisrael.com/blog/boar_history_israel" }
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://gatekeepisrael.com/blog/boar-history-israel" }
   }
 }

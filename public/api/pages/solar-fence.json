@@ -80,7 +80,7 @@
     { "label": "למה גדר חשמלית?", "href": "/why-electric-fence" },
     { "label": "פתרונות לבית פרטי", "href": "/home-solutions" },
     { "label": "אזורי שירות", "href": "/service-areas" },
-    { "label": "מדריך חזירי בר", "href": "/blog/boar_history_israel" }
+    { "label": "מדריך חזירי בר", "href": "/blog/boar-history-israel" }
   ],
   "structuredData": {
     "@context": "https://schema.org",
