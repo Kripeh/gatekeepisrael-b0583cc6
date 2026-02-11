@@ -78,7 +78,7 @@ const HomeFAQSection = () => {
 
           {/* Internal Links */}
           <div className="mt-10 p-6 bg-card/50 border border-border rounded-xl">
-            <p className="text-muted-foreground leading-relaxed text-center" style={{ textWrap: 'pretty' }}>
+            <p className="text-muted-foreground leading-relaxed text-center text-pretty">
               קראו עוד על{" "}
               <Link to="/installation" className="text-primary font-semibold hover:underline">תהליך התקנת גדר חשמלית</Link>
               , בדקו את{" "}

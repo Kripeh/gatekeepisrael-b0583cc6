@@ -51,6 +51,8 @@
 
   html {
     direction: rtl;
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
   }
 
   body {
@@ -81,6 +83,14 @@
 @layer utilities {
   .gradient-hero {
     background: var(--gradient-hero);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
   }
 }
 

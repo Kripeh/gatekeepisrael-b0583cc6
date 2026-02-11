@@ -18,7 +18,7 @@ const PHONE_LINK = 'tel:+972508585310';
     <div class="container max-w-4xl">
       <!-- Article Header -->
       <header class="mb-8 md:mb-12">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight" style="text-wrap: balance;">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight text-balance">
           {article.h1}
         </h1>
         <div class="flex flex-wrap items-center gap-4 text-muted-foreground text-sm mb-6">
@@ -35,7 +35,7 @@ const PHONE_LINK = 'tel:+972508585310';
             <span>מאת {article.author}</span>
           </div>
         </div>
-        <p class="text-lg md:text-xl text-muted-foreground leading-relaxed" style="text-wrap: pretty;">
+        <p class="text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty">
           {article.introduction}
         </p>
       </header>
@@ -67,10 +67,10 @@ const PHONE_LINK = 'tel:+972508585310';
       <div class="prose prose-lg max-w-none">
         {article.sections.map((section: any) => (
           <section id={section.id} class="mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold text-foreground mb-4" style="text-wrap: balance;">{section.h2}</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-foreground mb-4 text-balance">{section.h2}</h2>
             
             {section.paragraphs && section.paragraphs.map((p: any) => (
-              <p class="text-muted-foreground leading-relaxed mb-4" style="text-wrap: pretty;">{p}</p>
+              <p class="text-muted-foreground leading-relaxed mb-4 text-pretty">{p}</p>
             ))}
 
             {section.list && (
@@ -114,7 +114,7 @@ const PHONE_LINK = 'tel:+972508585310';
               <div class="mb-8">
                 <h3 class="text-xl md:text-2xl font-bold text-foreground mb-3 mt-8">{sub.h3}</h3>
                 {sub.paragraphs && sub.paragraphs.map((p: any) => (
-                  <p class="text-muted-foreground leading-relaxed mb-4" style="text-wrap: pretty;">{p}</p>
+                  <p class="text-muted-foreground leading-relaxed mb-4 text-pretty">{p}</p>
                 ))}
                 {sub.list && (
                   <ul class="space-y-2 text-muted-foreground mb-4">

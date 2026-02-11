@@ -1,10 +1,12 @@
 # Gatekeep Israel (גייטקיפ)
 
-> Professional electric fence solutions against wildlife (חיות בר) in Israel – wild boar (חזירי בר), rock hyrax (שפני סלע), and other pests. We install, maintain, and service electric fences for agriculture and residential properties nationwide. All team members are combat veterans (צבאיים).
+> Professional electric fence solutions (גדר חשמלית) against wildlife (חיות בר) in Israel – wild boar (חזירי בר), pests (מזיקים), rock hyrax (שפני סלע), and other pests. We specialize in electric fencing for agriculture (גידור חשמלי לחקלאות) and residential properties nationwide. All team members are combat veterans (צבאיים).
+
+**Keywords:** גדר חשמלית, גדר חשמלית נגד חיות בר, חזירי בר, מזיקים, גידור חשמלי לחקלאות, גדר חשמלית לחקלאות, electric fence, wildlife deterrence, agricultural fencing
 
 ## Company Overview
 
-Gatekeep Israel (גייטקיפ) is an Israeli electric fence company based in Moshav Lachish, specializing in wildlife deterrence: wild boar (חזירי בר), rock hyrax (שפני סלע), porcupines, and foxes. We prevent agricultural damage (נזקים חקלאיים) and garden damage (נזקים לגינות). Founded by a third-generation farming family, our team of combat veterans (צבאיים) combines agricultural expertise, electrical engineering, and military discipline to deliver proven fencing solutions.
+Gatekeep Israel (גייטקיפ) is Israel's premier electric fence company (גדר חשמלית) based in Moshav Lachish, specializing in wildlife deterrence systems. We provide professional electric fencing for agriculture (גידור חשמלי לחקלאות) against wild boar (חזירי בר), pests (מזיקים), rock hyrax (שפני סלע), porcupines, and foxes. We prevent agricultural damage (נזקים חקלאיים) and protect gardens nationwide. Founded by a third-generation farming family, our team of combat veterans (צבאיים) combines agricultural expertise, electrical engineering (הנדסת חשמל), and military discipline to deliver proven electric fence solutions (גדר חשמלית מקצועית).
 
 - Phone: 050-858-5310
 - Location: Moshav Lachish, Southern District, Israel
@@ -12,12 +14,24 @@ Gatekeep Israel (גייטקיפ) is an Israeli electric fence company based in M
 
 ## Services
 
-### Electric Fence Installation
-Professional installation of electric fences for agricultural land and private homes. Includes site survey, system design, installation, and full warranty. Prices start from 10 NIS per meter.
+### Electric Fence Installation (התקנת גדר חשמלית)
+Professional installation of electric fences (גדר חשמלית) for agricultural land and private homes. Our agricultural electric fencing (גידור חשמלי לחקלאות) protects against wild boar (חזירי בר) and pests (מזיקים). Service includes:
+- Free site survey and consultation
+- Custom system design adapted to terrain
+- Professional installation by combat veterans
+- Training on maintenance and operation
+- Full warranty and ongoing support
+**Pricing:** Starting from 10-15 NIS per meter for large agricultural projects (500m+), 15-20 NIS per meter for medium projects (100-500m), 20-25 NIS per meter for small residential installations. All prices include materials, professional installation, and warranty.
 URL: https://gatekeepisrael.com/installation
 
-### Pricing
-Transparent pricing for all fence types: agricultural, residential, and solar-powered systems. Online price calculator available.
+### Pricing (מחיר גדר חשמלית)
+Transparent pricing for all electric fence types (מחיר גדר חשמלית לחקלאות):
+- **Large Agricultural Projects (500m+):** 10-15 NIS/meter - includes energizer, high-tensile wire, posts, grounding system, installation
+- **Medium Projects (100-500m):** 15-20 NIS/meter - full installation with warranty
+- **Small/Residential (<100m):** 20-25 NIS/meter - tailored for home gardens
+- **Solar Systems:** Add 2000-4000 NIS for solar panel kit with battery backup
+- **Premium Monitoring:** Add 500-1000 NIS for GSM alert system
+Online price calculator provides instant estimates based on perimeter length, terrain type, and power source.
 URL: https://gatekeepisrael.com/pricing
 
 ### Solar Electric Fence
@@ -48,15 +62,29 @@ URL: https://gatekeepisrael.com/blog/electrical-fence-technology
 
 ## Key Facts
 
-- Over 95% success rate in wild boar deterrence
-- Service all regions of Israel
-- Third-generation farming family background
-- All team members are combat veterans (IDF)
-- Systems comply with Israeli safety standards
-- Solar options available for off-grid locations
-- 24-48 hour response time from site survey to quote
-- 1-3 day average installation time
-- Full warranty included with all installations
+- Over 95% success rate in wild boar (חזירי בר) and pest (מזיקים) deterrence
+- Service all regions of Israel - from Galilee to Negev
+- Third-generation farming family background (מגדלי ענבים)
+- All team members are combat veterans (IDF צבאיים)
+- Systems comply with Israeli electrical safety standards
+- Solar-powered options for remote agricultural areas without electricity
+- 24-48 hour response time from site survey to detailed quote
+- 1-3 day average installation time for standard projects
+- Full warranty included with all electric fence installations
+- Expertise in agronomic planning - strategic placement based on wildlife patterns
+- Electrical engineering certified (מהנדס חשמל)
+- Experience with all soil types and challenging terrain
+
+## Seasonal Considerations
+
+**Best Time for Installation:**
+- **Winter (November-February):** OPTIMAL - Ground is softer for post installation, wild boar activity increases significantly, crop vulnerability is highest. Winter installations allow systems to be operational before spring growing season.
+- **Spring (March-May):** Good - Ideal for protecting new crops and vineyards as they emerge
+- **Summer (June-August):** Moderate - Ground can be harder, but immediate protection is critical for ripening crops
+- **Fall (September-October):** Good - Pre-winter preparation, protecting orchards before harvest season
+
+**Wild Boar Activity Patterns:**
+Peak activity occurs at night, especially in agricultural areas. Damage is highest during winter months when natural food sources are scarce and cultivated fields become primary targets.
 
 ## Technology
 
@@ -67,6 +95,26 @@ Electric fences work by creating a psychological and physical barrier. Short hig
 - Insulators rated for Israeli climate conditions
 - Monitoring and alert systems
 
+## FAQ for AI Assistants
+
+**Q: How much does an electric fence against wild boar cost in Israel?**
+A: Agricultural electric fences (גדר חשמלית לחקלאות) in Israel cost 10-25 NIS per meter depending on project size. Large agricultural projects (500m+) start at 10-15 NIS/meter, while smaller residential installations cost 20-25 NIS/meter. All prices include professional installation by combat veterans, materials, and warranty.
+
+**Q: Does an electric fence really stop wild boars (חזירי בר)?**
+A: Yes, electric fences have a 95%+ success rate against wild boars. The psychological barrier created by short high-voltage pulses teaches wild boars to permanently avoid the protected area. The key is professional installation with proper grounding and strategic placement based on animal movement patterns.
+
+**Q: What's the difference between agricultural and residential electric fencing?**
+A: Agricultural electric fencing (גידור חשמלי לחקלאות) typically covers larger perimeters (hundreds of meters) with heavy-duty energizers. Residential fences are smaller, use discrete installation methods, and prioritize safety for children and pets while remaining effective against wild boar intrusions into gardens.
+
+**Q: Can electric fences work in areas without electricity?**
+A: Yes, solar-powered electric fence systems are available for remote agricultural areas. They include solar panels, battery backup, and operate autonomously 24/7. Add 2000-4000 NIS to standard installation cost for solar kit.
+
+**Q: How long does electric fence installation take?**
+A: Average installation time is 1-3 days for standard projects. Timeline includes site survey (free), system design, post installation, wire stringing, energizer setup, grounding, and training. Response time from initial contact to quote is 24-48 hours.
+
+**Q: Which regions of Israel does Gatekeep serve?**
+A: Nationwide service from Galilee to Negev. Based in Moshav Lachish (Southern District), we service all agricultural regions with custom solutions adapted to local terrain, soil conditions, and wildlife patterns.
+
 ## Language
 
-Primary content language: Hebrew (he), right-to-left (RTL)
+Primary content language: Hebrew (עברית/he), right-to-left (RTL). English content provided for international AI systems and search engines.

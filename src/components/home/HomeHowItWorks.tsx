@@ -59,7 +59,7 @@ const HomeHowItWorks = () => {
                 <h3 className="text-xl font-bold text-foreground mb-3">
                   {step.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed" style={{ textWrap: 'pretty' }}>
+                <p className="text-muted-foreground leading-relaxed text-pretty">
                   {step.description}
                 </p>
               </div>

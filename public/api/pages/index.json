@@ -5,7 +5,7 @@
   "seo": {
     "title": "גדר חשמלית נגד חיות בר | חזירי בר, שפני סלע ומזיקים | גייטקיפ",
     "description": "גייטקיפ – גדרות חשמליות מקצועיות נגד חיות בר: חזירי בר, שפני סלע ומזיקים. צוות צבאיים מתקין בכל הארץ. מניעת נזקים חקלאיים ונזקים לגינות. סקר שטח חינם.",
-    "keywords": "גדר חשמלית, חיות בר, חזירי בר, שפני סלע, נזקים חקלאיים, נזקים לגינות, צבאיים, גדר חשמלית לחקלאות, מיגון חקלאי, גייטקיפ",
+    "keywords": "גדר חשמלית, גדר חשמלית נגד חיות בר, חזירי בר, מזיקים, גידור חשמלי לחקלאות, גדר חשמלית לחקלאות, נזקים חקלאיים, שפני סלע, גדר חשמלית מקצועית, התקנת גדר חשמלית, צוות צבאיים, גייטקיפ",
     "canonical": "https://gatekeepisrael.com/"
   },
   "h1": "חיות בר מחסלות לך את החלקה? אנחנו עוצרים אותן היום!",
@@ -18,7 +18,7 @@
       "cta": { "label": "התקשר עכשיו", "href": "tel:+972508585310" },
       "secondaryCta": { "label": "חשב הצעת מחיר", "href": "#calculator" },
       "backgroundImage": "https://sqxmgqqtcgkjztpvhzzr.supabase.co/storage/v1/object/public/images/heroImageNew",
-      "backgroundAlt": "גדר חשמלית נגד חזירי בר - התקנה מקצועית בשטח חקלאי | גייטקיפ"
+      "backgroundAlt": "גדר חשמלית נגד חזירי בר וחיות בר - גידור חשמלי מקצועי לחקלאות | גייטקיפ"
     },
     {
       "type": "calculator",
@@ -135,7 +135,13 @@
       "url": "https://gatekeepisrael.com",
       "telephone": "+972-50-858-5310",
       "address": { "@type": "PostalAddress", "addressLocality": "מושב לכיש", "addressRegion": "מחוז הדרום", "addressCountry": "IL" },
-      "priceRange": "$$"
+      "priceRange": "$$",
+      "sameAs": [
+        "https://www.facebook.com/gatekeepisrael",
+        "https://www.instagram.com/gatekeepisrael",
+        "https://www.youtube.com/@gatekeepisrael",
+        "https://www.linkedin.com/company/gatekeepisrael"
+      ]
     },
     {
       "@context": "https://schema.org",

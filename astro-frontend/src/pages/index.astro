@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import PriceEstimatorIsland from '../components/react/PriceEstimatorIsland';
 import TestimonialsIsland from '../components/react/TestimonialsIsland';
 import indexData from '../../../public/api/pages/index.json';
@@ -36,12 +37,14 @@ const galleryImages = [
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
       <div class="absolute inset-0">
-        <img 
-          src={HERO_BG_URL} 
-          alt="גדר חשמלית נגד חיות בר - חזירי בר ושפני סלע - התקנה מקצועית בשטח חקלאי | גייטקיפ" 
-          class="w-full h-[120%] object-cover" 
-          loading="eager" 
-          fetchpriority="high" 
+        <OptimizedImage
+          src={HERO_BG_URL}
+          alt="גדר חשמלית נגד חזירי בר וחיות בר - מיגון חקלאי מקצועי | גייטקיפ"
+          class="w-full h-[120%] object-cover"
+          width={1920}
+          height={1280}
+          loading="eager"
+          fetchpriority="high"
         />
         <div class="absolute inset-0 bg-background/60"></div>
       </div>
@@ -49,11 +52,11 @@ const galleryImages = [
         <div class="max-w-4xl mx-auto text-center">
           <div class="inline-flex items-center gap-2 bg-primary/15 border border-primary/30 text-primary px-5 py-2.5 rounded-full mb-6">
           </div>
-          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight mb-6" style="text-wrap: balance;">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight mb-6 text-balance">
             <span class="text-primary">חיות בר</span>{' '}מחסלות לך את החלקה?<br/>
             <span class="text-primary">אנחנו עוצרים אותן היום!</span>
           </h1>
-          <p class="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed" style="text-wrap: pretty;">
+          <p class="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed text-pretty">
             אל תחכה לפשיטה של הלילה.{' '}
             <strong class="text-foreground">גדר חשמלית מקצועית</strong> היא הפתרון היחיד נגד חזירי בר, שפני סלע וחיות בר.{' '}
             <span class="text-primary font-semibold">צוות צבאיים</span> – הכל על פי תקן.
@@ -82,14 +85,16 @@ const galleryImages = [
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
               <span class="font-bold">הצעת מחיר מהירה</span>
             </div>
-            <h2 class="text-3xl md:text-4xl font-black text-foreground mb-3" style="text-wrap: balance;">
+            <h2 class="text-3xl md:text-4xl font-black text-foreground mb-3 text-balance">
               {page.sections[1].h2}
             </h2>
-            <p class="text-muted-foreground" style="text-wrap: pretty;">{page.sections[1].subtitle}</p>
+            <p class="text-muted-foreground text-pretty">{page.sections[1].subtitle}</p>
             <p class="text-sm text-muted-foreground mt-2">{page.sections[1].note}</p>
           </div>
           <!-- React Island: PriceEstimator -->
-          <PriceEstimatorIsland client:visible />
+          <div class="min-h-[400px]">
+            <PriceEstimatorIsland client:visible />
+          </div>
         </div>
       </div>
     </section>
@@ -98,17 +103,19 @@ const galleryImages = [
     <section class="py-20 md:py-28 bg-secondary/20">
       <div class="container">
         <div class="text-center mb-14">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-4" style="text-wrap: balance;">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-4 text-balance">
             השטח שלהם{' '}<span class="text-primary">כבר מוגן</span>
           </h2>
-          <p class="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto" style="text-wrap: pretty;">
+          <p class="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto text-pretty">
             חקלאים מכל הארץ בחרו בגייטקיפ – וזה מה שיש להם להגיד
           </p>
         </div>
         <!-- React Island: Testimonials -->
-        <TestimonialsIsland client:visible />
+        <div class="min-h-[350px]">
+          <TestimonialsIsland client:visible />
+        </div>
         <div class="text-center mt-14">
-          <p class="text-muted-foreground text-lg mb-4" style="text-wrap: pretty;">
+          <p class="text-muted-foreground text-lg mb-4 text-pretty">
             מוכן להגן על השטח שלך גם? דבר איתנו עוד היום
           </p>
           <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-3 px-10 py-5 rounded-xl text-xl font-black">
@@ -123,10 +130,10 @@ const galleryImages = [
     <section id="trust" class="py-20 md:py-28 bg-background">
       <div class="container">
         <div class="text-center mb-14">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-4" style="text-wrap: balance;">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-4 text-balance">
             למה לבחור{' '}<span class="text-primary">בגייטקיפ?</span>
           </h2>
-          <p class="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto" style="text-wrap: pretty;">
+          <p class="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto text-pretty">
             {trust.subtitle}
           </p>
         </div>
@@ -136,8 +143,8 @@ const galleryImages = [
               <div class="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               </div>
-              <h3 class="text-xl md:text-2xl font-black text-foreground mb-4" style="text-wrap: balance;">{item.title}</h3>
-              <p class="text-muted-foreground leading-relaxed md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500" style="text-wrap: pretty;">
+              <h3 class="text-xl md:text-2xl font-black text-foreground mb-4 text-balance">{item.title}</h3>
+              <p class="text-muted-foreground leading-relaxed md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 text-pretty">
                 {item.description}
               </p>
               <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -159,10 +166,10 @@ const galleryImages = [
       <div class="container">
         <div class="max-w-3xl mx-auto">
           <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-4" style="text-wrap: balance;">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-4 text-balance">
               כל מה שחשוב לדעת{' '}<span class="text-primary">על מיגון השטח</span>
             </h2>
-            <p class="text-muted-foreground text-lg md:text-xl" style="text-wrap: pretty;">
+            <p class="text-muted-foreground text-lg md:text-xl text-pretty">
               {faq.subtitle}
             </p>
           </div>
@@ -170,16 +177,16 @@ const galleryImages = [
             {faq.items.map((item: any) => (
               <details class="card-forest rounded-xl px-6 group">
                 <summary class="text-right text-lg font-bold cursor-pointer list-none flex items-center justify-between text-foreground hover:text-primary py-6">
-                  <span style="text-wrap: balance;">{item.question}</span>
+                  <span class="text-balance">{item.question}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180 flex-shrink-0 mr-2"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
-                <p class="text-muted-foreground leading-relaxed pb-6" style="text-wrap: pretty;">{item.answer}</p>
+                <p class="text-muted-foreground leading-relaxed pb-6 text-pretty">{item.answer}</p>
               </details>
             ))}
           </div>
           {faq.internalLinks && (
             <div class="mt-10 p-6 bg-card/50 border border-border rounded-xl">
-              <p class="text-muted-foreground leading-relaxed text-center" style="text-wrap: pretty;">
+              <p class="text-muted-foreground leading-relaxed text-center text-pretty">
                 למידע נוסף על{' '}
                 <a href="/installation" class="text-primary font-semibold hover:underline">התקנת גדר חשמלית</a>
                 {' '}מקצועית, בקרו בעמוד ההתקנה שלנו. רוצים לדעת{' '}
@@ -204,10 +211,10 @@ const galleryImages = [
     <section id="about" class="py-20 lg:py-28 bg-secondary/30">
       <div class="container">
         <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-4" style="text-wrap: balance;">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-4 text-balance">
             {about.h2.split(':')[0]}:{' '}<span class="text-primary">{about.h2.split(':')[1]?.trim() || ''}</span>
           </h2>
-          <p class="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto" style="text-wrap: pretty;">
+          <p class="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
             {about.subtitle}
           </p>
         </div>
@@ -221,7 +228,7 @@ const galleryImages = [
                 <h3 class="text-2xl font-bold text-foreground">הסיפור שלנו</h3>
               </div>
               {about.story.map((paragraph: any) => (
-                <p class="text-lg text-muted-foreground leading-relaxed mt-4" style="text-wrap: pretty;">{paragraph}</p>
+                <p class="text-lg text-muted-foreground leading-relaxed mt-4 text-pretty">{paragraph}</p>
               ))}
             </div>
           </div>
@@ -274,7 +281,7 @@ const galleryImages = [
                 </div>
                 <h4 class="text-xl font-bold text-foreground mb-1">{member.name}</h4>
                 <p class="text-sm font-medium text-primary mb-3">{member.role}</p>
-                <p class="text-sm text-muted-foreground leading-relaxed" style="text-wrap: pretty;">{member.description}</p>
+                <p class="text-sm text-muted-foreground leading-relaxed text-pretty">{member.description}</p>
               </div>
             ))}
           </div>
@@ -315,7 +322,7 @@ const galleryImages = [
       <div class="container">
         <div class="max-w-4xl mx-auto">
           <h2 class="text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">גדר חשמלית נגד חיות בר – חזירי בר, שפני סלע ומזיקים</h2>
-          <p class="text-muted-foreground leading-relaxed mb-8 text-center" style="text-wrap: pretty;">
+          <p class="text-muted-foreground leading-relaxed mb-8 text-center text-pretty">
             צוות צבאיים מלווה אתכם בכל שלב – מהייעוץ הראשוני ועד ההתקנה. מניעת נזקים חקלאיים ונזקים לגינות מחיות בר. בין אם אתם חקלאים שמחפשים <a href="/service-areas" class="text-primary font-semibold hover:underline">גדר חשמלית לחקלאות</a> או בעלי בית פרטי, יש לנו פתרון מותאם.
           </p>
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
