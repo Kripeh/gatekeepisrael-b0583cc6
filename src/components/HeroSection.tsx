@@ -34,10 +34,9 @@ const HeroSection = () => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight mb-6" style={{
           textWrap: 'balance'
         }}>
-            <span className="text-primary text-glow">חזירי בר</span>
-            {" "}מחסלים לך את החלקה?
+            <span className="text-primary text-glow">חיות בר מחסלות לך את החלקה?</span>
             <br />
-            <span className="text-primary text-glow">אנחנו עוצרים אותם היום!</span>
+            אנחנו עוצרים אותן היום!
           </h1>
 
           {/* Sub-headline */}
@@ -45,8 +44,9 @@ const HeroSection = () => {
           textWrap: 'pretty'
         }}>
             אל תחכה לפשיטה של הלילה.{" "}
-            <strong className="text-foreground">גדר חשמלית מקצועית</strong> היא הפתרון היחיד שעובד.{" "}
-            <span className="text-primary font-semibold">גדר חשמלית איכותית ומקצועית</span> – הכל על פי תקן.
+            <strong className="text-foreground">גדר חשמלית מקצועית</strong> היא הפתרון היחיד נגד{" "}
+            <span className="text-primary font-semibold">חזירי בר, צבאים, שפני וסלע, דורבנים</span> ועוד.{" "}
+            מערכת הגנה עוצמתית – הכל על פי תקן.
           </p>
 
           {/* CTAs */}

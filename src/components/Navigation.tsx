@@ -23,6 +23,18 @@ const navLinks = [
   { label: "אזורי שירות", href: "/service-areas" },
   { label: "בלוג", href: "/blog" },
 ];
+
+const productLinks = [
+  { label: "מחוללי מתח סולאריים", href: "/products/solar-energizers" },
+  { label: "מבודדים ורכיבי גידור", href: "/products/insulators" },
+  { label: "מכשור מדידה", href: "/products/testing-equipment" },
+];
+
+const regionalLinks = [
+  { label: "חיפה והקריות", href: "/regions/haifa" },
+  { label: "חוף הכרמל", href: "/regions/carmel-coast" },
+  { label: "עמק הירדן", href: "/regions/jordan-valley" },
+];
  
  const Navigation = () => {
    const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +59,8 @@ const navLinks = [
            </div>
          </SheetHeader>
          
-         <nav className="flex flex-col p-4">
+         <nav className="flex flex-col p-4 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 200px)' }}>
+           {/* Main Navigation */}
            {navLinks.map((link) => (
              <NavLink
                key={link.href}
@@ -59,6 +72,38 @@ const navLinks = [
                {link.label}
              </NavLink>
            ))}
+
+           {/* Product Section */}
+           <div className="mt-4 pt-4 border-t border-border">
+             <div className="px-4 mb-2 text-sm font-bold text-muted-foreground">מוצרים</div>
+             {productLinks.map((link) => (
+               <NavLink
+                 key={link.href}
+                 to={link.href}
+                 onClick={closeMenu}
+                 className="py-2 px-4 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-colors rounded-lg"
+                 activeClassName="text-primary font-bold bg-primary/10"
+               >
+                 {link.label}
+               </NavLink>
+             ))}
+           </div>
+
+           {/* Regional Section */}
+           <div className="mt-4 pt-4 border-t border-border">
+             <div className="px-4 mb-2 text-sm font-bold text-muted-foreground">אזורי שירות</div>
+             {regionalLinks.map((link) => (
+               <NavLink
+                 key={link.href}
+                 to={link.href}
+                 onClick={closeMenu}
+                 className="py-2 px-4 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-colors rounded-lg"
+                 activeClassName="text-primary font-bold bg-primary/10"
+               >
+                 {link.label}
+               </NavLink>
+             ))}
+           </div>
          </nav>
  
          <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border bg-background">
