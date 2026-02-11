@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import PriceEstimatorIsland from '../components/react/PriceEstimatorIsland';
 import TestimonialsIsland from '../components/react/TestimonialsIsland';
+import DiscoverSolutions from '../components/DiscoverSolutions.astro';
 import indexData from '../../../public/api/pages/index.json';
 
 const page = indexData;
@@ -125,6 +126,9 @@ const galleryImages = [
         </div>
       </div>
     </section>
+
+    <!-- Discover Solutions Section -->
+    <DiscoverSolutions />
 
     <!-- Trust Reasons Section -->
     <section id="trust" class="py-20 md:py-28 bg-background">

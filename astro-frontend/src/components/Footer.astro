@@ -1,37 +1,132 @@
 ---
 const PHONE_LINK = 'tel:+972508585310';
 
-const footerLinks = [
-  { label: 'דף הבית', href: '/' },
-  { label: 'התקנת גדר חשמלית', href: '/installation' },
-  { label: 'גדר סולארית', href: '/solar-fence' },
-  { label: 'פתרונות לבית', href: '/home-solutions' },
-  { label: 'מחירון', href: '/pricing' },
-  { label: 'למה גדר חשמלית?', href: '/why-electric-fence' },
-  { label: 'אזורי שירות', href: '/service-areas' },
-  { label: 'בלוג', href: '/blog' },
-];
+const footerColumns = {
+  services: [
+    { label: 'התקנת גדר חשמלית', href: '/installation' },
+    { label: 'גדר סולארית', href: '/solar-fence' },
+    { label: 'מחירון', href: '/pricing' },
+    { label: 'פתרונות לבית', href: '/home-solutions' },
+  ],
+  products: [
+    { label: 'מחוללי מתח סולאריים', href: '/products/solar-energizers' },
+    { label: 'מבודדים ורכיבי גידור', href: '/products/insulators' },
+    { label: 'מכשור מדידה ובדיקה', href: '/products/testing-equipment' },
+  ],
+  learn: [
+    { label: 'למה גדר חשמלית?', href: '/why-electric-fence' },
+    { label: 'מדריך חזירי בר', href: '/blog/boar_history_israel' },
+    { label: 'מפרט טכנולוגי', href: '/blog/electrical_fence_technology' },
+    { label: 'בלוג', href: '/blog' },
+  ],
+  regions: [
+    { label: 'אזורי שירות', href: '/service-areas' },
+    { label: 'חיפה והקריות', href: '/regions/haifa' },
+    { label: 'חוף הכרמל', href: '/regions/carmel-coast' },
+    { label: 'עמק הירדן', href: '/regions/jordan-valley' },
+  ],
+};
+
+// Generate schema markup for navigation
+const navigationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SiteNavigationElement',
+  'name': 'גייטקיפ - ניווט כללי',
+  'hasPart': [
+    ...footerColumns.services.map(link => ({
+      '@type': 'SiteNavigationElement',
+      'name': link.label,
+      'url': `https://www.gatekeepisrael.co.il${link.href}`
+    })),
+    ...footerColumns.products.map(link => ({
+      '@type': 'SiteNavigationElement',
+      'name': link.label,
+      'url': `https://www.gatekeepisrael.co.il${link.href}`
+    })),
+    ...footerColumns.learn.map(link => ({
+      '@type': 'SiteNavigationElement',
+      'name': link.label,
+      'url': `https://www.gatekeepisrael.co.il${link.href}`
+    })),
+    ...footerColumns.regions.map(link => ({
+      '@type': 'SiteNavigationElement',
+      'name': link.label,
+      'url': `https://www.gatekeepisrael.co.il${link.href}`
+    })),
+  ]
+};
 ---
 <footer class="py-12 bg-card border-t border-border pb-28 md:pb-12">
   <div class="container">
-    <div class="max-w-4xl mx-auto">
-      <!-- Top Section -->
-      <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
+    <div class="max-w-6xl mx-auto">
+      <!-- Top Section with Logo and Phone -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
         <div class="flex items-center">
           <img src="/logo.png" alt="גייטקיפ" class="h-16 w-auto" />
         </div>
-
-        <nav class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-          {footerLinks.map((link) => (
-            <a href={link.href} class="text-muted-foreground hover:text-primary transition-colors font-medium text-sm md:text-base">
-              {link.label}
-            </a>
-          ))}
-          <a href={PHONE_LINK} class="text-primary font-bold hover:underline text-sm md:text-base">
-            050-858-5310
-          </a>
-        </nav>
+        <a href={PHONE_LINK} class="text-primary font-bold hover:underline text-xl md:text-2xl">
+          050-858-5310
+        </a>
       </div>
+
+      <!-- 4-Column Navigation Grid -->
+      <nav class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <!-- Column 1: Services -->
+        <div>
+          <h3 class="text-foreground font-bold text-lg mb-4">שירותים</h3>
+          <ul class="space-y-3">
+            {footerColumns.services.map((link) => (
+              <li>
+                <a href={link.href} class="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Column 2: Products -->
+        <div>
+          <h3 class="text-foreground font-bold text-lg mb-4">מוצרים</h3>
+          <ul class="space-y-3">
+            {footerColumns.products.map((link) => (
+              <li>
+                <a href={link.href} class="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Column 3: Learn -->
+        <div>
+          <h3 class="text-foreground font-bold text-lg mb-4">למידע נוסף</h3>
+          <ul class="space-y-3">
+            {footerColumns.learn.map((link) => (
+              <li>
+                <a href={link.href} class="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Column 4: Regions -->
+        <div>
+          <h3 class="text-foreground font-bold text-lg mb-4">אזורים</h3>
+          <ul class="space-y-3">
+            {footerColumns.regions.map((link) => (
+              <li>
+                <a href={link.href} class="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
 
       <!-- About -->
       <div class="mb-8 py-6 border-y border-border">
@@ -132,4 +227,7 @@ const footerLinks = [
       </div>
     </div>
   </div>
+
+  <!-- Schema Markup for Navigation -->
+  <script type="application/ld+json" set:html={JSON.stringify(navigationSchema)} />
 </footer>

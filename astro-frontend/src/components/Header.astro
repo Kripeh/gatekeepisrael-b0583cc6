@@ -1,4 +1,6 @@
 ---
+import DesktopMegaMenu from './react/DesktopMegaMenu';
+
 interface Props {
   currentPath: string;
 }
@@ -27,9 +29,12 @@ const NAV_LINKS = [
         <img src="/logo.png" alt="גייטקיפ" class="h-12 md:h-16 w-auto flex-shrink-0" />
       </a>
 
-      <!-- CTA + Mobile Menu -->
+      <!-- Desktop Mega Menu + CTA + Mobile Menu -->
       <div class="flex items-center gap-2 md:gap-4">
-        <a 
+        <!-- Desktop Mega Menu (hidden on mobile) -->
+        <DesktopMegaMenu client:load />
+
+        <a
           href={PHONE_LINK}
           class="btn-cta-glow flex-shrink-0 flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-xl text-sm md:text-base font-bold"
         >
@@ -39,7 +44,7 @@ const NAV_LINKS = [
         </a>
 
         <!-- Mobile hamburger -->
-        <button 
+        <button
           id="mobile-menu-toggle"
           class="lg:hidden p-2 text-foreground hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
           aria-label="פתח תפריט"
@@ -50,28 +55,6 @@ const NAV_LINKS = [
     </div>
   </div>
 
-  <!-- Desktop Navigation -->
-  <nav class="hidden lg:block border-t border-border/50 bg-background/80" aria-label="ניווט ראשי">
-    <div class="container mx-auto px-4">
-      <ul class="flex items-center justify-center gap-1 py-2">
-        {NAV_LINKS.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class:list={[
-                'px-3 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200',
-                currentPath === link.href
-                  ? 'bg-primary/15 text-primary'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50',
-              ]}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </nav>
 </header>
 
 <!-- Mobile Menu Drawer -->
