@@ -1,4 +1,5 @@
 import PersistentHeader from "@/components/PersistentHeader";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 import StickyMobileFooter from "@/components/StickyMobileFooter";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -18,6 +19,12 @@ const RegionalCarmel = () => {
         canonicalUrl="https://gatekeepisrael.com/regional/carmel"
       />
       <PersistentHeader />
+      <Breadcrumbs
+        items={[
+          { label: "אזורי שירות", href: "/service-areas" },
+          { label: "חוף הכרמל" }
+        ]}
+      />
 
       <main>
         {/* Hero Section */}

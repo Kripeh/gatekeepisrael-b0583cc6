@@ -1,4 +1,5 @@
 import PersistentHeader from "@/components/PersistentHeader";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 import StickyMobileFooter from "@/components/StickyMobileFooter";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -18,6 +19,12 @@ const ProductInsulators = () => {
         canonicalUrl="https://gatekeepisrael.com/products/insulators"
       />
       <PersistentHeader />
+      <Breadcrumbs
+        items={[
+          { label: "מוצרים", href: "/pricing" },
+          { label: "מבודדים ורכיבי גידור" }
+        ]}
+      />
 
       <main>
         {/* Hero Section */}

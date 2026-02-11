@@ -14,6 +14,7 @@ import CaseStudies from "@/components/CaseStudies";
 import ROIComparison from "@/components/ROIComparison";
 import BoarCrisisGuide from "@/components/BoarCrisisGuide";
 import AgricultureSubsidies from "@/components/AgricultureSubsidies";
+import DiscoverSolutions from "@/components/DiscoverSolutions";
 
 const Index = () => {
   return (
@@ -28,6 +29,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <BoarCrisisGuide />
+        <DiscoverSolutions />
         <PriceEstimator />
         <ROIComparison />
         <Testimonials />

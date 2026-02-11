@@ -1,4 +1,5 @@
 import PersistentHeader from "@/components/PersistentHeader";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 import StickyMobileFooter from "@/components/StickyMobileFooter";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -18,6 +19,12 @@ const RegionalJordan = () => {
         canonicalUrl="https://gatekeepisrael.com/regional/jordan-valley"
       />
       <PersistentHeader />
+      <Breadcrumbs
+        items={[
+          { label: "אזורי שירות", href: "/service-areas" },
+          { label: "עמק הירדן" }
+        ]}
+      />
 
       <main>
         {/* Hero Section */}
