@@ -57,13 +57,13 @@ const groupedLinks = NAV_LINKS.reduce((acc, link) => {
         </button>
 
         <a href="/">
-          <img src="/logo.png" alt="גייטקיפ" class="h-12 md:h-16 w-auto" />
+          <img src="/logo.png" alt="גייטקיפ" class="h-12 md:h-16 w-auto" width="150" height="64" loading="eager" fetchpriority="high" />
         </a>
       </div>
 
       <!-- Desktop Mega Menu (centered) -->
       <div class="hidden lg:flex flex-1 justify-center">
-        <DesktopMegaMenu client:load />
+        <DesktopMegaMenu client:idle />
       </div>
 
       <!-- Left side: CTA button -->
@@ -84,7 +84,7 @@ const groupedLinks = NAV_LINKS.reduce((acc, link) => {
 <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden"></div>
 <nav id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-80 bg-background border-l border-border z-[70] transform translate-x-full transition-transform duration-300" aria-label="תפריט נייד">
   <div class="p-4 border-b border-border flex items-center justify-between">
-    <img src="/logo.png" alt="גייטקיפ" class="h-12 w-auto" />
+    <img src="/logo.png" alt="גייטקיפ" class="h-12 w-auto" width="150" height="64" loading="lazy" />
     <button id="mobile-menu-close" class="p-2 text-foreground hover:text-primary" aria-label="סגור תפריט">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
     </button>

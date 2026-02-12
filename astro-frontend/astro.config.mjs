@@ -8,7 +8,9 @@ export default defineConfig({
   output: 'static',
   integrations: [
     react(),
-    tailwind(),
+    tailwind({
+      config: { applyBaseStyles: false }
+    }),
     sitemap({
       i18n: {
         defaultLocale: 'he',
@@ -16,6 +18,35 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    inlineStylesheets: 'auto',
+  },
+  vite: {
+    build: {
+      cssCodeSplit: true,
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+        },
+      },
+      rollupOptions: {
+        output: {
+          manualChunks: (id) => {
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-dom')) {
+                return 'react-vendor';
+              }
+              if (id.includes('lucide-react')) {
+                return 'icons';
+              }
+              return 'vendor';
+            }
+          },
+        },
+      },
+    },
+  },
   redirects: {
     '/wild-boar-electric-fence-protection': {
       status: 301,

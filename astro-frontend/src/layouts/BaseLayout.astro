@@ -53,10 +53,18 @@ if (finalCanonical !== 'https://gatekeepisrael.com/' && finalCanonical.endsWith(
     <!-- Preconnect for external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://sqxmgqqtcgkjztpvhzzr.supabase.co" crossorigin />
+    <link rel="dns-prefetch" href="https://sqxmgqqtcgkjztpvhzzr.supabase.co" />
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Google Font - Deferred loading -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all';this.onload=null;"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet" />
+    </noscript>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
