@@ -34,7 +34,7 @@ const localBusinessSchema = {
 >
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} slot="head" />
 
-  <Header />
+  <Header currentPath={Astro.url.pathname} />
   <div class="container">
     <Breadcrumbs
       items={[

@@ -34,7 +34,7 @@ const productSchema = {
 >
   <script type="application/ld+json" set:html={JSON.stringify(productSchema)} slot="head" />
 
-  <Header />
+  <Header currentPath={Astro.url.pathname} />
   <div class="container">
     <Breadcrumbs
       items={[
