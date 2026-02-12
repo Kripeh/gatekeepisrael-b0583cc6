@@ -226,7 +226,7 @@ const WhyElectricFence = () => {
                   </li>
                   <li className="flex justify-between">
                     <span className="text-muted-foreground">אנרגיה לפולס</span>
-                    <span className="font-medium">0.3-1 ג'אול</span>
+                    <span className="font-medium">0.3-3 ג'אול</span>
                   </li>
                 </ul>
               </div>
