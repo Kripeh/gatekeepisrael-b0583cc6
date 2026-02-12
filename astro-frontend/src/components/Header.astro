@@ -10,29 +10,53 @@ const { currentPath } = Astro.props;
 const PHONE_LINK = 'tel:+972508585310';
 
 const NAV_LINKS = [
-  { href: '/', label: 'דף הבית' },
-  { href: '/installation', label: 'התקנת גדר חשמלית' },
-  { href: '/solar-fence', label: 'גדר סולארית' },
-  { href: '/home-solutions', label: 'פתרונות לבית' },
-  { href: '/pricing', label: 'מחירון' },
-  { href: '/#calculator', label: 'מחשבון מחיר' },
-  { href: '/why-electric-fence', label: 'למה גדר חשמלית?' },
-  { href: '/service-areas', label: 'אזורי שירות' },
-  { href: '/blog', label: 'בלוג' },
+  { href: '/', label: 'דף הבית', category: null },
+
+  // שירותים
+  { href: '/installation', label: 'התקנת גדר חשמלית', category: 'שירותים' },
+  { href: '/solar-fence', label: 'גדר סולארית', category: 'שירותים' },
+  { href: '/home-solutions', label: 'פתרונות לבית', category: 'שירותים' },
+  { href: '/pricing', label: 'מחירון ומחשבון', category: 'שירותים' },
+
+  // מוצרים
+  { href: '/products/solar-energizers', label: 'מחוללי מתח סולאריים', category: 'מוצרים' },
+  { href: '/products/insulators', label: 'מבודדים ורכיבי גידור', category: 'מוצרים' },
+  { href: '/products/testing-equipment', label: 'מכשור מדידה ובדיקה', category: 'מוצרים' },
+
+  // למד
+  { href: '/why-electric-fence', label: 'למה גדר חשמלית?', category: 'למד' },
+  { href: '/blog', label: 'בלוג ומאמרים', category: 'למד' },
+
+  // אזורי שירות
+  { href: '/service-areas', label: 'כיסוי ארצי', category: 'אזורי שירות' },
+  { href: '/regions/haifa', label: 'חיפה והקריות', category: 'אזורי שירות' },
+  { href: '/regions/carmel-coast', label: 'חוף הכרמל', category: 'אזורי שירות' },
+  { href: '/regions/jordan-valley', label: 'עמק הירדן', category: 'אזורי שירות' },
 ];
+
+// Group links by category for mobile menu
+const groupedLinks = NAV_LINKS.reduce((acc, link) => {
+  const category = link.category || 'ראשי';
+  if (!acc[category]) acc[category] = [];
+  acc[category].push(link);
+  return acc;
+}, {} as Record<string, typeof NAV_LINKS>);
 ---
 <header class="fixed top-0 right-0 left-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
   <div class="container mx-auto px-4 py-3">
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between lg:grid lg:grid-cols-3 lg:gap-4">
       <!-- Logo -->
-      <a href="/">
-        <img src="/logo.png" alt="גייטקיפ" class="h-12 md:h-16 w-auto flex-shrink-0" />
+      <a href="/" class="flex-shrink-0">
+        <img src="/logo.png" alt="גייטקיפ" class="h-12 md:h-16 w-auto" />
       </a>
 
-      <!-- Desktop Mega Menu + CTA + Mobile Menu -->
-      <div class="flex items-center gap-2 md:gap-4">
-        <!-- Desktop Mega Menu (hidden on mobile) -->
+      <!-- Desktop Mega Menu (centered on desktop) -->
+      <div class="hidden lg:flex justify-center">
         <DesktopMegaMenu client:load />
+      </div>
+
+      <!-- CTA + Mobile Menu -->
+      <div class="flex items-center gap-2 md:gap-4 lg:justify-end">
 
         <a
           href={PHONE_LINK}
@@ -66,19 +90,28 @@ const NAV_LINKS = [
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
     </button>
   </div>
-  <div class="flex flex-col p-4">
-    {NAV_LINKS.map((link) => (
-      <a
-        href={link.href}
-        class:list={[
-          'py-3 px-4 text-base font-medium rounded-lg transition-colors',
-          currentPath === link.href
-            ? 'text-primary font-bold bg-primary/10'
-            : 'text-foreground hover:text-primary hover:bg-primary/5',
-        ]}
-      >
-        {link.label}
-      </a>
+  <div class="flex flex-col p-4 overflow-y-auto h-[calc(100vh-180px)]">
+    {Object.entries(groupedLinks).map(([category, links]) => (
+      <div class="mb-4">
+        {category !== 'ראשי' && (
+          <div class="text-xs font-bold text-gray-500 uppercase tracking-wider px-4 mb-2 mt-2">
+            {category}
+          </div>
+        )}
+        {links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'block py-3 px-4 text-base font-medium rounded-lg transition-colors',
+              currentPath === link.href
+                ? 'text-primary font-bold bg-primary/10'
+                : 'text-foreground hover:text-primary hover:bg-primary/5',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
     ))}
   </div>
   <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-border bg-background">
