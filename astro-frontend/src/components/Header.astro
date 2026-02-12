@@ -44,19 +44,19 @@ const groupedLinks = NAV_LINKS.reduce((acc, link) => {
 ---
 <header class="fixed top-0 right-0 left-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
   <div class="container mx-auto px-4 py-3">
-    <div class="flex items-center justify-between lg:grid lg:grid-cols-3 lg:gap-4">
+    <div class="flex items-center justify-between gap-4">
       <!-- Logo -->
       <a href="/" class="flex-shrink-0">
         <img src="/logo.png" alt="גייטקיפ" class="h-12 md:h-16 w-auto" />
       </a>
 
-      <!-- Desktop Mega Menu (centered on desktop) -->
-      <div class="hidden lg:flex justify-center">
+      <!-- Desktop Mega Menu -->
+      <div class="hidden lg:flex flex-1 justify-center">
         <DesktopMegaMenu client:load />
       </div>
 
       <!-- CTA + Mobile Menu -->
-      <div class="flex items-center gap-2 md:gap-4 lg:justify-end">
+      <div class="flex items-center gap-2 md:gap-4 flex-shrink-0">
 
         <a
           href={PHONE_LINK}
