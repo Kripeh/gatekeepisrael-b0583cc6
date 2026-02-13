@@ -33,6 +33,7 @@ const isExternal = src.startsWith('http');
 {
   isExternal ? (
     <picture>
+      <source srcset={`${src}?format=avif&quality=80`} type="image/avif" />
       <source srcset={`${src}?format=webp&quality=85`} type="image/webp" />
       <img
         src={src}
@@ -50,8 +51,8 @@ const isExternal = src.startsWith('http');
       alt={alt}
       width={width || 800}
       height={height || 600}
-      format="webp"
-      quality={85}
+      format="avif"
+      quality={80}
       loading={loading}
       class={className}
       sizes={sizes}

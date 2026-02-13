@@ -4,12 +4,12 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { logger } from "@/lib/logger";
 
-type PestType = "boars" | "porcupines" | "foxes";
+type PestType = "boars" | "porcupines" | "rockBadgers";
 
 const pestLabels: Record<PestType, string> = {
   boars: "חזירים",
   porcupines: "דורבנים",
-  foxes: "שועלים",
+  rockBadgers: "שפני סלע",
 };
 
 type Step = "calculate" | "details" | "success";
@@ -48,10 +48,10 @@ const HomePriceCalculator = () => {
   const calculatePrice = () => {
     // Linear formula: basePrice = 1,300 + (perimeter × 5.5)
     const basePrice = 1300 + (perimeter * 5.5);
-    
-    // Porcupines/foxes add +700₪
-    const pestBonus = selectedPests.includes("porcupines") || selectedPests.includes("foxes") ? 700 : 0;
-    
+
+    // Porcupines/rock badgers add +700₪
+    const pestBonus = selectedPests.includes("porcupines") || selectedPests.includes("rockBadgers") ? 700 : 0;
+
     // Gates: +800₪ per gate
     const gatesCost = gates * 800;
     
@@ -59,15 +59,15 @@ const HomePriceCalculator = () => {
     const installationPrice = equipmentPrice + 2000;
     
     return {
-      equipmentMin: Math.max(0, equipmentPrice - 1000),
+      equipmentMin: Math.max(1, equipmentPrice - 1000),
       equipmentMax: equipmentPrice + 1000,
-      withInstallationMin: Math.max(0, installationPrice - 1000),
+      withInstallationMin: Math.max(1, installationPrice - 1000),
       withInstallationMax: installationPrice + 1000,
       // Discounted prices
-      discountedEquipmentMin: Math.max(0, equipmentPrice - 1000 - WINTER_DISCOUNT),
-      discountedEquipmentMax: equipmentPrice + 1000 - WINTER_DISCOUNT,
-      discountedInstallationMin: Math.max(0, installationPrice - 1000 - WINTER_DISCOUNT),
-      discountedInstallationMax: installationPrice + 1000 - WINTER_DISCOUNT,
+      discountedEquipmentMin: Math.max(1, equipmentPrice - 1000 - WINTER_DISCOUNT),
+      discountedEquipmentMax: Math.max(1, equipmentPrice + 1000 - WINTER_DISCOUNT),
+      discountedInstallationMin: Math.max(1, installationPrice - 1000 - WINTER_DISCOUNT),
+      discountedInstallationMax: Math.max(1, installationPrice + 1000 - WINTER_DISCOUNT),
     };
   };
 
@@ -334,7 +334,21 @@ const HomePriceCalculator = () => {
             {/* Step 2: Show Price + Get Details */}
             {step === "details" && priceResult && (
               <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                
+
+                {/* General Professional Disclaimer - Always shown */}
+                <div className="bg-blue-500/10 border-r-4 border-blue-500 rounded-lg p-4">
+                  <div className="flex items-start gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500 flex-shrink-0 mt-0.5">
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M12 16v-4"/>
+                      <path d="M12 8h.01"/>
+                    </svg>
+                    <div className="text-sm text-foreground">
+                      <span className="font-bold">💡 חשוב לדעת:</span> מחשבון זה מספק אומדן ראשוני בלבד. כל נכס ייחודי ומושפע מגורמים שונים כגון גודל החצר, מבנה השטח, נגישות ודרישות ספציפיות. לקבלת הצעת מחיר מדויקת ומקצועית, נדרש סקר שטח מפורט על ידי הצוות שלנו.
+                    </div>
+                  </div>
+                </div>
+
                 {/* Price Display */}
                 <div className="space-y-4">
 
