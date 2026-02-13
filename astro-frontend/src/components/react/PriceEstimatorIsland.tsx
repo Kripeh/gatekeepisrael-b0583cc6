@@ -157,25 +157,38 @@ export default function PriceEstimatorIsland() {
           <button onClick={() => setStep(1)} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <span>← חזור לעריכה</span>
           </button>
-          <div className="bg-primary/10 border border-primary/30 rounded-xl p-4 flex items-center gap-3">
-            <div><p className="font-bold text-foreground">מבצע חורף - חסכון של ₪{WINTER_PROMO_DISCOUNT.toLocaleString()}!</p><p className="text-sm text-muted-foreground">בתוקף עד {WINTER_PROMO_END_DATE}</p></div>
-          </div>
-          <div className="bg-muted/50 rounded-xl p-6 text-center border border-primary/30">
-            <p className="text-foreground font-bold mb-1">מחיר סופי כולל הכל:</p>
-            <p className="text-muted-foreground text-sm mb-3">חומרים + מערכת חשמלית + שערים + התקנה מקצועית</p>
-            <p className="text-xl text-muted-foreground line-through mb-1">₪{priceResult.originalMin.toLocaleString()} - ₪{priceResult.originalMax.toLocaleString()}</p>
+          {perimeter < 1000 && (
+            <div className="bg-amber-500/10 border-r-4 border-amber-500 rounded-lg p-4">
+              <div className="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-500 flex-shrink-0 mt-0.5">
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/>
+                  <path d="M12 9v4"/>
+                  <path d="M12 17h.01"/>
+                </svg>
+                <p className="text-sm text-foreground">
+                  <span className="font-bold">שימו לב:</span> חישוב זה הוא אומדן ראשוני. לחלקות קטנות מ-1,000 מטר, נדרש סקר שטח מקצועי לקבלת הצעת מחיר מדויקת.
+                </p>
+              </div>
+            </div>
+          )}
+          <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl p-5 text-center border-2 border-primary relative overflow-hidden">
+            <div className="absolute top-0 left-0 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-br-lg">מבצע חורף</div>
+            <p className="text-primary font-bold mb-2 mt-2">מחיר סופי כולל הכל</p>
+            <p className="text-muted-foreground line-through text-lg mb-1">₪{priceResult.originalMin.toLocaleString()} - ₪{priceResult.originalMax.toLocaleString()}</p>
             <p className="text-4xl md:text-5xl font-black text-primary">₪{priceResult.discountedMin.toLocaleString()} - ₪{priceResult.discountedMax.toLocaleString()}</p>
-            <p className="text-sm text-primary mt-2 font-semibold">כולל הנחת מבצע חורף!</p>
+            <p className="text-sm text-muted-foreground mt-3">חומרים + מערכת חשמלית + שערים + התקנה מקצועית</p>
+            <div className="inline-flex items-center gap-1 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold mt-2">חוסכים ₪{WINTER_PROMO_DISCOUNT.toLocaleString()}!</div>
           </div>
-          <div className="bg-primary/5 border border-primary/20 rounded-xl p-6">
-            <p className="text-center font-bold text-foreground mb-4">נשמע טוב? השאר פרטים ונחזור אליך בהקדם</p>
+          <div className="bg-gradient-to-r from-primary/20 to-primary/10 border-2 border-primary/50 rounded-xl p-5">
+            <h3 className="text-foreground font-black text-lg mb-1">🔥 מבצע חורף - חסכו ₪{WINTER_PROMO_DISCOUNT.toLocaleString()}!</h3>
+            <p className="text-muted-foreground text-sm mb-4">השאירו פרטים עכשיו וקבלו הנחה. <span className="text-primary font-semibold">המבצע בתוקף עד {WINTER_PROMO_END_DATE}</span></p>
             <div className="space-y-4">
               <div><label className="block text-foreground font-bold mb-2">שם מלא</label><input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="הזן את שמך" className="w-full input-forest rounded-lg px-4 py-3 text-lg font-semibold" maxLength={100} /></div>
               <div><label className="block text-foreground font-bold mb-2">מספר טלפון</label><input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="050-000-0000" className="w-full input-forest rounded-lg px-4 py-3 text-lg font-semibold" dir="ltr" /></div>
+              <button onClick={handleSubmitLead} disabled={isSubmitting} className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground py-4 rounded-xl text-xl font-black flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/30">
+                <span>{isSubmitting ? 'שולח...' : 'קבל את ההנחה!'}</span>
+              </button>
             </div>
-            <button onClick={handleSubmitLead} disabled={isSubmitting} className="w-full btn-cta-glow py-4 rounded-xl text-xl font-black flex items-center justify-center gap-2 mt-6">
-              <span>{isSubmitting ? 'שולח...' : 'קבל הצעה עם הנחה'}</span>
-            </button>
           </div>
         </div>
       )}

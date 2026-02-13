@@ -317,56 +317,48 @@ const PriceEstimator = () => {
                   <span>חזור לעריכה</span>
                 </button>
 
-                {/* Winter Promo Banner */}
-                <div className="bg-primary/10 border border-primary/30 rounded-xl p-4 flex items-center gap-3">
-                  <div className="bg-primary rounded-full p-2">
-                    <Gift className="w-5 h-5 text-primary-foreground" />
+                {/* Disclaimer for small plots */}
+                {perimeter < 1000 && (
+                  <div className="bg-amber-500/10 border-r-4 border-amber-500 rounded-lg p-4">
+                    <div className="flex items-start gap-3">
+                      <AlertCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                      <p className="text-sm text-foreground">
+                        <span className="font-bold">שימו לב:</span> חישוב זה הוא אומדן ראשוני. לחלקות קטנות מ-1,000 מטר, נדרש סקר שטח מקצועי לקבלת הצעת מחיר מדויקת.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-bold text-foreground flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-primary" />
-                      מבצע חורף - חסכון של ₪{WINTER_PROMO_DISCOUNT.toLocaleString()}!
-                    </p>
-                    <p className="text-sm text-muted-foreground flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      בתוקף עד {WINTER_PROMO_END_DATE}
-                    </p>
-                  </div>
-                </div>
+                )}
 
-                {/* Price Display */}
-                <div className="bg-muted/50 rounded-xl p-6 text-center border border-primary/30">
-                  <p className="text-foreground font-bold mb-1">מחיר סופי כולל הכל:</p>
-                  <p className="text-muted-foreground text-sm mb-3">חומרים + מערכת חשמלית + שערים + התקנה מקצועית</p>
-                  
-                  {/* Original Price - Crossed Out */}
-                  <p className="text-xl text-muted-foreground line-through mb-1">
+                {/* Price Display with Gradient */}
+                <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl p-5 text-center border-2 border-primary relative overflow-hidden">
+                  <div className="absolute top-0 left-0 bg-primary text-primary-foreground px-3 py-1 text-xs font-bold rounded-br-lg">מבצע חורף</div>
+                  <p className="text-primary font-bold mb-2 mt-2">מחיר סופי כולל הכל</p>
+                  <p className="text-muted-foreground line-through text-lg mb-1">
                     ₪{priceResult.originalMin.toLocaleString()} - ₪{priceResult.originalMax.toLocaleString()}
                   </p>
-                  
-                  {/* Discounted Price */}
                   <p className="text-4xl md:text-5xl font-black text-primary">
                     ₪{priceResult.discountedMin.toLocaleString()} - ₪{priceResult.discountedMax.toLocaleString()}
                   </p>
-                  
-                  <p className="text-sm text-primary mt-2 font-semibold">
-                    כולל הנחת מבצע חורף!
-                  </p>
-
-                  {perimeter < 1000 && (
-                    <p className="text-primary text-sm mt-3 flex items-center justify-center gap-1.5">
-                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                      <span>לעבודות קטנות ההערכה פחות מדויקת – התקשר למחיר מדויק</span>
-                    </p>
-                  )}
+                  <p className="text-sm text-muted-foreground mt-3">חומרים + מערכת חשמלית + שערים + התקנה מקצועית</p>
+                  <div className="inline-flex items-center gap-1 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold mt-2">
+                    <Gift className="w-4 h-4" />
+                    חוסכים ₪{WINTER_PROMO_DISCOUNT.toLocaleString()}!
+                  </div>
                 </div>
 
-                {/* Contact Form */}
-                <div className="bg-primary/5 border border-primary/20 rounded-xl p-6">
-                  <p className="text-center font-bold text-foreground mb-4">
-                    נשמע טוב? השאר פרטים ונחזור אליך בהקדם
+                {/* Contact Form with Gradient */}
+                <div className="bg-gradient-to-r from-primary/20 to-primary/10 border-2 border-primary/50 rounded-xl p-5">
+                  <h3 className="text-foreground font-black text-lg mb-1 flex items-center gap-2 justify-center">
+                    <Sparkles className="w-5 h-5 text-primary" />
+                    מבצע חורף - חסכו ₪{WINTER_PROMO_DISCOUNT.toLocaleString()}!
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-4 text-center">
+                    השאירו פרטים עכשיו וקבלו הנחה. <span className="text-primary font-semibold flex items-center gap-1 justify-center mt-1">
+                      <Clock className="w-3 h-3" />
+                      המבצע בתוקף עד {WINTER_PROMO_END_DATE}
+                    </span>
                   </p>
-                  
+
                   <div className="space-y-4">
                     {/* Name */}
                     <div>
@@ -399,26 +391,26 @@ const PriceEstimator = () => {
                         dir="ltr"
                       />
                     </div>
-                  </div>
 
-                  {/* Submit Button */}
-                  <button
-                    onClick={handleSubmitLead}
-                    disabled={isSubmitting}
-                    className="w-full btn-cta-glow py-4 rounded-xl text-xl font-black flex items-center justify-center gap-2 mt-6"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="w-6 h-6 animate-spin" />
-                        <span>שולח...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Gift className="w-6 h-6" />
-                        <span>קבל הצעה עם הנחה</span>
-                      </>
-                    )}
-                  </button>
+                    {/* Submit Button with Gradient */}
+                    <button
+                      onClick={handleSubmitLead}
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground py-4 rounded-xl text-xl font-black flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/30"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-6 h-6 animate-spin" />
+                          <span>שולח...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Gift className="w-6 h-6" />
+                          <span>קבל את ההנחה!</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
