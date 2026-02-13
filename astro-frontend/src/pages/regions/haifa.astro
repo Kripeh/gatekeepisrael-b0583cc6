@@ -1,0 +1,247 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Footer from '@/components/Footer.astro';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp.astro';
+
+const PHONE_LINK = "tel:+972508585310";
+
+const seoData = {
+  title: "גדר חשמלית נגד חזירי בר בחיפה | התקנה מקצועית | גייטקיפ",
+  description: "פתרונות גידור חשמלי מקצועיים לאזור חיפה והקריות. הגנה מוכחת נגד חזירי בר, התקנה מהירה וליווי מלא. שירות מקומי אמין. ☎ 050-858-5310",
+  keywords: "גדר חשמלית חיפה, חזירי בר חיפה, גדר נגד חזירים הקריות, הגנה מחזירי בר חיפה, גדר חשמלית קרית אתא, גדר חשמלית קרית ביאליק",
+  canonicalUrl: "https://gatekeepisrael.com/regions/haifa"
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "גייטקיפ - גדרות חשמליות חיפה והקריות",
+  "description": "פתרונות גידור חשמלי מקצועיים לאזור חיפה והקריות",
+  "areaServed": {
+    "@type": "City",
+    "name": "חיפה"
+  }
+};
+---
+
+<BaseLayout
+  title={seoData.title}
+  description={seoData.description}
+  keywords={seoData.keywords}
+  canonical={seoData.canonicalUrl}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} slot="head" />
+
+  <Header currentPath={Astro.url.pathname} />
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: "אזורי שירות", href: "/service-areas" },
+        { label: "חיפה והקריות" }
+      ]}
+      currentPath={Astro.url.pathname}
+    />
+  </div>
+
+  <main>
+    {/* Hero Section */}
+    <section class="pt-32 pb-16 bg-gradient-to-b from-secondary/30 to-background">
+      <div class="container">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+          <div class="inline-flex items-center gap-2 bg-primary/15 border border-primary/30 text-primary px-5 py-2.5 rounded-full mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="font-bold">שירות מקומי בחיפה והקריות</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-foreground leading-tight mb-6" style="text-wrap: balance;">
+            גדר חשמלית נגד{" "}
+            <span class="text-primary">חזירי בר בחיפה</span>
+          </h1>
+          <p class="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto" style="text-wrap: pretty;">
+            הגנה אפקטיבית על בתים וגינות באזור חיפה, הקריות, נשר וסביבתה
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Local Problem */}
+    <section class="py-20 bg-background">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-black text-foreground text-center mb-12">
+            <span class="text-primary">בעיית החזירים</span> בחיפה
+          </h2>
+          <div class="bg-card border border-border rounded-2xl p-8 mb-8">
+            <p class="text-lg text-muted-foreground mb-4">
+              אזור חיפה, הכרמל והקריות סובלים מפלישות תכופות של חזירי בר מהיער, בעיקר בשכונות הגובלות ביער הכרמל - רמות ויצחק שדה בחיפה, קרית אתא, קרית ביאליק, נשר והסביבה.
+            </p>
+            <p class="text-lg text-muted-foreground">
+              חזירים הורסים גינות, מסכנים תושבים ויוצרים נזקים כלכליים משמעותיים. <strong class="text-foreground">גדר חשמלית היא הפתרון היעיל ביותר</strong> שהוכח בעשרות מקרים באזור.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-card border border-border rounded-2xl p-8">
+              <h3 class="text-xl font-bold text-foreground mb-4">אזורים בסיכון גבוה</h3>
+              <ul class="space-y-2 text-muted-foreground">
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-1">•</span>
+                  <span>שכונות רמות ויצחק שדה בחיפה</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-1">•</span>
+                  <span>קרית אתא - אזור המושבה</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-1">•</span>
+                  <span>קרית ביאליק - שכונות הצפון</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-1">•</span>
+                  <span>נשר ועיר התחתית</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-1">•</span>
+                  <span>קרית טבעון ורכסים</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-card border border-border rounded-2xl p-8">
+              <h3 class="text-xl font-bold text-foreground mb-4">נזקים נפוצים</h3>
+              <ul class="space-y-2 text-muted-foreground">
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-1">•</span>
+                  <span>הרס גינות ומערכות השקיה</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-1">•</span>
+                  <span>חפירות בדשא ובגינות</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-1">•</span>
+                  <span>נזק לגדרות ומתקנים</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-1">•</span>
+                  <span>איומים על ילדים ובעלי חיים</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-1">•</span>
+                  <span>פגיעה בתחושת הביטחון</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Why Choose Us */}
+    <section class="py-20 bg-secondary/30">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-black text-foreground text-center mb-12">
+            למה לבחור בנו <span class="text-primary">בחיפה?</span>
+          </h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-card border border-border rounded-2xl p-6 text-center">
+              <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-foreground mb-2">שירות מקומי</h3>
+              <p class="text-sm text-muted-foreground">מכירים את האזור והבעיות המקומיות</p>
+            </div>
+
+            <div class="bg-card border border-border rounded-2xl p-6 text-center">
+              <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-foreground mb-2">זמינות גבוהה</h3>
+              <p class="text-sm text-muted-foreground">הגעה מהירה לכל אזור חיפה והקריות</p>
+            </div>
+
+            <div class="bg-card border border-border rounded-2xl p-6 text-center">
+              <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-foreground mb-2">ניסיון מוכח</h3>
+              <p class="text-sm text-muted-foreground">עשרות לקוחות מרוצים באזור</p>
+            </div>
+
+            <div class="bg-card border border-border rounded-2xl p-6 text-center">
+              <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-foreground mb-2">אחריות מלאה</h3>
+              <p class="text-sm text-muted-foreground">3 שנים + תחזוקה שוטפת</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Case Studies */}
+    <section class="py-20 bg-background">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-black text-foreground text-center mb-12">
+            <span class="text-primary">פרויקטים</span> באזור
+          </h2>
+
+          <div class="space-y-6">
+            {/* Placeholder - Upcoming Installation */}
+            <div class="bg-card border-2 border-dashed border-border rounded-2xl p-8 opacity-60">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-muted-foreground">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    <polyline points="3.29 7 12 12 20.71 7"/>
+                    <line x1="12" y1="22" x2="12" y2="12"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-muted-foreground">פרויקט בהתקנה - בית פרטי ברמות</h3>
+                  <p class="text-sm text-muted-foreground">התקנה: מרץ 2026 | שטח: 1 דונם</p>
+                </div>
+              </div>
+              <p class="text-muted-foreground italic">
+                פרויקט נוסף באזור בשלבי ביצוע. פרטים נוספים יפורסמו בקרוב.
+              </p>
+              <p class="text-muted-foreground font-semibold mt-3">
+                - בית פרטי, שכונת רמות חיפה
+              </p>
+            </div>
+
+            {/* Placeholder - Upcoming Installation */}
+            <div class="bg-card border-2 border-dashed border-border rounded-2xl p-8 opacity-60">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-muted-foreground">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    <polyline points="3.29 7 12 12 20.71 7"/>
+                    <line x1="12" y1="22" x2="12" y2="12"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-muted-foreground">פרויקט בהתקנה - גינה קהילתית</h3>
+                  <p class="text-sm text-muted-foreground">התקנה: אפריל 2026 | שטח: 0.5 דונם</p>
+                </div>
+              </div>
+              <p class="text-muted-foreground italic">
+                פרויקט נוסף באזור בשלבי ביצוע. פרטים נוספים יפורסמו בקרוב.
+              </p>
+              <p class="text-muted-foreground font-semibold mt-3">
+                - גינה קהילתית, נשר
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingWhatsApp />
+</BaseLayout>

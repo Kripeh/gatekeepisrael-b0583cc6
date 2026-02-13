@@ -202,9 +202,19 @@ const WhyElectricFence = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">בטוח לחלוטין</h3>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-sm mb-2">
                         מתח גבוה אך זרם נמוך מאוד. לא מסוכן לאדם או לבעלי חיים - רק לא נעים.
                       </p>
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        <span className="inline-flex items-center gap-1 text-xs bg-primary/10 text-primary px-2 py-1 rounded-md">
+                          <CheckCircle className="w-3 h-3" />
+                          תקן IEC 60335-2-76
+                        </span>
+                        <span className="inline-flex items-center gap-1 text-xs bg-primary/10 text-primary px-2 py-1 rounded-md">
+                          <CheckCircle className="w-3 h-3" />
+                          מאושר למגזר החקלאי
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -226,7 +236,7 @@ const WhyElectricFence = () => {
                   </li>
                   <li className="flex justify-between">
                     <span className="text-muted-foreground">אנרגיה לפולס</span>
-                    <span className="font-medium">0.3-1 ג'אול</span>
+                    <span className="font-medium">0.3-3 ג'אול</span>
                   </li>
                 </ul>
               </div>

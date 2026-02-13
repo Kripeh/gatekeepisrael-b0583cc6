@@ -1,6 +1,5 @@
 ---
 import ServicePageLayout from '../layouts/ServicePageLayout.astro';
-import SectionDivider from '../components/SectionDivider.astro';
 import areasData from '../../../public/api/pages/service-areas.json';
 
 const page = areasData;
@@ -23,8 +22,8 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
   <section class="py-12 md:py-20 bg-gradient-to-b from-primary/5 to-background">
     <div class="container">
       <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-3xl md:text-5xl font-black mb-6" style="text-wrap: balance;">{page.h1}</h1>
-        <p class="text-lg md:text-xl text-muted-foreground mb-8" style="text-wrap: pretty;">
+        <h1 class="text-3xl md:text-5xl font-black mb-6 text-balance">{page.h1}</h1>
+        <p class="text-lg md:text-xl text-muted-foreground mb-8 text-pretty">
           {hero?.subtitle}
         </p>
         <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
@@ -34,41 +33,55 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     </div>
   </section>
 
-  <SectionDivider />
+  <!-- Intro Content -->
+  <section class="py-10 md:py-14">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">גדר חשמלית נגד חיות בר – מניעת נזקים חקלאיים בכל אזור</h2>
+        <p class="text-muted-foreground leading-relaxed mb-4 text-pretty">
+          אוכלוסיות חיות הבר בישראל מתרחבות בקצב מדאיג. חזירי בר, שפני סלע ומזיקים נוספים פולשים מהגליל ועד הנגב, וגורמים נזקים חקלאיים כבדים לגידולים ותשתיות, ונזקים לגינות פרטיות. הפתרון שהוכיח את עצמו בשטח הוא גדר חשמלית מקצועית – מחסום פסיכולוגי ופיזי ביעילות של מעל 95%.
+        </p>
+        <p class="text-muted-foreground leading-relaxed mb-4 text-pretty">
+          הצוות המקצועי של גייטקיפ מתמחה בהתאמת פתרונות גידור לתנאי השטח הייחודיים של כל אזור: סוג הקרקע, הטופוגרפיה, סוג הגידולים, ואופי הפגיעות של חיות הבר. אנחנו מגיעים לכל מקום בארץ – ממושבים וקיבוצים בצפון ועד משקים במדבר.
+        </p>
+        <p class="text-muted-foreground leading-relaxed text-pretty">
+          <a href="/why-electric-fence" class="text-primary font-semibold hover:underline">למה גדר חשמלית היא הפתרון היעיל ביותר?</a> כי בניגוד לגדרות רגילות, מרחיקים כימיים או ציד – גדר חשמלית מלמדת את חיות הבר להתרחק לצמיתות.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- Regions -->
   {regions && (
-    <section class="py-12 md:py-16">
+    <section id="regions" class="py-12 md:py-16 bg-muted/30">
       <div class="container">
         <div class="max-w-5xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">אזורי שירות – כיסוי ארצי מלא</h2>
           <div class="grid md:grid-cols-2 gap-8">
             {regions.regions?.map((region: any) => (
-              <div class="bg-card p-6 rounded-2xl border border-border hover:border-primary/30 transition-colors">
-                <h2 class="text-xl font-bold mb-3 text-primary flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-                  {region.h2}
-                </h2>
-                <p class="text-muted-foreground mb-4 leading-relaxed" style="text-wrap: pretty;">{region.description}</p>
+              <article class="bg-card p-6 rounded-2xl border border-border">
+                <h3 class="text-xl font-bold mb-3 text-primary">{region.h2}</h3>
+                <p class="text-muted-foreground mb-4 text-pretty">{region.description}</p>
                 <div class="mb-4">
-                  <h3 class="text-sm font-bold text-foreground mb-2">אזורים:</h3>
+                  <h4 class="text-sm font-bold text-foreground mb-2">אזורים:</h4>
                   <ul class="text-muted-foreground space-y-1">
                     {region.areas?.map((area: any) => (
                       <li class="flex items-start gap-2">
-                        <span class="text-primary mt-0.5 flex-shrink-0">📍</span>
+                        <span class="text-primary mt-0.5 flex-shrink-0">&#x1f4cd;</span>
                         <span>{area}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h3 class="text-sm font-bold text-foreground mb-2">גידולים עיקריים:</h3>
+                  <h4 class="text-sm font-bold text-foreground mb-2">גידולים עיקריים:</h4>
                   <div class="flex flex-wrap gap-2">
                     {region.crops?.map((crop: any) => (
                       <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">{crop}</span>
                     ))}
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -76,13 +89,81 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
     </section>
   )}
 
+  <!-- Why Professional Installation -->
+  <section class="py-12 md:py-16">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">למה חשוב להתקין גדר חשמלית בידי מומחים?</h2>
+        <p class="text-muted-foreground leading-relaxed mb-4 text-pretty">
+          גדר חשמלית לחקלאות אינה רק רכישת ציוד – היא מערכת מורכבת שדורשת התאמה מדויקת לתנאי השטח. סקר מקדים מקצועי מזהה את נתיבי התנועה של חזירי הבר, בודק את מוליכות הקרקע למערכת ההארקה, ומתכנן את מיקום הגדר ליעילות מרבית.
+        </p>
+        <p class="text-muted-foreground leading-relaxed mb-6 text-pretty">
+          באזורים מרוחקים ללא גישה לחשמל, אנו מתקינים <a href="/solar-fence" class="text-primary font-semibold hover:underline">מערכות גדר חשמלית סולארית</a> אוטונומיות שעובדות 24/7. עבור שטחים קטנים יותר או בתים פרטיים, יש לנו <a href="/home-solutions" class="text-primary font-semibold hover:underline">פתרונות ביתיים מותאמים</a>.
+        </p>
+        <div class="grid sm:grid-cols-3 gap-6">
+          <div class="card-forest rounded-2xl p-6 text-center">
+            <p class="text-3xl font-black text-primary mb-2">24-48</p>
+            <p class="text-sm text-muted-foreground">שעות מסקר שטח להצעת מחיר</p>
+          </div>
+          <div class="card-forest rounded-2xl p-6 text-center">
+            <p class="text-3xl font-black text-primary mb-2">1-3</p>
+            <p class="text-sm text-muted-foreground">ימי התקנה לפרויקט ממוצע</p>
+          </div>
+          <div class="card-forest rounded-2xl p-6 text-center">
+            <p class="text-3xl font-black text-primary mb-2">95%+</p>
+            <p class="text-sm text-muted-foreground">שיעור הצלחה בהרתעת חזירי בר</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-12 md:py-16 bg-muted/30">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">שאלות נפוצות על שירות אזורי</h2>
+        <div class="space-y-4">
+          <details class="card-forest rounded-xl px-6 group">
+            <summary class="text-right text-lg font-bold cursor-pointer list-none flex items-center justify-between text-foreground hover:text-primary py-6">
+              <span>האם אתם מגיעים לאזורים מרוחקים בנגב או ברמת הגולן?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180 flex-shrink-0 mr-2"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-muted-foreground leading-relaxed pb-6">כן, אנחנו מספקים שירות בכל רחבי הארץ, כולל אזורים מרוחקים. עבור שטחים ללא גישה לתשתית חשמל, אנו מתקינים מערכות סולאריות אוטונומיות שפועלות ללא תלות ברשת.</p>
+          </details>
+          <details class="card-forest rounded-xl px-6 group">
+            <summary class="text-right text-lg font-bold cursor-pointer list-none flex items-center justify-between text-foreground hover:text-primary py-6">
+              <span>כמה זמן לוקחת התקנה של גדר חשמלית לשטח חקלאי?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180 flex-shrink-0 mr-2"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-muted-foreground leading-relaxed pb-6">זמן ההתקנה תלוי בגודל השטח ובמורכבות הטופוגרפיה. פרויקט ממוצע של 500-1,000 מ' גדר מותקן תוך 1-3 ימי עבודה. שטחים גדולים יותר עשויים לדרוש עד שבוע.</p>
+          </details>
+          <details class="card-forest rounded-xl px-6 group">
+            <summary class="text-right text-lg font-bold cursor-pointer list-none flex items-center justify-between text-foreground hover:text-primary py-6">
+              <span>האם הגדר מתאימה לכל סוגי הקרקע?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180 flex-shrink-0 mr-2"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-muted-foreground leading-relaxed pb-6">כן. אנחנו מתאימים את מערכת ההארקה לסוג הקרקע – חולית, בזלתית, טרה-רוסה או חרסיתית. בקרקע עם מוליכות נמוכה, אנו מתקינים מערכת הארקה מורחבת עם מוטות נוספים.</p>
+          </details>
+          <details class="card-forest rounded-xl px-6 group">
+            <summary class="text-right text-lg font-bold cursor-pointer list-none flex items-center justify-between text-foreground hover:text-primary py-6">
+              <span>מה ההבדל בין גדר חשמלית לחקלאות לבין גדר לבית פרטי?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-open:rotate-180 flex-shrink-0 mr-2"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-muted-foreground leading-relaxed pb-6">גדר חקלאית מיועדת לשטחים גדולים עם Energizer חזק יותר ועמידות גבוהה לתנאי מזג אוויר. גדר ביתית קצרה יותר, דיסקרטית ומותאמת לבטיחות משפחתית. למידע נוסף, ראו את עמוד <a href="/home-solutions" class="text-primary hover:underline">פתרונות לבית פרטי</a>.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   {cta && (
     <section class="py-16 md:py-20 bg-primary text-primary-foreground">
       <div class="container">
         <div class="max-w-3xl mx-auto text-center">
           <h2 class="text-2xl md:text-4xl font-black mb-6">{cta.h2}</h2>
-          <p class="text-lg opacity-90 mb-8" style="text-wrap: pretty;">{cta.content}</p>
+          <p class="text-lg opacity-90 mb-8 text-pretty">{cta.content}</p>
           <a href={PHONE_LINK} class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/90 transition-colors">
             <span>התקשר - {PHONE_DISPLAY}</span>
           </a>
@@ -92,16 +173,20 @@ const cta = (page.sections as any[]).find(s => s.type === 'cta');
   )}
 
   <!-- Internal Links -->
-  <section class="py-12">
+  <nav aria-label="דפים קשורים" class="py-12">
     <div class="container">
-      <div class="max-w-4xl mx-auto p-6 bg-card/50 border border-border rounded-xl">
-        <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-lg font-bold mb-4">עמודים קשורים:</h2>
         <div class="flex flex-wrap gap-4">
-          {page.internalLinks.map((link: any) => (
-            <a href={link.href} class="text-primary hover:underline">{link.label}</a>
-          ))}
+          <a href="/installation" class="text-primary hover:underline">תהליך התקנת גדר חשמלית</a>
+          <a href="/pricing" class="text-primary hover:underline">מחירון גדרות חשמליות</a>
+          <a href="/solar-fence" class="text-primary hover:underline">גדר חשמלית סולארית</a>
+          <a href="/why-electric-fence" class="text-primary hover:underline">למה גדר חשמלית עובדת</a>
+          <a href="/home-solutions" class="text-primary hover:underline">גדר חשמלית לבית פרטי</a>
+          <a href="/blog/boar-history-israel" class="text-primary hover:underline">משבר חזירי הבר בישראל</a>
+          <a href="/blog/electrical-fence-technology" class="text-primary hover:underline">מפרט טכני של גדרות חשמליות</a>
         </div>
       </div>
     </div>
-  </section>
+  </nav>
 </ServicePageLayout>

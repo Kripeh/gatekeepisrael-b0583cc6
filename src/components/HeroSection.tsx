@@ -25,19 +25,18 @@ const HeroSection = () => {
 
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Keyword Badge for SEO */}
+          {/* Professional Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/30 text-primary px-5 py-2.5 rounded-full mb-6">
-            <span className="font-bold text-sm sm:text-base">גדר חשמלית נגד חזירי בר ומזיקים | מיגון חקלאי מקצועי</span>
+            
           </div>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight mb-6" style={{
           textWrap: 'balance'
         }}>
-            <span className="text-primary text-glow">חיות בר</span>
-            {" "}מחסלות לך את החלקה?
+            <span className="text-primary text-glow">חיות בר מחסלות לך את החלקה?</span>
             <br />
-            <span className="text-primary text-glow">אנחנו עוצרים אותן היום!</span>
+            אנחנו עוצרים אותן היום!
           </h1>
 
           {/* Sub-headline */}
@@ -45,8 +44,9 @@ const HeroSection = () => {
           textWrap: 'pretty'
         }}>
             אל תחכה לפשיטה של הלילה.{" "}
-            <strong className="text-foreground">גדר חשמלית נגד חזירי בר</strong> היא הפתרון היחיד שעובד.{" "}
-            <span className="text-primary font-semibold">גדר חשמלית לחקלאות</span> – התקנה מקצועית, אחריות מלאה.
+            <strong className="text-foreground">גדר חשמלית מקצועית</strong> היא הפתרון היחיד נגד{" "}
+            <span className="text-primary font-semibold">חזירי בר, צבאים, שפני וסלע, דורבנים</span> ועוד.{" "}
+            מערכת הגנה עוצמתית – הכל על פי תקן.
           </p>
 
           {/* CTAs */}

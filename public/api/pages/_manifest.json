@@ -13,11 +13,11 @@
     { "slug": "/why-electric-fence", "type": "service", "file": "why-electric-fence.json" },
     { "slug": "/service-areas", "type": "area", "file": "service-areas.json" },
     { "slug": "/blog", "type": "blog-index", "file": "blog.json" },
-    { "slug": "/blog/boar_history_israel", "type": "blog-article", "file": "blog/boar_history_israel.json" },
-    { "slug": "/blog/electrical_fence_technology", "type": "blog-article", "file": "blog/electrical_fence_technology.json" }
+    { "slug": "/blog/boar-history-israel", "type": "blog-article", "file": "blog/boar-history-israel.json" },
+    { "slug": "/blog/electrical-fence-technology", "type": "blog-article", "file": "blog/electrical-fence-technology.json" }
   ],
   "redirects": [
-    { "from": "/wild-boar-electric-fence-protection", "to": "/blog/boar_history_israel", "status": 301 }
+    { "from": "/wild-boar-electric-fence-protection", "to": "/blog/boar-history-israel", "status": 301 }
   ],
   "globalData": {
     "phone": "+972508585310",

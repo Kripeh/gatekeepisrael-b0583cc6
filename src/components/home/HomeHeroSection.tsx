@@ -34,7 +34,7 @@ const HomeHeroSection = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Home-focused Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/30 text-primary px-5 py-2.5 rounded-full mb-6">
-            <span className="font-bold text-sm" style={{ textWrap: 'balance' }}>
+            <span className="font-bold text-sm text-balance">
               🏡 פתרונות הגנה לבית ולגינה - בטוח לילדים ולחיות מחמד
             </span>
           </div>

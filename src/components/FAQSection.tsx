@@ -11,6 +11,10 @@ const PHONE_LINK = "tel:+972508585310";
 
 const faqs = [
   {
+    question: "מה ההבדל בין גדר חשמלית למסור גדר חי (גוזם גדרות חשמלי)?",
+    answer: "זה שאלה מצוינת ויש בלבול רב בגוגל! גדר חשמלית (Electric Fence) היא מערכת אבטחה והגנה - חוטים עם מתח גבוה שמרתיעים חזירי בר ובעלי חיים. מסור/גוזם גדרות (Hedge Trimmer) הוא כלי גינון של מקיטה או בוש לגיזום שיחים. אנחנו מתקינים מערכות הגנה, לא מוכרים כלי גינון!",
+  },
+  {
     question: "האם הגדר באמת עוצרת חזירי בר?",
     answer: "חזיר בר הוא חיה אינטליגנטית. הגדר יוצרת מחסום פסיכולוגי - השוק החשמלי מלמד את החזיר להתרחק מהאזור לצמיתות. בזכות התכנון האגרונומי של ענבר, אנחנו מציבים את הגדר בנתיבי הגישה האסטרטגיים.",
   },
@@ -74,7 +78,7 @@ const FAQSection = () => {
 
           {/* Internal Links */}
           <div className="mt-10 p-6 bg-card/50 border border-border rounded-xl">
-            <p className="text-muted-foreground leading-relaxed text-center" style={{ textWrap: 'pretty' }}>
+            <p className="text-muted-foreground leading-relaxed text-center text-pretty">
               למידע נוסף על{" "}
               <Link to="/installation" className="text-primary font-semibold hover:underline">התקנת גדר חשמלית</Link>
               {" "}מקצועית, בקרו בעמוד ההתקנה שלנו. רוצים לדעת{" "}

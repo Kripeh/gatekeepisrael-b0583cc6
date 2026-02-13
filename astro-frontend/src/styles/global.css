@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -53,6 +51,8 @@
 
   html {
     direction: rtl;
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
   }
 
   body {
@@ -83,6 +83,14 @@
 @layer utilities {
   .gradient-hero {
     background: var(--gradient-hero);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
   }
 }
 

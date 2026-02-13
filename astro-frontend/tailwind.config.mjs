@@ -18,6 +18,10 @@ export default {
       fontFamily: {
         heebo: ['Heebo', 'sans-serif'],
       },
+      textWrap: {
+        balance: 'balance',
+        pretty: 'pretty',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

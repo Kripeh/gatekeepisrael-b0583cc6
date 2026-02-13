@@ -4,7 +4,7 @@ const benefits = [
   {
     icon: Shield,
     title: "בטוח למשפחה",
-    description: "זרם נמוך ופולסים קצרים - מרתיע חיות בר אך בטוח לילדים ולחיות מחמד. שוק קל שמלמד להתרחק.",
+    description: "זרם נמוך ופולסים קצרים על פי תקן בינלאומי IEC 60335-2-76 - מרתיע חיות בר אך בטוח לחלוטין לילדים ולחיות מחמד. שוק קל שמלמד להתרחק.",
   },
   {
     icon: Eye,
@@ -52,7 +52,7 @@ const HomeWhySection = () => {
               <h3 className="text-xl font-bold text-foreground mb-3">
                 {benefit.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed" style={{ textWrap: 'pretty' }}>
+              <p className="text-muted-foreground leading-relaxed text-pretty">
                 {benefit.description}
               </p>
             </div>

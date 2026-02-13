@@ -1,6 +1,5 @@
 ---
 import ServicePageLayout from '../layouts/ServicePageLayout.astro';
-import SectionDivider from '../components/SectionDivider.astro';
 import whyData from '../../../public/api/pages/why-electric-fence.json';
 
 const page = whyData;
@@ -15,202 +14,104 @@ const safety = (page.sections as any[]).find(s => s.type === 'safety');
 const cta = (page.sections as any[]).find(s => s.type === 'cta');
 ---
 <ServicePageLayout title={page.seo.title} description={page.seo.description} keywords={page.seo.keywords} canonical={page.seo.canonical} breadcrumbs={page.breadcrumbs} structuredData={page.structuredData}>
-  <!-- Hero -->
   <section class="py-12 md:py-20 bg-gradient-to-b from-primary/5 to-background">
-    <div class="container">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-3xl md:text-5xl font-black mb-6" style="text-wrap: balance;">{page.h1}</h1>
-        <p class="text-lg md:text-xl text-muted-foreground mb-8" style="text-wrap: pretty;">{(page.sections as any[])[0]?.subtitle}</p>
+    <div class="container"><div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-3xl md:text-5xl font-black mb-6 text-balance">{page.h1}</h1>
+      <p class="text-lg md:text-xl text-muted-foreground mb-8 text-pretty">{(page.sections as any[])[0]?.subtitle}</p>
+    </div></div>
+  </section>
+  <!-- Intro Content -->
+  <section class="py-8 md:py-10"><div class="container"><div class="max-w-4xl mx-auto">
+    <p class="text-muted-foreground leading-relaxed mb-4 text-pretty">
+      גדר חשמלית היא השיטה היעילה ביותר להרחקת חיות בר – חזירי בר, שפני סלע ומזיקים – מגידולים חקלאיים, גינות ושטחים פרטיים. בניגוד לגדרות רשת רגילות שחיות בר חופרות מתחתיהן, או מרחיקים כימיים שאינם יעילים לטווח ארוך, גדר חשמלית יוצרת מחסום פסיכולוגי חזק – הזרם הקצר מלמד את החיה להתרחק מהאזור לצמיתות.
+    </p>
+    <p class="text-muted-foreground leading-relaxed text-pretty">
+      הנתונים מדברים בעד עצמם: שיעור הצלחה של מעל 95% במניעת נזקים חקלאיים ונזקים לגינות מחיות בר. עלות תחזוקה נמוכה לאורך זמן, ואורך חיים של שנים רבות. הצוות המקצועי שלנו מתקין בכל הארץ. למטה תמצאו השוואה מפורטת בין גדר חשמלית לפתרונות אחרים.
+    </p>
+  </div></div></section>
+
+  {problem && <section class="py-12 md:py-16"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">{problem.h2}</h2>
+    <p class="text-lg text-muted-foreground mb-8 text-center leading-relaxed text-pretty">{problem.content}</p>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-destructive/5 border border-destructive/20 rounded-2xl p-6">
+        <h3 class="font-bold text-lg mb-4 text-destructive">נזקים נפוצים</h3>
+        <ul class="space-y-2 text-muted-foreground">{problem.damages?.map((d: any) => (<li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-destructive mt-0.5 flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg><span>{d}</span></li>))}</ul>
+      </div>
+      <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6">
+        <h3 class="font-bold text-lg mb-4 text-primary">אזורים מושפעים</h3>
+        <ul class="space-y-2 text-muted-foreground">{problem.affectedAreas?.map((area: any) => (<li class="flex items-start gap-2"><span class="text-primary mt-0.5 flex-shrink-0">📍</span><span>{area}</span></li>))}</ul>
       </div>
     </div>
-  </section>
-
-  <SectionDivider />
-
-  <!-- Problem -->
-  {problem && (
-    <section class="py-12 md:py-16">
-      <div class="container">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">{problem.h2}</h2>
-          <p class="text-lg text-muted-foreground mb-8 text-center leading-relaxed" style="text-wrap: pretty;">{problem.content}</p>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-destructive/5 border border-destructive/20 rounded-2xl p-6">
-              <h3 class="font-bold text-lg mb-4 text-destructive flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
-                נזקים נפוצים
-              </h3>
-              <ul class="space-y-2 text-muted-foreground">
-                {problem.damages?.map((d: any) => (
-                  <li class="flex items-start gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-destructive mt-0.5 flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
-                    <span>{d}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6">
-              <h3 class="font-bold text-lg mb-4 text-primary flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-                אזורים מושפעים
-              </h3>
-              <ul class="space-y-2 text-muted-foreground">
-                {problem.affectedAreas?.map((area: any) => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-primary mt-0.5 flex-shrink-0">📍</span>
-                    <span>{area}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
+  </div></div></section>}
+  {comparison && <section class="py-12 md:py-16 bg-muted/30"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{comparison.h2}</h2>
+    <div class="grid md:grid-cols-2 gap-6">{comparison.methods?.map((method: any) => (
+      <div class="bg-card p-6 rounded-2xl border border-border">
+        <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-destructive flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>{method.title}</h3>
+        <p class="text-muted-foreground text-pretty">{method.why_fails}</p>
       </div>
-    </section>
-  )}
-
-  <SectionDivider />
-
-  <!-- Comparison -->
-  {comparison && (
-    <section class="py-12 md:py-16 bg-muted/30">
-      <div class="container">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{comparison.h2}</h2>
-          <div class="grid md:grid-cols-2 gap-6">
-            {comparison.methods?.map((method: any) => (
-              <div class="bg-card p-6 rounded-2xl border border-border hover:border-destructive/30 transition-colors">
-                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-destructive flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
-                  {method.title}
-                </h3>
-                <p class="text-muted-foreground leading-relaxed" style="text-wrap: pretty;">{method.why_fails}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+    ))}</div>
+  </div></div></section>}
+  {howItWorks && <section class="py-12 md:py-16"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{howItWorks.h2}</h2>
+    <div class="grid md:grid-cols-3 gap-6 mb-10">{howItWorks.mechanisms?.map((mech: any) => (
+      <div class="card-forest rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300">
+        <h3 class="text-xl font-bold mb-3">{mech.title}</h3><p class="text-muted-foreground text-pretty">{mech.description}</p>
       </div>
-    </section>
-  )}
-
-  <SectionDivider />
-
-  <!-- How It Works -->
-  {howItWorks && (
-    <section class="py-12 md:py-16">
-      <div class="container">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{howItWorks.h2}</h2>
-          <div class="grid md:grid-cols-3 gap-6 mb-10">
-            {howItWorks.mechanisms?.map((mech: any) => (
-              <div class="card-forest rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
-                <h3 class="text-xl font-bold mb-3">{mech.title}</h3>
-                <p class="text-muted-foreground leading-relaxed" style="text-wrap: pretty;">{mech.description}</p>
-              </div>
-            ))}
-          </div>
-          <div class="bg-card border border-border rounded-2xl p-6">
-            <h3 class="text-lg font-bold mb-4 text-center">נתונים טכניים</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {howItWorks.technicalData?.map((td: any) => (
-                <div class="text-center p-4 bg-primary/5 rounded-xl border border-primary/10">
-                  <p class="text-2xl font-black text-primary">{td.value}</p>
-                  <p class="text-sm text-muted-foreground mt-1">{td.parameter}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+    ))}</div>
+    <div class="bg-card border border-border rounded-2xl p-6">
+      <h3 class="text-lg font-bold mb-4 text-center">נתונים טכניים</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">{howItWorks.technicalData?.map((td: any) => (
+        <div class="text-center p-4 bg-primary/5 rounded-xl"><p class="text-2xl font-black text-primary">{td.value}</p><p class="text-sm text-muted-foreground">{td.parameter}</p></div>
+      ))}</div>
+    </div>
+  </div></div></section>}
+  {stats && <section class="py-12 md:py-16 bg-primary text-primary-foreground"><div class="container"><div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">{stats.h2}</h2>
+    <p class="text-6xl md:text-8xl font-black mb-4">{stats.stat}</p>
+    <p class="text-xl opacity-90 mb-4">{stats.description}</p><p class="text-sm opacity-70">{stats.note}</p>
+  </div></div></section>}
+  {maintenance && <section class="py-12 md:py-16"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{maintenance.h2}</h2>
+    <div class="grid md:grid-cols-3 gap-6">{maintenance.items?.map((item: any) => (
+      <div class="bg-card p-6 rounded-2xl border border-border">
+        <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-bold mb-4">{item.frequency}</div>
+        <h3 class="text-lg font-bold mb-2">{item.title}</h3><p class="text-muted-foreground text-sm">{item.description}</p>
       </div>
-    </section>
-  )}
-
-  <!-- Stats -->
-  {stats && (
-    <section class="py-12 md:py-16 bg-primary text-primary-foreground">
-      <div class="container">
-        <div class="max-w-3xl mx-auto text-center">
-          <h2 class="text-2xl md:text-3xl font-bold mb-6">{stats.h2}</h2>
-          <p class="text-6xl md:text-8xl font-black mb-4">{stats.stat}</p>
-          <p class="text-xl opacity-90 mb-4">{stats.description}</p>
-          <p class="text-sm opacity-70">{stats.note}</p>
-        </div>
+    ))}</div>
+  </div></div></section>}
+  {safety && <section class="py-12 md:py-16 bg-muted/30"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{safety.h2}</h2>
+    <div class="grid md:grid-cols-2 gap-6">{safety.items?.map((item: any) => (
+      <div class="bg-card p-6 rounded-2xl border border-border">
+        <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary flex-shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>{item.title}</h3>
+        <p class="text-muted-foreground text-pretty">{item.description}</p>
       </div>
-    </section>
-  )}
-
-  <SectionDivider />
-
-  <!-- Maintenance -->
-  {maintenance && (
-    <section class="py-12 md:py-16">
-      <div class="container">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{maintenance.h2}</h2>
-          <div class="grid md:grid-cols-3 gap-6">
-            {maintenance.items?.map((item: any) => (
-              <div class="bg-card p-6 rounded-2xl border border-border hover:border-primary/30 transition-colors">
-                <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-bold mb-4">{item.frequency}</div>
-                <h3 class="text-lg font-bold mb-2">{item.title}</h3>
-                <p class="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  )}
-
-  <SectionDivider />
-
-  <!-- Safety -->
-  {safety && (
-    <section class="py-12 md:py-16 bg-muted/30">
-      <div class="container">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">{safety.h2}</h2>
-          <div class="grid md:grid-cols-2 gap-6">
-            {safety.items?.map((item: any) => (
-              <div class="bg-card p-6 rounded-2xl border border-border hover:border-primary/30 transition-colors">
-                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary flex-shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
-                  {item.title}
-                </h3>
-                <p class="text-muted-foreground leading-relaxed" style="text-wrap: pretty;">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- CTA -->
-  {cta && (
-    <section class="py-16 md:py-20">
-      <div class="container">
-        <div class="max-w-3xl mx-auto text-center bg-card p-8 md:p-12 rounded-2xl border-2 border-primary/30">
-          <h2 class="text-2xl md:text-4xl font-black mb-6 text-foreground">{cta.h2}</h2>
-          <p class="text-lg text-muted-foreground mb-8">{cta.content}</p>
-          <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold">
-            <span>התקשר לייעוץ חינם - {PHONE_DISPLAY}</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  )}
+    ))}</div>
+  </div></div></section>}
+  {cta && <section class="py-16 md:py-20"><div class="container"><div class="max-w-3xl mx-auto text-center bg-card p-8 md:p-12 rounded-2xl border-2 border-primary/30">
+    <h2 class="text-2xl md:text-4xl font-black mb-6 text-foreground">{cta.h2}</h2>
+    <p class="text-lg text-muted-foreground mb-8">{cta.content}</p>
+    <a href={PHONE_LINK} class="btn-cta-glow inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold"><span>התקשר לייעוץ חינם - {PHONE_DISPLAY}</span></a>
+  </div></div></section>}
+  <!-- Contextual Content -->
+  <section class="py-12 md:py-16"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">השלב הבא: הגנה על השטח שלכם</h2>
+    <p class="text-muted-foreground leading-relaxed mb-4 text-pretty">
+      מוכנים להתחיל? <a href="/installation" class="text-primary font-semibold hover:underline">תהליך ההתקנה</a> שלנו מתחיל בסקר שטח מקצועי חינם. בדקו <a href="/pricing" class="text-primary font-semibold hover:underline">את המחירון המפורט</a> או השתמשו במחשבון המחירים לקבלת הערכה מיידית.
+    </p>
+    <p class="text-muted-foreground leading-relaxed mb-4 text-pretty">
+      עבור שטחים ללא חיבור חשמל, יש לנו <a href="/solar-fence" class="text-primary font-semibold hover:underline">פתרון גדר סולארית</a> אוטונומי. לבעלי בתים פרטיים עם בעיית חזירים בגינה – ראו את <a href="/home-solutions" class="text-primary font-semibold hover:underline">הפתרונות הביתיים</a> שלנו.
+    </p>
+    <p class="text-muted-foreground leading-relaxed text-pretty">
+      להעמקה נוספת, קראו את <a href="/blog/boar-history-israel" class="text-primary font-semibold hover:underline">המדריך המקיף על משבר חזירי הבר בישראל</a> ואת <a href="/blog/electrical-fence-technology" class="text-primary font-semibold hover:underline">המפרט הטכני</a> של מערכות הגידור שלנו.
+    </p>
+  </div></div></section>
 
   <!-- Internal Links -->
-  <section class="py-12">
-    <div class="container">
-      <div class="max-w-4xl mx-auto p-6 bg-card/50 border border-border rounded-xl">
-        <h3 class="text-lg font-bold mb-4">קישורים נוספים:</h3>
-        <div class="flex flex-wrap gap-4">
-          {page.internalLinks.map((link: any) => (
-            <a href={link.href} class="text-primary hover:underline">{link.label}</a>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
+  <nav aria-label="דפים קשורים" class="py-12"><div class="container"><div class="max-w-4xl mx-auto">
+    <h2 class="text-lg font-bold mb-4">עמודים קשורים:</h2>
+    <div class="flex flex-wrap gap-4">{page.internalLinks.map((link: any) => (<a href={link.href} class="text-primary hover:underline">{link.label}</a>))}</div>
+  </div></div></nav>
 </ServicePageLayout>

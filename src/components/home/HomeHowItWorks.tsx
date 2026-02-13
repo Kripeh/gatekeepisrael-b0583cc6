@@ -2,14 +2,14 @@ import { Zap, Sun, Settings } from "lucide-react";
 
 const steps = [
   {
-    icon: Zap,
-    title: "פולסים מרתיעים",
-    description: "המערכת שולחת פולסים חשמליים קצרים - מספיק לגרום לחזיר להתרחק, אך לא מזיקים לבני אדם או לחיות מחמד.",
-  },
-  {
     icon: Sun,
     title: "אנרגיה סולארית או חשמל",
     description: "בחר בין מערכת סולארית עצמאית לגמרי לבין חיבור לרשת החשמל הביתית. שתי האפשרויות אמינות ויעילות.",
+  },
+  {
+    icon: Zap,
+    title: "פולסים מרתיעים",
+    description: "המערכת שולחת פולסים חשמליים קצרים בהתאם לתקן בינלאומי IEC 60335-2-76 - מרתיעים ביעילות את חיות הבר, אך בטוחים לחלוטין לבני אדם וחיות מחמד.",
   },
   {
     icon: Settings,
@@ -59,7 +59,7 @@ const HomeHowItWorks = () => {
                 <h3 className="text-xl font-bold text-foreground mb-3">
                   {step.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed" style={{ textWrap: 'pretty' }}>
+                <p className="text-muted-foreground leading-relaxed text-pretty">
                   {step.description}
                 </p>
               </div>
