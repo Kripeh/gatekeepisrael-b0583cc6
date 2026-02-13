@@ -123,7 +123,7 @@ const SEOHead = ({ title, description, keywords, canonicalPath, canonicalUrl, st
 
     // Cleanup function to restore original values
     return () => {
-      document.title = "גייטקיפ - גדרות חשמליות נגד חזירי בר | הגנה מקצועית לשטחים חקלאיים";
+      document.title = "גדר חשמלית נגד חזירי בר | גדר חשמלית לחקלאות - גייטקיפ";
       if (scriptTag && scriptTag.parentNode) {
         scriptTag.parentNode.removeChild(scriptTag);
       }

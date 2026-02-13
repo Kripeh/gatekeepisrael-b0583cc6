@@ -262,6 +262,16 @@ const HomePriceCalculator = () => {
                   <p className="text-muted-foreground text-sm mt-1">
                     💡 טיפ: מדוד את אורך הגדר הכולל סביב החצר. לא בטוח? התקשר ונעזור!
                   </p>
+                  <div className="flex items-start gap-2 bg-accent/50 border border-accent rounded-lg p-3 mt-2">
+                    <AlertCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground">
+                      המחשבון מספק הערכה כללית. לחצרות מתחת ל-1,000 מ' מומלץ{" "}
+                      <a href="tel:+972508585310" className="text-primary font-bold hover:underline">
+                        להתקשר לייעוץ
+                      </a>{" "}
+                      וקבלת הצעת מחיר מדויקת.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Gates */}
