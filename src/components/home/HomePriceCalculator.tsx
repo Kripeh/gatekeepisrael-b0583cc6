@@ -59,15 +59,15 @@ const HomePriceCalculator = () => {
     const installationPrice = equipmentPrice + 2000;
     
     return {
-      equipmentMin: Math.max(0, equipmentPrice - 1000),
+      equipmentMin: Math.max(1, equipmentPrice - 1000),
       equipmentMax: equipmentPrice + 1000,
-      withInstallationMin: Math.max(0, installationPrice - 1000),
+      withInstallationMin: Math.max(1, installationPrice - 1000),
       withInstallationMax: installationPrice + 1000,
       // Discounted prices
-      discountedEquipmentMin: Math.max(0, equipmentPrice - 1000 - WINTER_DISCOUNT),
-      discountedEquipmentMax: equipmentPrice + 1000 - WINTER_DISCOUNT,
-      discountedInstallationMin: Math.max(0, installationPrice - 1000 - WINTER_DISCOUNT),
-      discountedInstallationMax: installationPrice + 1000 - WINTER_DISCOUNT,
+      discountedEquipmentMin: Math.max(1, equipmentPrice - 1000 - WINTER_DISCOUNT),
+      discountedEquipmentMax: Math.max(1, equipmentPrice + 1000 - WINTER_DISCOUNT),
+      discountedInstallationMin: Math.max(1, installationPrice - 1000 - WINTER_DISCOUNT),
+      discountedInstallationMax: Math.max(1, installationPrice + 1000 - WINTER_DISCOUNT),
     };
   };
 

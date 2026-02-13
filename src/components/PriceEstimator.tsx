@@ -49,12 +49,12 @@ const PriceEstimator = () => {
     const deerMultiplier = selectedPests.includes("deer") ? 1.4 : 1;
     const floorPrice = Math.round(basePrice * deerMultiplier);
     const ceilingPrice = Math.round(floorPrice * 1.15);
-    
-    return { 
-      originalMin: floorPrice, 
+
+    return {
+      originalMin: floorPrice,
       originalMax: ceilingPrice,
-      discountedMin: floorPrice - WINTER_PROMO_DISCOUNT,
-      discountedMax: ceilingPrice - WINTER_PROMO_DISCOUNT,
+      discountedMin: Math.max(1, floorPrice - WINTER_PROMO_DISCOUNT),
+      discountedMax: Math.max(1, ceilingPrice - WINTER_PROMO_DISCOUNT),
     };
   };
 

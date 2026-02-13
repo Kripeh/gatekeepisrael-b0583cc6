@@ -43,8 +43,8 @@ export default function PriceEstimatorIsland() {
     const ceilingPrice = Math.round(floorPrice * 1.15);
     return {
       originalMin: floorPrice, originalMax: ceilingPrice,
-      discountedMin: floorPrice - WINTER_PROMO_DISCOUNT,
-      discountedMax: ceilingPrice - WINTER_PROMO_DISCOUNT,
+      discountedMin: Math.max(1, floorPrice - WINTER_PROMO_DISCOUNT),
+      discountedMax: Math.max(1, ceilingPrice - WINTER_PROMO_DISCOUNT),
     };
   };
 
@@ -81,6 +81,7 @@ export default function PriceEstimatorIsland() {
         name: name.trim(), phone: phone.trim().replace(/[-\s]/g, ''),
         perimeter, gates, pest_types: selectedPests,
         estimated_min_price: priceResult.discountedMin, estimated_max_price: priceResult.discountedMax,
+        lead_type: 'agricultural',
       });
       if (error) throw error;
       if (sessionId) {

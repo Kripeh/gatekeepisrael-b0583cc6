@@ -44,10 +44,10 @@ export default function HomePriceCalculatorIsland() {
     const equipmentPrice = Math.round(basePrice + pestBonus + gatesCost);
     const installationPrice = equipmentPrice + 2000;
     return {
-      withInstallationMin: Math.max(0, installationPrice - 1000),
+      withInstallationMin: Math.max(1, installationPrice - 1000),
       withInstallationMax: installationPrice + 1000,
-      discountedInstallationMin: Math.max(0, installationPrice - 1000 - WINTER_DISCOUNT),
-      discountedInstallationMax: installationPrice + 1000 - WINTER_DISCOUNT,
+      discountedInstallationMin: Math.max(1, installationPrice - 1000 - WINTER_DISCOUNT),
+      discountedInstallationMax: Math.max(1, installationPrice + 1000 - WINTER_DISCOUNT),
     };
   };
 
