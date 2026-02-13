@@ -5,7 +5,8 @@ import {
   BookOpen,
   MapPin,
   ChevronDown,
-  Home
+  Home,
+  Receipt
 } from "lucide-react";
 
 interface MenuItem {
@@ -96,6 +97,7 @@ const DesktopMegaMenu = () => {
         href="/pricing"
         className="flex items-center gap-2 px-4 py-2 text-base font-semibold text-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
       >
+        <Receipt className="w-4 h-4" />
         <span>מחירון</span>
       </a>
 
