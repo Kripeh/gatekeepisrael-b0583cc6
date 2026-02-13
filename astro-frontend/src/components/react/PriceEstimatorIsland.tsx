@@ -157,6 +157,21 @@ export default function PriceEstimatorIsland() {
           <button onClick={() => setStep(1)} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <span>← חזור לעריכה</span>
           </button>
+
+          {/* General Professional Disclaimer - Always shown */}
+          <div className="bg-blue-500/10 border-r-4 border-blue-500 rounded-lg p-4">
+            <div className="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500 flex-shrink-0 mt-0.5">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 16v-4"/>
+                <path d="M12 8h.01"/>
+              </svg>
+              <div className="text-sm text-foreground">
+                <span className="font-bold">💡 חשוב לדעת:</span> מחשבון זה מספק אומדן ראשוני בלבד. כל חלקה חקלאית ייחודית ומושפעת מגורמים שונים כגון סוג קרקע, טופוגרפיה, נגישות, וסוג המזיקים בשטח. לקבלת הצעת מחיר מדויקת ומקצועית, נדרש סקר שטח מפורט על ידי הצוות שלנו.
+              </div>
+            </div>
+          </div>
+
           {perimeter < 1000 && (
             <div className="bg-amber-500/10 border-r-4 border-amber-500 rounded-lg p-4">
               <div className="flex items-start gap-3">
