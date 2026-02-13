@@ -4,12 +4,12 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { logger } from "@/lib/logger";
 
-type PestType = "boars" | "porcupines" | "foxes";
+type PestType = "boars" | "porcupines" | "rockBadgers";
 
 const pestLabels: Record<PestType, string> = {
   boars: "חזירים",
   porcupines: "דורבנים",
-  foxes: "שועלים",
+  rockBadgers: "שפני סלע",
 };
 
 type Step = "calculate" | "details" | "success";
@@ -48,10 +48,10 @@ const HomePriceCalculator = () => {
   const calculatePrice = () => {
     // Linear formula: basePrice = 1,300 + (perimeter × 5.5)
     const basePrice = 1300 + (perimeter * 5.5);
-    
-    // Porcupines/foxes add +700₪
-    const pestBonus = selectedPests.includes("porcupines") || selectedPests.includes("foxes") ? 700 : 0;
-    
+
+    // Porcupines/rock badgers add +700₪
+    const pestBonus = selectedPests.includes("porcupines") || selectedPests.includes("rockBadgers") ? 700 : 0;
+
     // Gates: +800₪ per gate
     const gatesCost = gates * 800;
     

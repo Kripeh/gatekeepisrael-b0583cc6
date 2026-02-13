@@ -5,12 +5,12 @@
 import { useState, useEffect } from 'react';
 import { supabase, logger } from './SupabaseProvider';
 
-type PestType = 'boars' | 'porcupines' | 'foxes';
+type PestType = 'boars' | 'porcupines' | 'rockBadgers';
 
 const pestLabels: Record<PestType, string> = {
   boars: 'חזירים',
   porcupines: 'דורבנים',
-  foxes: 'שועלים',
+  rockBadgers: 'שפני סלע',
 };
 
 type Step = 'calculate' | 'details' | 'success';
@@ -39,7 +39,7 @@ export default function HomePriceCalculatorIsland() {
 
   const calculatePrice = () => {
     const basePrice = 1300 + (perimeter * 5.5);
-    const pestBonus = selectedPests.includes('porcupines') || selectedPests.includes('foxes') ? 700 : 0;
+    const pestBonus = selectedPests.includes('porcupines') || selectedPests.includes('rockBadgers') ? 700 : 0;
     const gatesCost = gates * 800;
     const equipmentPrice = Math.round(basePrice + pestBonus + gatesCost);
     const installationPrice = equipmentPrice + 2000;
