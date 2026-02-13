@@ -1,14 +1,14 @@
 {
-  "slug": "/why-electric-fence",
-  "type": "service",
+  "slug": "/blog/why-electric-fence",
+  "type": "blog",
   "updatedAt": "2026-02-06",
   "seo": {
-    "title": "גדר חשמלית נגד חיות בר | חזירי בר, שפני סלע ונזקים חקלאיים | גייטקיפ",
+    "title": "למה גדר חשמלית? | יתרונות וסיבות לבחור בגידור חשמלי | גייטקיפ",
     "description": "יתרונות גדר חשמלית לחקלאות: עוצרת 95% מפלישות חזירי בר ומזיקים. גידור חשמלי מקצועי, מניעת נזקים חקלאיים. למדו למה גדר חשמלית עדיפה על פתרונות אחרים.",
     "keywords": "יתרונות גדר חשמלית לחקלאות, גדר חשמלית נגד חיות בר, גידור חשמלי, חזירי בר, מזיקים, נזקים חקלאיים, נזקים לגינות",
-    "canonical": "https://gatekeepisrael.com/why-electric-fence"
+    "canonical": "https://gatekeepisrael.com/blog/why-electric-fence"
   },
-  "breadcrumbs": [{ "label": "למה גדר חשמלית" }],
+  "breadcrumbs": [{ "label": "בלוג" }, { "label": "למה גדר חשמלית" }],
   "h1": "למה גדר חשמלית היא הפתרון היעיל ביותר נגד חזירי בר?",
   "sections": [
     {

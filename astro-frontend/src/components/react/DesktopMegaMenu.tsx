@@ -17,6 +17,7 @@ interface MenuItem {
 interface MenuCategory {
   title: string;
   icon: React.ElementType;
+  href?: string; // Optional href for clickable categories like "בלוג"
   items: MenuItem[];
 }
 
@@ -25,10 +26,8 @@ const menuCategories: MenuCategory[] = [
     title: "שירותים",
     icon: Wrench,
     items: [
-      { label: "התקנת גדר חשמלית", href: "/installation", description: "התקנה מקצועית ומהירה" },
-      { label: "גדר חשמלית סולארית", href: "/solar-fence", description: "פתרון ללא חיבור לחשמל" },
-      { label: "מחירון ומחשבון", href: "/pricing", description: "מחירים שקופים והצעת מחיר" },
-      { label: "פתרונות לבית", href: "/home-solutions", description: "הגנה על הגינה והחצר" },
+      { label: "גדר חשמלית לחקלאות", href: "/installation", description: "הגנה על מטעים וכרמים" },
+      { label: "גדר חשמלית ביתית", href: "/home-solutions", description: "הגנה על הגינה והחצר" },
     ],
   },
   {
@@ -41,13 +40,15 @@ const menuCategories: MenuCategory[] = [
     ],
   },
   {
-    title: "למד",
+    title: "בלוג",
     icon: BookOpen,
+    href: "/blog",
     items: [
-      { label: "למה גדר חשמלית?", href: "/why-electric-fence", description: "השוואת פתרונות" },
-      { label: "משבר חזירי הבר", href: "/blog/boar_history_israel", description: "מדריך מקיף" },
-      { label: "מפרט טכנולוגי", href: "/blog/electrical_fence_technology", description: "פרטים הנדסיים" },
-      { label: "כל המאמרים", href: "/blog", description: "בלוג ומדריכים" },
+      { label: "למה גדר חשמלית?", href: "/blog/why-electric-fence", description: "השוואת פתרונות" },
+      { label: "גדר חשמלית סולארית", href: "/blog/solar-fence", description: "פתרון ללא חיבור לחשמל" },
+      { label: "התקנת גדר חשמלית - מדריך", href: "/blog/installation-guide", description: "מדריך שלב אחר שלב" },
+      { label: "משבר חזירי הבר", href: "/blog/boar-history-israel", description: "הבעיה והפתרונות" },
+      { label: "מפרט טכנולוגי", href: "/blog/electrical-fence-technology", description: "פרטים הנדסיים" },
     ],
   },
   {
@@ -90,6 +91,14 @@ const DesktopMegaMenu = () => {
         <span>דף הבית</span>
       </a>
 
+      {/* Pricing Link (Standalone) */}
+      <a
+        href="/pricing"
+        className="flex items-center gap-2 px-4 py-2 text-base font-semibold text-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+      >
+        <span>מחירון</span>
+      </a>
+
       {/* Menu Categories */}
       {menuCategories.map((category) => (
         <div
@@ -98,24 +107,43 @@ const DesktopMegaMenu = () => {
           onMouseEnter={() => handleMouseEnter(category.title)}
           onMouseLeave={handleMouseLeave}
         >
-          {/* Category Button */}
-          <button
-            className={`flex items-center gap-2 px-4 py-2 text-base font-semibold rounded-lg transition-colors ${
-              activeMenu === category.title
-                ? "text-primary bg-primary/10"
-                : "text-foreground hover:text-primary hover:bg-primary/5"
-            }`}
-            aria-expanded={activeMenu === category.title}
-            aria-haspopup="true"
-          >
-            <category.icon className="w-4 h-4" />
-            <span>{category.title}</span>
-            <ChevronDown
-              className={`w-4 h-4 transition-transform ${
-                activeMenu === category.title ? "rotate-180" : ""
+          {/* Category Button/Link */}
+          {category.href ? (
+            <a
+              href={category.href}
+              className={`flex items-center gap-2 px-4 py-2 text-base font-semibold rounded-lg transition-colors ${
+                activeMenu === category.title
+                  ? "text-primary bg-primary/10"
+                  : "text-foreground hover:text-primary hover:bg-primary/5"
               }`}
-            />
-          </button>
+            >
+              <category.icon className="w-4 h-4" />
+              <span>{category.title}</span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${
+                  activeMenu === category.title ? "rotate-180" : ""
+                }`}
+              />
+            </a>
+          ) : (
+            <button
+              className={`flex items-center gap-2 px-4 py-2 text-base font-semibold rounded-lg transition-colors ${
+                activeMenu === category.title
+                  ? "text-primary bg-primary/10"
+                  : "text-foreground hover:text-primary hover:bg-primary/5"
+              }`}
+              aria-expanded={activeMenu === category.title}
+              aria-haspopup="true"
+            >
+              <category.icon className="w-4 h-4" />
+              <span>{category.title}</span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${
+                  activeMenu === category.title ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+          )}
 
           {/* Dropdown Menu */}
           {activeMenu === category.title && (

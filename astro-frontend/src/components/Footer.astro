@@ -5,21 +5,21 @@ const PHONE_LINK = 'tel:+972508585310';
 
 const footerColumns = {
   services: [
-    { label: 'התקנת גדר חשמלית', href: '/installation' },
-    { label: 'גדר סולארית', href: '/solar-fence' },
+    { label: 'גדר חשמלית לחקלאות', href: '/installation' },
+    { label: 'גדר חשמלית ביתית', href: '/home-solutions' },
     { label: 'מחירון', href: '/pricing' },
-    { label: 'פתרונות לבית', href: '/home-solutions' },
   ],
   products: [
     { label: 'מחוללי מתח סולאריים', href: '/products/solar-energizers' },
     { label: 'מבודדים ורכיבי גידור', href: '/products/insulators' },
     { label: 'מכשור מדידה ובדיקה', href: '/products/testing-equipment' },
   ],
-  learn: [
-    { label: 'למה גדר חשמלית?', href: '/why-electric-fence' },
-    { label: 'מדריך חזירי בר', href: '/blog/boar_history_israel' },
-    { label: 'מפרט טכנולוגי', href: '/blog/electrical_fence_technology' },
-    { label: 'בלוג', href: '/blog' },
+  blog: [
+    { label: 'למה גדר חשמלית?', href: '/blog/why-electric-fence' },
+    { label: 'גדר חשמלית סולארית', href: '/blog/solar-fence' },
+    { label: 'מדריך התקנה', href: '/blog/installation-guide' },
+    { label: 'משבר חזירי הבר', href: '/blog/boar-history-israel' },
+    { label: 'מפרט טכנולוגי', href: '/blog/electrical-fence-technology' },
   ],
   regions: [
     { label: 'אזורי שירות', href: '/service-areas' },
@@ -45,7 +45,7 @@ const navigationSchema = {
       'name': link.label,
       'url': `https://www.gatekeepisrael.co.il${link.href}`
     })),
-    ...footerColumns.learn.map(link => ({
+    ...footerColumns.blog.map(link => ({
       '@type': 'SiteNavigationElement',
       'name': link.label,
       'url': `https://www.gatekeepisrael.co.il${link.href}`
@@ -101,11 +101,11 @@ const navigationSchema = {
           </ul>
         </div>
 
-        <!-- Column 3: Learn -->
+        <!-- Column 3: Blog -->
         <div>
-          <h3 class="text-foreground font-bold text-lg mb-4">למידע נוסף</h3>
+          <h3 class="text-foreground font-bold text-lg mb-4">בלוג</h3>
           <ul class="space-y-3">
-            {footerColumns.learn.map((link) => (
+            {footerColumns.blog.map((link) => (
               <li>
                 <a href={link.href} class="text-muted-foreground hover:text-primary transition-colors text-sm">
                   {link.label}

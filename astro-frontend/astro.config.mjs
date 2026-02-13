@@ -60,6 +60,14 @@ export default defineConfig({
       status: 301,
       destination: '/blog/electrical-fence-technology',
     },
+    '/why-electric-fence': {
+      status: 301,
+      destination: '/blog/why-electric-fence',
+    },
+    '/solar-fence': {
+      status: 301,
+      destination: '/blog/solar-fence',
+    },
   },
   trailingSlash: 'never',
 });
