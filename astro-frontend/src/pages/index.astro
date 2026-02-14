@@ -91,20 +91,53 @@ const galleryImages = [
     <!-- Discover Solutions Section -->
     <DiscoverSolutions />
 
-    <!-- Team in Action Section (Gallery) -->
+    <!-- Team Section (Consolidated: Members + Credentials + Gallery) -->
     <section id="team-gallery" class="py-20 lg:py-28 bg-background">
       <div class="container">
+        <!-- Section Title -->
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-2 bg-primary/15 border border-primary/30 text-primary px-5 py-2.5 rounded-full mb-4">
             <span class="font-bold text-sm">👥 הכירו את הצוות</span>
           </div>
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-4">
-            הצוות <span class="text-primary">בפעולה</span>
+            מי <span class="text-primary">אנחנו?</span>
           </h2>
-          <p class="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            המתקינים המקצועיים שלנו בשטח - מסקר ועד התקנה סופית
-          </p>
         </div>
+
+        <!-- Team Member Cards -->
+        <div class="mb-16">
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {about.team.map((member: any) => (
+              <div class="group bg-card border border-border rounded-2xl p-6 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+                <div class="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h4 class="text-xl font-bold text-foreground mb-1">{member.name}</h4>
+                <p class="text-sm font-medium text-primary mb-3">{member.role}</p>
+                <p class="text-sm text-muted-foreground leading-relaxed text-pretty">{member.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Credentials / Values -->
+        <div class="bg-card border border-border rounded-2xl p-6 lg:p-8 mb-16 max-w-5xl mx-auto">
+          <div class="grid md:grid-cols-3 gap-6">
+            {about.values.map((value: any) => (
+              <div class="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors">
+                <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-foreground">{value.title}</h4>
+                  <p class="text-sm text-muted-foreground">{value.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Gallery Photos (Team in Action) -->
         <LazyGallery images={galleryImages} client:visible />
       </div>
     </section>
@@ -287,54 +320,12 @@ const galleryImages = [
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section (Company Story Only) -->
     <section id="about" class="py-20 lg:py-28 bg-secondary/30">
       <div class="container">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-4 text-balance">
-            {about.h2.split(':')[0]}:{' '}<span class="text-primary">{about.h2.split(':')[1]?.trim() || ''}</span>
-          </h2>
-          <p class="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-            {about.subtitle}
-          </p>
-        </div>
-
-        <!-- Values -->
-        <div class="bg-card border border-border rounded-2xl p-6 lg:p-8 mb-20">
-          <div class="grid md:grid-cols-3 gap-6">
-            {about.values.map((value: any) => (
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors">
-                <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
-                </div>
-                <div>
-                  <h4 class="font-bold text-foreground">{value.title}</h4>
-                  <p class="text-sm text-muted-foreground">{value.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <!-- Team -->
-        <div class="mb-20">
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {about.team.map((member: any) => (
-              <div class="group bg-card border border-border rounded-2xl p-6 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
-                <div class="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                </div>
-                <h4 class="text-xl font-bold text-foreground mb-1">{member.name}</h4>
-                <p class="text-sm font-medium text-primary mb-3">{member.role}</p>
-                <p class="text-sm text-muted-foreground leading-relaxed text-pretty">{member.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         <!-- Internal Links -->
         {about.internalLinks && (
-          <div class="mt-16 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
+          <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
             {about.internalLinks.map((link: any) => (
               <a href={link.href} class="text-primary font-semibold hover:underline">{link.label}</a>
             ))}
