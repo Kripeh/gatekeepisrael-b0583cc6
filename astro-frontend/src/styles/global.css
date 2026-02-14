@@ -97,6 +97,10 @@
   .text-pretty {
     text-wrap: pretty;
   }
+
+  .rtl {
+    direction: rtl;
+  }
 }
 
 /* ── Section Divider ── */

@@ -112,7 +112,7 @@ export default function HomePriceCalculatorIsland() {
     <div className="space-y-6 relative">
       {/* Thank You Popup */}
       {showThankYou && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 animate-in fade-in duration-300" style={{ direction: 'rtl' }}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 animate-in fade-in duration-300 rtl">
           <div className="bg-card rounded-2xl p-8 md:p-10 max-w-md mx-4 text-center border-2 border-primary/30 animate-in zoom-in-95 duration-300">
             <div className="text-5xl mb-4">✅</div>
             <h3 className="text-2xl font-black text-foreground mb-3">תודה רבה!</h3>

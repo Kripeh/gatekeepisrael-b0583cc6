@@ -53,6 +53,10 @@ if (finalCanonical !== 'https://gatekeepisrael.com/' && finalCanonical.endsWith(
 
     <!-- Preconnect for external resources -->
     <link rel="dns-prefetch" href="https://sqxmgqqtcgkjztpvhzzr.supabase.co" />
+    <link rel="preconnect" href="https://sqxmgqqtcgkjztpvhzzr.supabase.co" crossorigin />
+
+    <!-- Preload critical assets for faster LCP -->
+    <link rel="preload" href="/images/hero-bg.png" as="image" type="image/png" fetchpriority="high" />
 
     <!-- Heebo fonts are now self-hosted via @fontsource (imported in global.css) -->
 
@@ -80,5 +84,11 @@ if (finalCanonical !== 'https://gatekeepisrael.com/' && finalCanonical.endsWith(
     <Footer />
     <FloatingWhatsApp />
     <ScrollToTopIsland client:visible />
+
+    <!-- Vercel Analytics (only in production) -->
+    <script>
+      import { inject } from '@vercel/analytics';
+      inject();
+    </script>
   </body>
 </html>
