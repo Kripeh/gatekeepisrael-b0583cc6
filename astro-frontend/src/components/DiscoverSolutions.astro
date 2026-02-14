@@ -18,6 +18,39 @@ interface SolutionCard {
 
 const solutions: SolutionCard[] = [
   {
+    icon: "dollar-sign",
+    title: "מחירים",
+    subtitle: "שקיפות מלאה",
+    gradient: "from-rose-500/10 to-red-500/10",
+    links: [
+      { label: "מחירון מלא", href: "/pricing" },
+      { label: "מחשבון הצעת מחיר", href: "/#calculator" },
+      { label: "השוואת ROI", href: "/#roi" },
+    ],
+  },
+  {
+    icon: "tractor",
+    title: "לחקלאים",
+    subtitle: "מיגון מקצועי לשטחים",
+    gradient: "from-teal-500/10 to-green-500/10",
+    links: [
+      { label: "התקנה מקצועית", href: "/installation" },
+      { label: "גדר סולארית לשטח", href: "/blog/solar-fence" },
+      { label: "מחירון חקלאי", href: "/pricing" },
+    ],
+  },
+  {
+    icon: "home",
+    title: "לבעלי בתים",
+    subtitle: "הגנה על הגינה והחצר",
+    gradient: "from-orange-500/10 to-amber-500/10",
+    links: [
+      { label: "פתרונות לגינה ולחצר", href: "/home-solutions" },
+      { label: "גדר סולארית לבית", href: "/blog/solar-fence" },
+      { label: "מחירון למגורים", href: "/pricing" },
+    ],
+  },
+  {
     icon: "battery",
     title: "מוצרים",
     subtitle: "ציוד מקצועי לגידור",
@@ -34,9 +67,9 @@ const solutions: SolutionCard[] = [
     subtitle: "למד על גדרות חשמליות",
     gradient: "from-blue-500/10 to-cyan-500/10",
     links: [
-      { label: "למה גדר חשמלית?", href: "/why-electric-fence" },
-      { label: "מדריך חזירי בר", href: "/blog/boar_history_israel" },
-      { label: "מפרט טכנולוגי", href: "/blog/electrical_fence_technology" },
+      { label: "למה גדר חשמלית?", href: "/blog/why-electric-fence" },
+      { label: "מדריך חזירי בר", href: "/blog/boar-history-israel" },
+      { label: "מפרט טכנולוגי", href: "/blog/electrical-fence-technology" },
       { label: "כל המאמרים", href: "/blog" },
     ],
   },
@@ -50,39 +83,6 @@ const solutions: SolutionCard[] = [
       { label: "חיפה והקריות", href: "/regions/haifa" },
       { label: "חוף הכרמל", href: "/regions/carmel-coast" },
       { label: "עמק הירדן", href: "/regions/jordan-valley" },
-    ],
-  },
-  {
-    icon: "home",
-    title: "לבעלי בתים",
-    subtitle: "הגנה על הגינה והחצר",
-    gradient: "from-orange-500/10 to-amber-500/10",
-    links: [
-      { label: "פתרונות לגינה ולחצר", href: "/home-solutions" },
-      { label: "גדר סולארית לבית", href: "/solar-fence" },
-      { label: "מחירון למגורים", href: "/pricing" },
-    ],
-  },
-  {
-    icon: "tractor",
-    title: "לחקלאים",
-    subtitle: "מיגון מקצועי לשטחים",
-    gradient: "from-teal-500/10 to-green-500/10",
-    links: [
-      { label: "התקנה מקצועית", href: "/installation" },
-      { label: "גדר סולארית לשטח", href: "/solar-fence" },
-      { label: "מחירון חקלאי", href: "/pricing" },
-    ],
-  },
-  {
-    icon: "dollar-sign",
-    title: "מחירים",
-    subtitle: "שקיפות מלאה",
-    gradient: "from-rose-500/10 to-red-500/10",
-    links: [
-      { label: "מחירון מלא", href: "/pricing" },
-      { label: "מחשבון הצעת מחיר", href: "/#calculator" },
-      { label: "השוואת ROI", href: "/#roi" },
     ],
   },
 ];
