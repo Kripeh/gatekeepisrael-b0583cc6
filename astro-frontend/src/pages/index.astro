@@ -10,7 +10,7 @@ import indexData from '../../../public/api/pages/index.json';
 
 const page = indexData;
 const PHONE_LINK = 'tel:+972508585310';
-const HERO_BG_URL = '/images/hero-bg.jpg'; // Local optimized image!
+const HERO_BG_URL = '/images/hero-bg.png'; // Local optimized 15MB image → Astro will compress to ~700KB AVIF!
 const STORAGE_BASE = 'https://sqxmgqqtcgkjztpvhzzr.supabase.co/storage/v1/object/public/images';
 
 const trust = page.sections.find((s: any) => s.type === 'trust') as any;
