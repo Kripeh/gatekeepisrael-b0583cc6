@@ -4,6 +4,7 @@ import OptimizedImage from '../components/OptimizedImage.astro';
 import PriceEstimatorIsland from '../components/react/PriceEstimatorIsland';
 import TestimonialsIsland from '../components/react/TestimonialsIsland';
 import ScrollProgressDots from '../components/react/ScrollProgressDots';
+import LazyGallery from '../components/react/LazyGallery';
 import DiscoverSolutions from '../components/DiscoverSolutions.astro';
 import indexData from '../../../public/api/pages/index.json';
 
@@ -104,20 +105,7 @@ const galleryImages = [
             המתקינים המקצועיים שלנו בשטח - מסקר ועד התקנה סופית
           </p>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {galleryImages.map((image) => (
-            <figure class="relative rounded-xl overflow-hidden group bg-secondary/50 aspect-square">
-              <OptimizedImage
-                src={image.src}
-                alt={image.alt}
-                class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                width={600}
-                height={600}
-                loading="lazy"
-              />
-            </figure>
-          ))}
-        </div>
+        <LazyGallery images={galleryImages} client:visible />
       </div>
     </section>
 
