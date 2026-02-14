@@ -14,6 +14,7 @@ interface SolutionCard {
   subtitle: string;
   links: Array<{ label: string; href: string }>;
   gradient: string;
+  patternId: string;
 }
 
 const solutions: SolutionCard[] = [
@@ -22,6 +23,7 @@ const solutions: SolutionCard[] = [
     title: "מחירים",
     subtitle: "שקיפות מלאה",
     gradient: "from-rose-500/10 to-red-500/10",
+    patternId: "pricing",
     links: [
       { label: "מחירון מלא", href: "/pricing" },
       { label: "מחשבון הצעת מחיר", href: "/#calculator" },
@@ -33,6 +35,7 @@ const solutions: SolutionCard[] = [
     title: "לחקלאים",
     subtitle: "מיגון מקצועי לשטחים",
     gradient: "from-teal-500/10 to-green-500/10",
+    patternId: "agriculture",
     links: [
       { label: "התקנה מקצועית", href: "/installation" },
       { label: "גדר סולארית לשטח", href: "/blog/solar-fence" },
@@ -44,6 +47,7 @@ const solutions: SolutionCard[] = [
     title: "לבעלי בתים",
     subtitle: "הגנה על הגינה והחצר",
     gradient: "from-orange-500/10 to-amber-500/10",
+    patternId: "residential",
     links: [
       { label: "פתרונות לגינה ולחצר", href: "/home-solutions" },
       { label: "גדר סולארית לבית", href: "/blog/solar-fence" },
@@ -55,6 +59,7 @@ const solutions: SolutionCard[] = [
     title: "מוצרים",
     subtitle: "ציוד מקצועי לגידור",
     gradient: "from-green-500/10 to-emerald-500/10",
+    patternId: "products",
     links: [
       { label: "מחוללי מתח סולאריים", href: "/products/solar-energizers" },
       { label: "מבודדים ורכיבי גידור", href: "/products/insulators" },
@@ -66,6 +71,7 @@ const solutions: SolutionCard[] = [
     title: "מדריכים",
     subtitle: "למד על גדרות חשמליות",
     gradient: "from-blue-500/10 to-cyan-500/10",
+    patternId: "guides",
     links: [
       { label: "למה גדר חשמלית?", href: "/blog/why-electric-fence" },
       { label: "מדריך חזירי בר", href: "/blog/boar-history-israel" },
@@ -78,6 +84,7 @@ const solutions: SolutionCard[] = [
     title: "אזורי שירות",
     subtitle: "התקנה בכל הארץ",
     gradient: "from-purple-500/10 to-pink-500/10",
+    patternId: "service-areas",
     links: [
       { label: "מפת כיסוי ארצית", href: "/service-areas" },
       { label: "חיפה והקריות", href: "/regions/haifa" },
@@ -98,7 +105,7 @@ const iconMap: Record<string, any> = {
 };
 ---
 
-<section class="py-20 lg:py-28 bg-background">
+<section id="discover" class="py-20 lg:py-28 bg-background">
   <div class="container mx-auto px-4">
     <!-- Header -->
     <div class="text-center mb-16">
@@ -120,7 +127,8 @@ const iconMap: Record<string, any> = {
         const Icon = iconMap[solution.icon];
         return (
           <article
-            class={`group relative bg-gradient-to-br ${solution.gradient} border border-border rounded-2xl p-8 hover:shadow-2xl hover:shadow-primary/10 hover:scale-105 transition-all duration-300 cursor-pointer`}
+            class={`group relative bg-gradient-to-br ${solution.gradient} border border-border rounded-2xl p-8 hover:shadow-2xl hover:shadow-primary/10 hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden`}
+            data-pattern={solution.patternId}
           >
             <!-- Icon -->
             <div class="w-16 h-16 rounded-2xl bg-primary/15 border-2 border-primary/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/25 transition-all duration-300">
@@ -170,3 +178,94 @@ const iconMap: Record<string, any> = {
     </div>
   </div>
 </section>
+
+<style>
+  /* Subtle background patterns for solution cards */
+  article[data-pattern]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.08;
+    filter: grayscale(100%);
+    pointer-events: none;
+    border-radius: 1rem;
+  }
+
+  /* Pricing - Calculator grid pattern */
+  article[data-pattern="pricing"]::before {
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 35px, currentColor 35px, currentColor 36px),
+      repeating-linear-gradient(90deg, transparent, transparent 35px, currentColor 35px, currentColor 36px);
+    opacity: 0.06;
+  }
+
+  /* Agriculture - Field rows pattern */
+  article[data-pattern="agriculture"]::before {
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 60px,
+        currentColor 60px,
+        currentColor 62px
+      );
+    opacity: 0.07;
+  }
+
+  /* Residential - Home roof pattern */
+  article[data-pattern="residential"]::before {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        currentColor 40px,
+        currentColor 42px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        currentColor 40px,
+        currentColor 42px
+      );
+    opacity: 0.05;
+  }
+
+  /* Products - Circuit pattern */
+  article[data-pattern="products"]::before {
+    background-image:
+      radial-gradient(circle at 25% 25%, currentColor 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, currentColor 2px, transparent 2px);
+    background-size: 50px 50px;
+    opacity: 0.08;
+  }
+
+  /* Guides - Book pages pattern */
+  article[data-pattern="guides"]::before {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 25px,
+        currentColor 25px,
+        currentColor 26px
+      );
+    opacity: 0.06;
+  }
+
+  /* Service Areas - Map grid pattern */
+  article[data-pattern="service-areas"]::before {
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 45px, currentColor 45px, currentColor 46px),
+      repeating-linear-gradient(90deg, transparent, transparent 45px, currentColor 45px, currentColor 46px);
+    opacity: 0.05;
+  }
+
+  /* Ensure content stays above pattern */
+  article[data-pattern] > * {
+    position: relative;
+    z-index: 1;
+  }
+</style>
